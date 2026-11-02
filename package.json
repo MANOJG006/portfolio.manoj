@@ -4,7 +4,8 @@
   "description": "Portfolio of Manoj G - Pre-Final Year ECE Student (Embedded Systems, IoT, MERN Stack, DSA Problem Solving)",
   "main": "index.html",
   "scripts": {
-    "start": "npx serve ."
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "keywords": [
     "portfolio",
