@@ -1,0 +1,24 @@
+{
+  "name": "manoj-ece-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of Manoj G - Pre-Final Year ECE Student (Embedded Systems, IoT, MERN Stack, DSA Problem Solving)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "ece",
+    "embedded-systems",
+    "iot",
+    "mern-stack",
+    "dsa",
+    "problem-solving",
+    "java",
+    "cpp",
+    "python",
+    "esp32"
+  ],
+  "author": "Manoj G <manojkovarthini@gmail.com>",
+  "license": "MIT"
+}
