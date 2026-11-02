@@ -19,10 +19,16 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Three.js 3D WebGL Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="light-mode">
+
+  <!-- Subtle 3D Engineering Background Canvas (Oscilloscope Waves, Blueprint Grid, Pulse Particles) -->
+  <canvas id="bg-tech-canvas" class="bg-tech-canvas" aria-hidden="true"></canvas>
 
   <!-- Main Header & Navigation -->
   <header class="main-header" id="navbar">
@@ -67,6 +73,9 @@
   <main>
     <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
+      <!-- 3D Interactive Microprocessor & Floating Tech Canvas -->
+      <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-label="3D Floating Microchip and Circuit Pulse Model"></canvas>
+
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="status-badge">
@@ -141,7 +150,7 @@
 
         <!-- Hero Right: Human Developer Profile Card -->
         <div class="hero-right-col">
-          <div class="human-profile-card glass-panel">
+          <div class="human-profile-card glass-panel" data-tilt="true">
             <div class="profile-card-top">
               <div class="avatar-ring">
                 <div class="avatar-initials">MG</div>
@@ -310,135 +319,120 @@
       </div>
     </section>
 
-    <!-- TECHNICAL SKILLS MATRIX -->
+    <!-- 3D INTERACTIVE ENGINEERING SKILLS DASHBOARD -->
     <section class="section skills-section" id="skills">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fa-solid fa-layer-group"></i> Technical Competencies</span>
-          <h2 class="section-title">Hardware & Software <span class="gradient-text">Skills Matrix</span></h2>
-          <p class="section-subtitle">Hands-on experience across silicon, communication buses, and modern development stacks</p>
+          <span class="section-tag"><i class="fa-solid fa-microchip"></i> 3D Engineering Dashboard</span>
+          <h2 class="section-title">Interactive <span class="gradient-text">Skills Matrix</span></h2>
+          <p class="section-subtitle">Real-world technical competencies connected across silicon, web stacks, and firmware</p>
         </div>
 
-        <div class="skills-grid">
-          <!-- Category 1: Embedded Systems & IoT -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="cat-icon cat-cyan"><i class="fa-solid fa-microchip"></i></div>
-              <div>
-                <h3>Embedded Systems & IoT</h3>
-                <span class="cat-sub">Microcontrollers & Edge Devices</span>
+        <!-- Central 3D Processor Hub & Circuit Bus Canvas -->
+        <div class="skills-3d-dashboard">
+          <div class="skills-hub-center">
+            <div class="chip-3d-wrapper" id="skills-chip-wrapper" title="Interactive ESP32 Core Processor">
+              <canvas id="skills-3d-canvas" class="skills-3d-canvas"></canvas>
+              <div class="chip-hologram-label">
+                <span class="chip-core-tag">ESP32 // DUAL-CORE</span>
+                <span class="chip-status-pulse">SYSTEM OPTIMAL</span>
               </div>
             </div>
-            <div class="skill-badges">
-              <span class="skill-badge featured">ESP32 (Dual-Core)</span>
-              <span class="skill-badge featured">Arduino UNO</span>
-              <span class="skill-badge">NodeMCU (ESP8266)</span>
-              <span class="skill-badge featured">IoT Sensor Telemetry</span>
-              <span class="skill-badge">Microcontroller Architecture</span>
-              <span class="skill-badge">Sensor & Actuator Interfacing</span>
-              <span class="skill-badge">PWM Motor Speed Control</span>
-              <span class="skill-badge">GPIO Register Control</span>
-            </div>
+            <!-- Dynamic SVG Circuit Traces connecting center to the 4 quadrants -->
+            <svg class="skills-circuit-svg" id="skills-circuit-svg" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
+              <path class="circuit-trace trace-tl" id="trace-programming" d="M 400 200 L 320 200 L 220 90 L 80 90" />
+              <path class="circuit-trace trace-tr" id="trace-web" d="M 400 200 L 480 200 L 580 90 L 720 90" />
+              <path class="circuit-trace trace-bl" id="trace-embedded" d="M 400 200 L 320 200 L 220 310 L 80 310" />
+              <path class="circuit-trace trace-br" id="trace-tools" d="M 400 200 L 480 200 L 580 310 L 720 310" />
+              <!-- Pulsing signal packet circles -->
+              <circle class="circuit-packet packet-tl" r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M 400 200 L 320 200 L 220 90 L 80 90" /></circle>
+              <circle class="circuit-packet packet-tr" r="4"><animateMotion dur="2.8s" repeatCount="indefinite" path="M 400 200 L 480 200 L 580 90 L 720 90" /></circle>
+              <circle class="circuit-packet packet-bl" r="4"><animateMotion dur="2.2s" repeatCount="indefinite" path="M 400 200 L 320 200 L 220 310 L 80 310" /></circle>
+              <circle class="circuit-packet packet-br" r="4"><animateMotion dur="3.0s" repeatCount="indefinite" path="M 400 200 L 480 200 L 580 310 L 720 310" /></circle>
+            </svg>
           </div>
 
-          <!-- Category 2: Full-Stack MERN Development -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="cat-icon cat-pink"><i class="fa-brands fa-react"></i></div>
-              <div>
-                <h3>Full-Stack MERN Stack</h3>
-                <span class="cat-sub">Modern Web Applications</span>
+          <div class="skills-grid-4col">
+            <!-- Quadrant 1: Programming -->
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="programming" onmouseenter="activateCircuit('programming')" onmouseleave="deactivateCircuit()">
+              <div class="category-header">
+                <div class="cat-icon cat-cyan"><i class="fa-solid fa-code"></i></div>
+                <div>
+                  <h3>Programming</h3>
+                  <span class="cat-sub">Core Logic & DSA</span>
+                </div>
+              </div>
+              <div class="skill-badges">
+                <span class="skill-badge featured" data-skill="c">C</span>
+                <span class="skill-badge featured" data-skill="cpp">C++ (Modern C++ Challenger)</span>
+                <span class="skill-badge featured" data-skill="java">Java (Foundation Certified)</span>
+                <span class="skill-badge featured" data-skill="python">Python (Google Certified)</span>
+                <span class="skill-badge featured" data-skill="sql">SQL (Relational Queries)</span>
+                <span class="skill-badge" data-skill="dsa">Data Structures & Algorithms</span>
+                <span class="skill-badge" data-skill="complexity">Time & Space Complexity O(N)</span>
               </div>
             </div>
-            <div class="skill-badges">
-              <span class="skill-badge featured">React.js</span>
-              <span class="skill-badge featured">Node.js</span>
-              <span class="skill-badge featured">Express.js</span>
-              <span class="skill-badge featured">MongoDB</span>
-              <span class="skill-badge">RESTful APIs</span>
-              <span class="skill-badge">JavaScript (ES6+)</span>
-              <span class="skill-badge">HTML5 & CSS3</span>
-              <span class="skill-badge">Responsive Design</span>
-            </div>
-          </div>
 
-          <!-- Category 3: Problem Solving & DSA -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="cat-icon cat-purple"><i class="fa-solid fa-brain"></i></div>
-              <div>
-                <h3>Problem Solving & DSA</h3>
-                <span class="cat-sub">Java, Modern C++, Python</span>
+            <!-- Quadrant 2: Web Development -->
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="web" onmouseenter="activateCircuit('web')" onmouseleave="deactivateCircuit()">
+              <div class="category-header">
+                <div class="cat-icon cat-pink"><i class="fa-brands fa-react"></i></div>
+                <div>
+                  <h3>Web Development</h3>
+                  <span class="cat-sub">Full-Stack MERN Architecture</span>
+                </div>
+              </div>
+              <div class="skill-badges">
+                <span class="skill-badge featured" data-skill="react">React.js</span>
+                <span class="skill-badge featured" data-skill="node">Node.js</span>
+                <span class="skill-badge featured" data-skill="express">Express.js</span>
+                <span class="skill-badge featured" data-skill="mongo">MongoDB</span>
+                <span class="skill-badge featured" data-skill="js">JavaScript (ES6+)</span>
+                <span class="skill-badge" data-skill="html">HTML5</span>
+                <span class="skill-badge" data-skill="css">CSS3</span>
+                <span class="skill-badge" data-skill="api">RESTful APIs</span>
               </div>
             </div>
-            <div class="skill-badges">
-              <span class="skill-badge featured">Data Structures & Algorithms</span>
-              <span class="skill-badge featured">Java (Foundation Certified)</span>
-              <span class="skill-badge featured">Modern C++ (Infosys Challenger)</span>
-              <span class="skill-badge featured">Python</span>
-              <span class="skill-badge">Arrays, Strings & Pointers</span>
-              <span class="skill-badge">Linked Lists, Stacks & Queues</span>
-              <span class="skill-badge">Trees & Graph Traversal</span>
-              <span class="skill-badge">Time & Space Complexity O(N)</span>
-            </div>
-          </div>
 
-          <!-- Category 4: Hardware & Prototyping -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="cat-icon cat-amber"><i class="fa-solid fa-plug"></i></div>
-              <div>
-                <h3>Hardware & Prototyping</h3>
-                <span class="cat-sub">Sensors, Displays & Drivers</span>
+            <!-- Quadrant 3: Embedded Systems -->
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="embedded" onmouseenter="activateCircuit('embedded')" onmouseleave="deactivateCircuit()">
+              <div class="category-header">
+                <div class="cat-icon cat-emerald"><i class="fa-solid fa-microchip"></i></div>
+                <div>
+                  <h3>Embedded Systems</h3>
+                  <span class="cat-sub">Silicon & Communication Buses</span>
+                </div>
+              </div>
+              <div class="skill-badges">
+                <span class="skill-badge featured" data-skill="esp32">ESP32 (Dual-Core 240MHz)</span>
+                <span class="skill-badge featured" data-skill="arduino">Arduino UNO / IDE</span>
+                <span class="skill-badge featured" data-skill="sensors">Sensors (Ultrasonic, LDR, DHT)</span>
+                <span class="skill-badge featured" data-skill="actuators">Actuators (Servo, L298N DC Motors)</span>
+                <span class="skill-badge featured" data-skill="uart">UART Serial Protocol</span>
+                <span class="skill-badge featured" data-skill="spi">SPI Protocol</span>
+                <span class="skill-badge featured" data-skill="i2c">I²C Bus (SSD1306 OLED)</span>
+                <span class="skill-badge" data-skill="pwm">PWM Motor Speed Control</span>
               </div>
             </div>
-            <div class="skill-badges">
-              <span class="skill-badge">Ultrasonic Sensors (HC-SR04)</span>
-              <span class="skill-badge">Servo Motors (SG90)</span>
-              <span class="skill-badge">L298N Dual H-Bridge Driver</span>
-              <span class="skill-badge">0.96" OLED Displays (I2C)</span>
-              <span class="skill-badge">Matrix Keypads</span>
-              <span class="skill-badge">RGB LEDs & Buzzers</span>
-              <span class="skill-badge">Relay Modules</span>
-            </div>
-          </div>
 
-          <!-- Category 5: Communication Protocols & Telecom -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="cat-icon cat-emerald"><i class="fa-solid fa-network-wired"></i></div>
-              <div>
-                <h3>Protocols & Telecom</h3>
-                <span class="cat-sub">Buses & Networking</span>
+            <!-- Quadrant 4: Tools & Platforms -->
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="tools" onmouseenter="activateCircuit('tools')" onmouseleave="deactivateCircuit()">
+              <div class="category-header">
+                <div class="cat-icon cat-purple"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <div>
+                  <h3>Tools & Platforms</h3>
+                  <span class="cat-sub">Simulation & Version Control</span>
+                </div>
               </div>
-            </div>
-            <div class="skill-badges">
-              <span class="skill-badge featured">UART Serial (115200)</span>
-              <span class="skill-badge featured">I²C Bus (SSD1306/OLED)</span>
-              <span class="skill-badge featured">SPI Protocol</span>
-              <span class="skill-badge">Basic CAN Bus</span>
-              <span class="skill-badge">Optical Fiber Communication (OFC)</span>
-              <span class="skill-badge">Multiplexers & Telecom Switching</span>
-            </div>
-          </div>
-
-          <!-- Category 6: Databases, Software & Tools -->
-          <div class="skill-category-card glass-panel">
-            <div class="category-header">
-              <div class="cat-icon cat-blue"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-              <div>
-                <h3>Tools & Databases</h3>
-                <span class="cat-sub">Database, Simulation & Versioning</span>
+              <div class="skill-badges">
+                <span class="skill-badge featured" data-skill="git">Git</span>
+                <span class="skill-badge featured" data-skill="github">GitHub</span>
+                <span class="skill-badge featured" data-skill="arduino-ide">Arduino IDE</span>
+                <span class="skill-badge featured" data-skill="matlab">MATLAB</span>
+                <span class="skill-badge featured" data-skill="tinkercad">Tinkercad Circuits</span>
+                <span class="skill-badge featured" data-skill="powerbi">Power BI</span>
+                <span class="skill-badge" data-skill="vscode">VS Code</span>
               </div>
-            </div>
-            <div class="skill-badges">
-              <span class="skill-badge featured">Git & GitHub</span>
-              <span class="skill-badge featured">SQL (Relational DB)</span>
-              <span class="skill-badge">MongoDB (NoSQL)</span>
-              <span class="skill-badge featured">MATLAB</span>
-              <span class="skill-badge">Tinkercad Circuits</span>
-              <span class="skill-badge">Power BI</span>
-              <span class="skill-badge">VS Code & Arduino IDE</span>
             </div>
           </div>
         </div>
@@ -465,11 +459,40 @@
 
         <div class="projects-grid">
           <!-- Project 1: Intelligent Path Detection Car -->
-          <article class="project-card glass-panel" data-category="embedded automotive">
+          <article class="project-card glass-panel" data-category="embedded automotive" data-tilt="true">
             <div class="project-header">
               <div class="project-badge badge-cyan"><i class="fa-solid fa-car"></i> Embedded / Automotive</div>
               <span class="project-date">Hardware Prototype</span>
             </div>
+
+            <!-- 3D Robotic Vehicle & Ultrasonic Radar Stage -->
+            <div class="project-3d-stage" id="stage-path-car" title="Interactive 3D Robotic Car: Click canvas to position obstacle">
+              <canvas id="canvas-path-car" class="project-3d-canvas"></canvas>
+              <div class="stage-overlay-hud">
+                <div class="hud-item"><span class="hud-label">DISTANCE:</span> <strong id="car-hud-distance">38.4 cm</strong></div>
+                <div class="hud-item"><span class="hud-label">SERVO SWEEP:</span> <strong id="car-hud-angle">90&deg;</strong></div>
+                <div class="hud-item status-ok" id="car-hud-status"><i class="fa-solid fa-circle-check"></i> PATH CLEAR</div>
+              </div>
+              <div class="stage-quick-actions">
+                <button type="button" class="stage-mini-btn" onclick="spawnCarObstacle()" title="Spawn Obstacle Ahead">
+                  <i class="fa-solid fa-cube"></i> Add Obstacle
+                </button>
+                <button type="button" class="stage-mini-btn" onclick="toggleServoSpeed()" title="Adjust Servo Sweep Speed">
+                  <i class="fa-solid fa-gauge-high"></i> Speed
+                </button>
+                <button type="button" class="stage-mini-btn" onclick="resetCarPath()" title="Reset Road & Car">
+                  <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+              </div>
+              <!-- Floating 3D Hardware Callout Markers -->
+              <div class="hw-callout-tags" aria-hidden="true">
+                <span class="hw-tag" style="top: 22%; left: 45%;"><i class="fa-solid fa-microchip"></i> ESP32</span>
+                <span class="hw-tag" style="top: 14%; left: 74%;"><i class="fa-solid fa-satellite-dish"></i> HC-SR04</span>
+                <span class="hw-tag" style="top: 42%; left: 78%;"><i class="fa-solid fa-gear"></i> SG90</span>
+                <span class="hw-tag" style="top: 72%; left: 28%;"><i class="fa-solid fa-bolt"></i> L298N</span>
+              </div>
+            </div>
+
             <h3 class="project-title">Intelligent Path Detection Car</h3>
             <p class="project-desc">
               Developed an autonomous <strong>ESP32-based car prototype</strong> capable of real-time obstacle detection and dynamic collision avoidance. Integrated an ultrasonic sensor mounted on a servo motor to perform forward sweeps, providing distance telemetry to an <strong>L298N dual H-bridge motor driver</strong>.
@@ -494,11 +517,40 @@
           </article>
 
           <!-- Project 2: Smart Voting System -->
-          <article class="project-card glass-panel" data-category="embedded">
+          <article class="project-card glass-panel" data-category="embedded" data-tilt="true">
             <div class="project-header">
               <div class="project-badge badge-emerald"><i class="fa-solid fa-check-to-slot"></i> Microcontroller / Peripheral</div>
               <span class="project-date">Hardware Prototype</span>
             </div>
+
+            <!-- 3D Voting Terminal & OLED Display Stage -->
+            <div class="project-3d-stage" id="stage-voting-system" title="Interactive 3D Voting Machine: Click buttons to simulate vote">
+              <canvas id="canvas-voting-system" class="project-3d-canvas"></canvas>
+              <div class="stage-overlay-hud">
+                <div class="oled-mini-screen">
+                  <div class="oled-sim-title">SSD1306 128x64 OLED</div>
+                  <div class="oled-sim-msg" id="oled-sim-text">READY: PRESS 1-4</div>
+                </div>
+                <div class="voting-tally-pill">
+                  <span>TOTAL VOTES:</span> <strong id="live-vote-count">142</strong>
+                </div>
+              </div>
+              <div class="stage-quick-actions">
+                <button type="button" class="stage-mini-btn" onclick="castSimulatedVote(1)">
+                  <i class="fa-solid fa-fingerprint"></i> Key 1
+                </button>
+                <button type="button" class="stage-mini-btn" onclick="castSimulatedVote(2)">
+                  <i class="fa-solid fa-fingerprint"></i> Key 2
+                </button>
+                <button type="button" class="stage-mini-btn" onclick="castSimulatedVote(3)">
+                  <i class="fa-solid fa-fingerprint"></i> Key 3
+                </button>
+                <button type="button" class="stage-mini-btn" onclick="resetVoteCounter()">
+                  <i class="fa-solid fa-rotate-left"></i> Reset
+                </button>
+              </div>
+            </div>
+
             <h3 class="project-title">Smart Electronic Voting System</h3>
             <p class="project-desc">
               Engineered an <strong>ESP32-powered electronic voting prototype</strong> with comprehensive peripheral interfacing. Features a 0.96-inch I²C OLED display (SSD1306) for real-time prompt feedback, a tactile matrix keypad for casting votes, RGB LED status indicators, and an audio buzzer for validation.
@@ -523,11 +575,33 @@
           </article>
 
           <!-- Project 3: CampusGo Application -->
-          <article class="project-card glass-panel" data-category="software">
+          <article class="project-card glass-panel" data-category="software" data-tilt="true">
             <div class="project-header">
               <div class="project-badge badge-purple"><i class="fa-brands fa-react"></i> Web Application</div>
               <span class="project-date">React.js Web App</span>
             </div>
+
+            <!-- 3D Isometric Campus Map & Smartphone App Stage -->
+            <div class="project-3d-stage" id="stage-campusgo" title="Interactive 3D Campus: Select destinations">
+              <canvas id="canvas-campusgo" class="project-3d-canvas"></canvas>
+              <div class="stage-overlay-hud">
+                <div class="campus-hud-pill" id="campus-status-pill">
+                  <i class="fa-solid fa-location-crosshairs"></i> Central Library &bull; Route Active
+                </div>
+              </div>
+              <div class="stage-quick-actions">
+                <button type="button" class="stage-mini-btn active" id="btn-dest-lib" onclick="setCampusTarget('library')">
+                  <i class="fa-solid fa-book"></i> Library
+                </button>
+                <button type="button" class="stage-mini-btn" id="btn-dest-acad" onclick="setCampusTarget('academic')">
+                  <i class="fa-solid fa-graduation-cap"></i> Academics
+                </button>
+                <button type="button" class="stage-mini-btn" id="btn-dest-trans" onclick="setCampusTarget('transit')">
+                  <i class="fa-solid fa-bus"></i> Transit
+                </button>
+              </div>
+            </div>
+
             <h3 class="project-title">CampusGo &mdash; Campus Application</h3>
             <p class="project-desc">
               Developed a modern, campus-focused web application utilizing <strong>React.js</strong>. Built using a modular component-based architecture to deliver an intuitive user interface for students, facilitating campus navigation, schedule tracking, and student service access.
@@ -552,11 +626,29 @@
           </article>
 
           <!-- Project 4: Regen Textile Waste Recycling -->
-          <article class="project-card glass-panel" data-category="software">
+          <article class="project-card glass-panel" data-category="software" data-tilt="true">
             <div class="project-header">
               <div class="project-badge badge-amber"><i class="fa-solid fa-recycle"></i> Sustainability Concept</div>
               <span class="project-date">Systems Workflow Design</span>
             </div>
+
+            <!-- 3D Textile Recycling Loop Stage -->
+            <div class="project-3d-stage" id="stage-regen" title="Interactive 3D Textile Recycling Loop">
+              <canvas id="canvas-regen" class="project-3d-canvas"></canvas>
+              <div class="stage-overlay-hud">
+                <div class="regen-hud-pill">
+                  <i class="fa-solid fa-recycle"></i> Closed-Loop Efficiency: <strong>92.8%</strong>
+                </div>
+              </div>
+              <div class="stage-pipeline-steps">
+                <span class="pipe-node active" id="node-collect"><i class="fa-solid fa-truck-ramp-box"></i> 1. Scrap Telemetry</span>
+                <span class="pipe-arrow">&rarr;</span>
+                <span class="pipe-node active" id="node-process"><i class="fa-solid fa-arrows-spin"></i> 2. Fiber Refining</span>
+                <span class="pipe-arrow">&rarr;</span>
+                <span class="pipe-node active" id="node-weave"><i class="fa-solid fa-scroll"></i> 3. Artisan Weaving</span>
+              </div>
+            </div>
+
             <h3 class="project-title">Regen &mdash; Textile Waste Collection & Recycling</h3>
             <p class="project-desc">
               Designed a comprehensive web-based concept and workflow to modernize <strong>textile-waste collection and circular recycling</strong>. Designed a pipeline connecting commercial waste collection with sustainable manufacturing workflows to empower local weavers and artisans.
