@@ -402,143 +402,219 @@
       </div>
     </section>
 
-    <!-- PROJECTS SHOWCASE -->
+    <!-- PROJECTS SHOWCASE (PREMIUM INTERACTIVE 5-PROJECT 3D EXPANSION) -->
     <section class="section projects-section" id="projects">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fa-solid fa-diagram-project"></i> Portfolio Works</span>
-          <h2 class="section-title">Featured <span class="gradient-text">Engineering Projects</span></h2>
-          <p class="section-subtitle">Hardware prototypes, microcontroller firmware, and software applications</p>
+          <span class="section-tag"><i class="fa-solid fa-layer-group"></i> Portfolio Showcase</span>
+          <h2 class="section-title">Selected <span class="gold-gradient-text">Engineering Projects</span></h2>
+          <p class="section-subtitle">Click any project title below to reveal its practical implementation, purpose, and overview</p>
         </div>
 
-        <!-- Filter Controls -->
-        <div class="filter-controls">
-          <button class="filter-btn active" data-filter="all">All Projects (4)</button>
-          <button class="filter-btn" data-filter="embedded">Embedded & Hardware</button>
-          <button class="filter-btn" data-filter="automotive">Automotive & Robotics</button>
-          <button class="filter-btn" data-filter="software">Web & Software</button>
-        </div>
+        <div class="projects-showcase-container">
+          <!-- Left Column: Neatly Aligned Vertical List of Project Titles -->
+          <div class="projects-list" role="tablist" aria-label="Featured Projects List">
+            
+            <!-- Project 01 Item -->
+            <div class="project-item" id="project-item-1">
+              <button type="button" class="project-title-btn" id="project-btn-1" onclick="toggleProject(1)" aria-expanded="false" aria-controls="project-card-1">
+                <span class="proj-num">01</span>
+                <span class="proj-title-text">INTELLIGENT PATH DETECTION CAR</span>
+                <span class="proj-toggle-indicator"><i class="fa-solid fa-chevron-right"></i></span>
+              </button>
+              <!-- Mobile inline expansion container -->
+              <div class="project-mobile-drawer" id="mobile-drawer-1"></div>
+            </div>
 
-        <div class="projects-grid">
-          <!-- Project 1: Intelligent Path Detection Car -->
-          <article class="project-card glass-panel" data-category="embedded automotive" data-tilt="true">
-            <div class="project-header">
-              <div class="project-badge badge-cyan"><i class="fa-solid fa-car"></i> Embedded Systems &bull; Robotics</div>
-              <span class="project-date">Hardware Prototype &bull; ESP32</span>
+            <!-- Project 02 Item -->
+            <div class="project-item" id="project-item-2">
+              <button type="button" class="project-title-btn" id="project-btn-2" onclick="toggleProject(2)" aria-expanded="false" aria-controls="project-card-2">
+                <span class="proj-num">02</span>
+                <span class="proj-title-text">SMART VOTING SYSTEM</span>
+                <span class="proj-toggle-indicator"><i class="fa-solid fa-chevron-right"></i></span>
+              </button>
+              <div class="project-mobile-drawer" id="mobile-drawer-2"></div>
             </div>
-            <h3 class="project-title">Intelligent Path Detection Car</h3>
-            <p class="project-desc">
-              Designed and built an autonomous robotic vehicle powered by an <strong>ESP32 microcontroller</strong>, engineered for real-time obstacle detection and dynamic evasive steering. Integrated an ultrasonic sensor (HC-SR04) with an SG90 servo sweep mechanism to continuously scan perimeter distances and modulate dual <strong>L298N H-bridge</strong> motor speeds via hardware PWM.
-            </p>
-            <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>ECE State Machine:</strong> Dynamic obstacle detection with multi-directional arbitration and recovery routines</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Real-time Telemetry:</strong> Microsecond echo timing using hardware timer interrupts and dual PWM speed scaling</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Power Rail Protection:</strong> LM2596 buck regulator isolating 3.3V logic from 11.1V high-current motor inductive transients</div>
-            </div>
-            <div class="tech-stack-row">
-              <span class="chip">ESP32</span>
-              <span class="chip">Embedded C++</span>
-              <span class="chip">HC-SR04 Ultrasonic</span>
-              <span class="chip">SG90 Servo</span>
-              <span class="chip">L298N Dual H-Bridge</span>
-              <span class="chip">Hardware PWM</span>
-              <span class="chip">Interrupt Timers</span>
-            </div>
-            <div class="project-card-footer">
-              <span class="badge-tag"><i class="fa-solid fa-microchip"></i> Hardware Build</span>
-              <span class="hardware-indicator"><i class="fa-solid fa-code"></i> ESP-IDF / C++</span>
-            </div>
-          </article>
 
-          <!-- Project 2: Smart Electronic Voting Machine -->
-          <article class="project-card glass-panel" data-category="embedded" data-tilt="true">
-            <div class="project-header">
-              <div class="project-badge badge-emerald"><i class="fa-solid fa-check-to-slot"></i> Embedded Systems &bull; Hardware</div>
-              <span class="project-date">Physical Build &bull; Real Device</span>
+            <!-- Project 03 Item -->
+            <div class="project-item" id="project-item-3">
+              <button type="button" class="project-title-btn" id="project-btn-3" onclick="toggleProject(3)" aria-expanded="false" aria-controls="project-card-3">
+                <span class="proj-num">03</span>
+                <span class="proj-title-text">REGEN</span>
+                <span class="proj-toggle-indicator"><i class="fa-solid fa-chevron-right"></i></span>
+              </button>
+              <div class="project-mobile-drawer" id="mobile-drawer-3"></div>
             </div>
-            <h3 class="project-title">Smart Electronic Voting Machine</h3>
-            <p class="project-desc">
-              Engineered a tamper-resistant, authenticated <strong>electronic voting machine prototype</strong> to model real-world electoral integrity. Integrated an embedded microcontroller with a 0.96-inch <strong>I&sup2;C SSD1306 OLED</strong> display, a 4&times;4 tactile matrix keypad, capacitive touch actuation, multi-color LED visual feedback, and non-volatile EEPROM encrypted ballot tallying.
-            </p>
-            <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>5-Stage Authentication:</strong> ID verification, system authorization, touch actuation, ballot cast, and secure record</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Tamper-Resistant Firmware:</strong> Switch debounce validation, duplicate vote protection, and encrypted EEPROM tallying</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Peripheral Bus Interfacing:</strong> Two-wire I&sup2;C protocol implementation driving a 128&times;64 OLED user interface</div>
-            </div>
-            <div class="tech-stack-row">
-              <span class="chip">ESP32 / Arduino</span>
-              <span class="chip">SSD1306 OLED (I&sup2;C)</span>
-              <span class="chip">4x4 Matrix Keypad</span>
-              <span class="chip">TTP223 Capacitive Touch</span>
-              <span class="chip">EEPROM Storage</span>
-              <span class="chip">RGB Feedback</span>
-              <span class="chip">Embedded C++</span>
-            </div>
-            <div class="project-card-footer">
-              <span class="badge-tag"><i class="fa-solid fa-shield-halved"></i> Tamper-Resistant</span>
-              <span class="hardware-indicator"><i class="fa-solid fa-microchip"></i> I&sup2;C Bus Protocol</span>
-            </div>
-          </article>
 
-          <!-- Project 3: CampusGo — Full-Stack Campus Platform -->
-          <article class="project-card glass-panel" data-category="software" data-tilt="true">
-            <div class="project-header">
-              <div class="project-badge badge-purple"><i class="fa-brands fa-react"></i> Full-Stack MERN Platform</div>
-              <span class="project-date">Web Application &bull; Production</span>
+            <!-- Project 04 Item -->
+            <div class="project-item" id="project-item-4">
+              <button type="button" class="project-title-btn" id="project-btn-4" onclick="toggleProject(4)" aria-expanded="false" aria-controls="project-card-4">
+                <span class="proj-num">04</span>
+                <span class="proj-title-text">CAMPUSGO</span>
+                <span class="proj-toggle-indicator"><i class="fa-solid fa-chevron-right"></i></span>
+              </button>
+              <div class="project-mobile-drawer" id="mobile-drawer-4"></div>
             </div>
-            <h3 class="project-title">CampusGo &mdash; Full-Stack Campus Platform</h3>
-            <p class="project-desc">
-              Architected and built <strong>CampusGo</strong>, an end-to-end full-stack <strong>MERN platform</strong> for college campus navigation, student resource discovery, and real-time transit shuttle tracking. Features a decoupled REST API backend, geospatial coordinate indexing, and an intuitive, mobile-responsive user interface built in React.
-            </p>
-            <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Geospatial Indexing:</strong> MongoDB 2dsphere indexing for instant shortest-path campus routing and facility geofencing</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Secure API Architecture:</strong> Node.js & Express RESTful API with JWT authentication, RBAC, and input validation</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Live Telemetry:</strong> Real-time WebSocket connection for synchronized transit shuttle tracking and status updates</div>
-            </div>
-            <div class="tech-stack-row">
-              <span class="chip">MongoDB Atlas</span>
-              <span class="chip">Express.js</span>
-              <span class="chip">React.js</span>
-              <span class="chip">Node.js</span>
-              <span class="chip">REST APIs</span>
-              <span class="chip">WebSockets</span>
-              <span class="chip">JWT Auth</span>
-            </div>
-            <div class="project-card-footer">
-              <a href="https://github.com/MANOJG006/campusgo" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-                <i class="fa-brands fa-github"></i> View GitHub Repo
-              </a>
-              <span class="hardware-indicator"><i class="fa-solid fa-globe"></i> Full-Stack MERN</span>
-            </div>
-          </article>
 
-          <!-- Project 4: Regen — Textile Waste Recycling Platform -->
-          <article class="project-card glass-panel" data-category="software" data-tilt="true">
-            <div class="project-header">
-              <div class="project-badge badge-amber"><i class="fa-solid fa-recycle"></i> Circular Economy &bull; Web Architecture</div>
-              <span class="project-date">Systems Workflow &bull; Concept</span>
+            <!-- Project 05 Item -->
+            <div class="project-item" id="project-item-5">
+              <button type="button" class="project-title-btn" id="project-btn-5" onclick="toggleProject(5)" aria-expanded="false" aria-controls="project-card-5">
+                <span class="proj-num">05</span>
+                <span class="proj-title-text">LINKEDIN-INSPIRED MULTILINGUAL AI SPEECH APPLICATION</span>
+                <span class="proj-toggle-indicator"><i class="fa-solid fa-chevron-right"></i></span>
+              </button>
+              <div class="project-mobile-drawer" id="mobile-drawer-5"></div>
             </div>
-            <h3 class="project-title">Regen &mdash; Textile Waste Collection & Recycling Platform</h3>
-            <p class="project-desc">
-              Formulated a digital supply chain architecture and web platform to modernize <strong>textile waste recovery and industrial upcycling</strong>. Created an end-to-end telemetry workflow connecting commercial garment scrap collection with mechanized fiber refineries and artisan weaver clusters across Tamil Nadu.
-            </p>
-            <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>3-Tier Closed-Loop Model:</strong> Scrap batch telemetry, mechanical fiber refining, and yarn distribution</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Platform Architecture:</strong> Scalable React and REST API design with inventory logging and scheduling workflows</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Socio-Economic Impact:</strong> Tailored for textile manufacturing belts in Tiruppur and Coimbatore</div>
+
+          </div>
+
+          <!-- Right Column: Desktop Separate Content Area with 3D Perspective Transition -->
+          <div class="projects-display-pane" id="projects-display-pane">
+            
+            <!-- Default Placeholder (Initially visible before visitor selects a project) -->
+            <div class="project-display-placeholder active" id="project-default-placeholder">
+              <div class="placeholder-compass">
+                <i class="fa-solid fa-compass"></i>
+              </div>
+              <h3 class="placeholder-heading">Select a Project to View Details</h3>
+              <p class="placeholder-sub">Click any of the five project titles on the left to reveal its practical purpose, development overview, and direct external access.</p>
+              <div class="placeholder-meta">
+                <span class="meta-pill"><i class="fa-solid fa-cube"></i> Interactive 3D Reveal</span>
+                <span class="meta-pill"><i class="fa-solid fa-arrow-up-right-from-square"></i> Verified Links</span>
+              </div>
             </div>
-            <div class="tech-stack-row">
-              <span class="chip">React.js Architecture</span>
-              <span class="chip">Node.js</span>
-              <span class="chip">Circular Supply Chain</span>
-              <span class="chip">RESTful APIs</span>
-              <span class="chip">Data Modeling</span>
+
+            <!-- Project 01 Card -->
+            <div class="project-expanded-panel" id="project-card-1" data-project="1">
+              <div class="expanded-card-header">
+                <span class="card-num-badge">PROJECT 01</span>
+                <span class="card-type-tag"><i class="fa-solid fa-microchip"></i> Embedded Systems &bull; Robotics</span>
+              </div>
+              <h3 class="expanded-card-title">Intelligent Path Detection Car</h3>
+              
+              <!-- Clickable description area opening external destination in new tab -->
+              <div class="expanded-desc-clickable" onclick="openProjectLink('https://lnkd.in/p/gnphDQDS')" title="Click to view external project post on LinkedIn">
+                <p>The Intelligent Path Detection Car is an ESP32-based robotic vehicle developed to detect obstacles and make intelligent movement decisions.</p>
+                <p>The system uses an ultrasonic sensor to identify obstacles in its path and determine when direction changes are required.</p>
+                <p>A servo motor supports sensor positioning, while the L298N motor driver controls the movement of the vehicle.</p>
+                <p>The system demonstrates real-time obstacle detection and autonomous path-avoidance behaviour.</p>
+                <p>This project helped me understand the practical integration of microcontrollers, sensors, actuators, and motor control.</p>
+                <p>It provided hands-on experience in embedded programming and basic autonomous robotic systems.</p>
+              </div>
+
+              <div class="expanded-card-actions">
+                <a href="https://lnkd.in/p/gnphDQDS" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-project-link">
+                  <i class="fa-brands fa-linkedin"></i> View Project on LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <span class="click-hint"><i class="fa-regular fa-hand-pointer"></i> Click card or button to view</span>
+              </div>
             </div>
-            <div class="project-card-footer">
-              <span class="badge-tag"><i class="fa-solid fa-leaf"></i> Sustainable Tech</span>
-              <span class="hardware-indicator"><i class="fa-solid fa-diagram-project"></i> Systems Architecture</span>
+
+            <!-- Project 02 Card -->
+            <div class="project-expanded-panel" id="project-card-2" data-project="2">
+              <div class="expanded-card-header">
+                <span class="card-num-badge">PROJECT 02</span>
+                <span class="card-type-tag tag-prototype"><i class="fa-solid fa-shield-halved"></i> Academic Prototype &bull; ESP32</span>
+              </div>
+              <h3 class="expanded-card-title">Smart Voting System</h3>
+              
+              <div class="expanded-desc-clickable" onclick="openProjectLink('https://lnkd.in/p/gVzriZug')" title="Click to view external project post on LinkedIn">
+                <p>The Smart Voting System is an ESP32-based electronic voting prototype developed to demonstrate digital vote submission and counting.</p>
+                <p>It uses a keypad to accept user input and an OLED display to provide information during the voting process.</p>
+                <p>RGB LEDs and a buzzer provide visual and audio feedback for user interactions.</p>
+                <p>The system includes basic vote validation and counting functionality.</p>
+                <p>This project helped me understand microcontroller-based input handling, output control, and embedded system integration.</p>
+                <p>It demonstrates how electronic components can be combined to create a simple interactive voting prototype.</p>
+              </div>
+
+              <div class="prototype-disclaimer">
+                <i class="fa-solid fa-circle-info"></i> Presented as an academic prototype exploring embedded voting logic and peripheral interfacing.
+              </div>
+
+              <div class="expanded-card-actions">
+                <a href="https://lnkd.in/p/gVzriZug" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-project-link">
+                  <i class="fa-brands fa-linkedin"></i> View Project on LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <span class="click-hint"><i class="fa-regular fa-hand-pointer"></i> Click card or button to view</span>
+              </div>
             </div>
-          </article>
+
+            <!-- Project 03 Card -->
+            <div class="project-expanded-panel" id="project-card-3" data-project="3">
+              <div class="expanded-card-header">
+                <span class="card-num-badge">PROJECT 03</span>
+                <span class="card-type-tag"><i class="fa-solid fa-recycle"></i> Sustainability &bull; Web Platform</span>
+              </div>
+              <h3 class="expanded-card-title">Regen</h3>
+              
+              <div class="expanded-desc-clickable" onclick="openProjectLink('https://lnkd.in/p/gYP4ZUmw')" title="Click to view external project post on LinkedIn">
+                <p>Regen is a web-based platform designed to support textile-waste collection and recycling opportunities.</p>
+                <p>The concept focuses on connecting textile waste with reuse opportunities for weavers.</p>
+                <p>It aims to encourage more sustainable handling of textile waste through a digital collection workflow.</p>
+                <p>The platform explores how web technologies can help connect users and support resource reuse.</p>
+                <p>This project helped me understand how software applications can address practical sustainability-related challenges.</p>
+                <p>It also gave me experience in developing a web-based solution around a real-world problem.</p>
+              </div>
+
+              <div class="expanded-card-actions">
+                <a href="https://lnkd.in/p/gYP4ZUmw" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-project-link">
+                  <i class="fa-brands fa-linkedin"></i> View Project on LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <span class="click-hint"><i class="fa-regular fa-hand-pointer"></i> Click card or button to view</span>
+              </div>
+            </div>
+
+            <!-- Project 04 Card -->
+            <div class="project-expanded-panel" id="project-card-4" data-project="4">
+              <div class="expanded-card-header">
+                <span class="card-num-badge">PROJECT 04</span>
+                <span class="card-type-tag"><i class="fa-brands fa-react"></i> Full-Stack &bull; MERN Platform</span>
+              </div>
+              <h3 class="expanded-card-title">CampusGo</h3>
+              
+              <div class="expanded-desc-clickable" onclick="openProjectLink('https://github.com/MANOJG006/campusgo')" title="Click to explore repository on GitHub">
+                <p>CampusGo is a campus-focused application developed using the MERN stack.</p>
+                <p>The project explores how web technologies can be used to create a digital experience for a college campus.</p>
+                <p>It helped me gain practical experience in full-stack application development.</p>
+                <p>Through this project, I worked with modern web development technologies and application structure.</p>
+                <p>It strengthened my understanding of building and organising a web application using the MERN ecosystem.</p>
+                <p>This project represents my interest in software development and building practical digital solutions.</p>
+              </div>
+
+              <div class="expanded-card-actions">
+                <a href="https://github.com/MANOJG006/campusgo" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-project-link">
+                  <i class="fa-brands fa-github"></i> Explore on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <span class="click-hint"><i class="fa-regular fa-hand-pointer"></i> Click card or button to view</span>
+              </div>
+            </div>
+
+            <!-- Project 05 Card -->
+            <div class="project-expanded-panel" id="project-card-5" data-project="5">
+              <div class="expanded-card-header">
+                <span class="card-num-badge">PROJECT 05</span>
+                <span class="card-type-tag"><i class="fa-solid fa-robot"></i> Google AI Studio &bull; Beginner Learning</span>
+              </div>
+              <h3 class="expanded-card-title">LinkedIn-Inspired Multilingual AI Speech Application</h3>
+              
+              <div class="expanded-desc-clickable" onclick="openProjectLink('https://lnkd.in/p/gHSgpbjk')" title="Click to view external project post on LinkedIn">
+                <p>This is a small beginner-level project developed as part of my learning experience with Google AI Studio.</p>
+                <p>The project explores the use of Google AI Studio to develop a simple LinkedIn-inspired web application.</p>
+                <p>It is associated with my learning and practical experimentation in AI application development.</p>
+                <p>The project helped me gain introductory exposure to using AI development tools to build a simple application.</p>
+                <p>It also provided an opportunity to explore the relationship between AI tools, web interfaces, and multilingual speech application concepts.</p>
+                <p>This is a small learning project rather than a large-scale production application.</p>
+              </div>
+
+              <div class="expanded-card-actions">
+                <a href="https://lnkd.in/p/gHSgpbjk" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-project-link">
+                  <i class="fa-brands fa-linkedin"></i> View Project on LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <span class="click-hint"><i class="fa-regular fa-hand-pointer"></i> Click card or button to view</span>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -1413,6 +1489,13 @@
             <ul>
               <li>Designed a web-based concept and workflow to support textile-waste collection and recycling.</li>
               <li>Focused on connecting waste collection with recycling workflows and supporting sustainable opportunities for weavers.</li>
+            </ul>
+          </div>
+          <div class="sheet-entry">
+            <strong>5. LinkedIn-Inspired Multilingual AI Speech Application</strong>
+            <ul>
+              <li>Explored Google AI Studio to develop a beginner-level web application integrating multilingual AI speech concepts.</li>
+              <li>Gained practical introductory exposure to building AI-assisted web interfaces and prompt engineering workflows.</li>
             </ul>
           </div>
         </section>

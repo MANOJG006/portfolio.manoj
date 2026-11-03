@@ -8,7 +8,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initTypingEffect();
   initNavigation();
-  initProjectFilters();
+  initInteractiveProjects();
   initResumeModal();
   initTouchAnimation();
   initQRCodes();
@@ -2004,28 +2004,87 @@ function initNavigation() {
   }, { passive: true });
 }
 
-function initProjectFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+/* ==========================================================================
+   INTERACTIVE 5-PROJECT EXPANSION CONTROLLER
+   ========================================================================== */
+let activeProjectId = null;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+window.openProjectLink = function(url) {
+  if (url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+};
 
-      const filter = btn.getAttribute('data-filter');
+window.toggleProject = function(projectId) {
+  const isMobile = window.innerWidth <= 992;
+  const isAlreadyActive = (activeProjectId === projectId);
 
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category.includes(filter)) {
-          card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.3s ease';
+  // If already active, clicking collapses it back to initial minimal appearance
+  if (isAlreadyActive) {
+    activeProjectId = null;
+    updateProjectUI(null, isMobile);
+    return;
+  }
+
+  activeProjectId = projectId;
+  updateProjectUI(projectId, isMobile);
+};
+
+function updateProjectUI(selectedId, isMobile) {
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.getElementById(`project-btn-${i}`);
+    const card = document.getElementById(`project-card-${i}`);
+    const drawer = document.getElementById(`mobile-drawer-${i}`);
+
+    if (btn) {
+      if (selectedId === i) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    if (drawer) {
+      if (selectedId === i && isMobile && card) {
+        drawer.innerHTML = card.innerHTML;
+        drawer.classList.add('active');
+      } else {
+        drawer.innerHTML = '';
+        drawer.classList.remove('active');
+      }
+    }
+  }
+
+  // Desktop Pane Management
+  const placeholder = document.getElementById('project-default-placeholder');
+  const desktopPanels = document.querySelectorAll('.projects-display-pane .project-expanded-panel');
+
+  if (!isMobile) {
+    if (!selectedId) {
+      if (placeholder) placeholder.classList.add('active');
+      desktopPanels.forEach(p => p.classList.remove('active'));
+    } else {
+      if (placeholder) placeholder.classList.remove('active');
+      desktopPanels.forEach(p => {
+        if (parseInt(p.getAttribute('data-project'), 10) === selectedId) {
+          p.classList.add('active');
         } else {
-          card.style.display = 'none';
+          p.classList.remove('active');
         }
       });
-    });
-  });
+    }
+  }
+}
+
+function initInteractiveProjects() {
+  window.addEventListener('resize', () => {
+    if (activeProjectId !== null) {
+      const isMobile = window.innerWidth <= 992;
+      updateProjectUI(activeProjectId, isMobile);
+    }
+  }, { passive: true });
 }
 
 window.filterCertifications = function() {
@@ -2080,7 +2139,7 @@ function initResumeModal() {
 
 function initScrollAnimations() {
   const elementsToAnimate = document.querySelectorAll(
-    '.section-header, .project-card, .skill-category-card, .cert-card, .qr-card, .timeline-item, .edu-card, .stat-card, .contact-info-card, .contact-form-card'
+    '.section-header, .projects-showcase-container, .project-item, .skill-category-card, .cert-card, .qr-card, .timeline-item, .edu-card, .stat-card, .contact-info-card, .contact-form-card, .oscilloscope-card, .esp32-silicon-card, .mern-pipeline-banner'
   );
 
   if (!elementsToAnimate.length) return;
@@ -2090,7 +2149,7 @@ function initScrollAnimations() {
     return;
   }
 
-  const grids = document.querySelectorAll('.projects-grid, .certs-grid, .qr-grid, .skills-grid, .edu-grid, .skills-grid-4col');
+  const grids = document.querySelectorAll('.projects-list, .certs-grid, .qr-grid, .skills-grid, .edu-grid, .skills-grid-4col');
   grids.forEach(grid => {
     const children = Array.from(grid.children);
     children.forEach((child, index) => {
@@ -2099,16 +2158,20 @@ function initScrollAnimations() {
     });
   });
 
-  const observer = new IntersectionObserver((entries, obs) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-revealed');
-        obs.unobserve(entry.target);
+      } else {
+        // REVERSIBLE VIEWPORT SCROLLING:
+        // Automatically removes is-revealed when element scrolls out of view in either direction,
+        // allowing it to smoothly re-animate on both downward AND upward scrolling!
+        entry.target.classList.remove('is-revealed');
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -25px 0px'
+    threshold: 0.12,
+    rootMargin: '0px 0px -30px 0px'
   });
 
   elementsToAnimate.forEach(el => {
