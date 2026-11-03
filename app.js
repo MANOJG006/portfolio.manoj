@@ -2002,7 +2002,7 @@ function initNavigation() {
 /* ==========================================================================
    INTERACTIVE 5-PROJECT EXPANSION CONTROLLER
    ========================================================================== */
-let activeProjectId = null;
+let activeProjectId = 1;
 
 window.openProjectLink = function(url) {
   if (url) {
@@ -2012,15 +2012,6 @@ window.openProjectLink = function(url) {
 
 window.toggleProject = function(projectId) {
   const isMobile = window.innerWidth <= 992;
-  const isAlreadyActive = (activeProjectId === projectId);
-
-  // If already active, clicking collapses it back to initial minimal appearance
-  if (isAlreadyActive) {
-    activeProjectId = null;
-    updateProjectUI(null, isMobile);
-    return;
-  }
-
   activeProjectId = projectId;
   updateProjectUI(projectId, isMobile);
 };
@@ -2053,27 +2044,23 @@ function updateProjectUI(selectedId, isMobile) {
   }
 
   // Desktop Pane Management
-  const placeholder = document.getElementById('project-default-placeholder');
   const desktopPanels = document.querySelectorAll('.projects-display-pane .project-expanded-panel');
 
-  if (!isMobile) {
-    if (!selectedId) {
-      if (placeholder) placeholder.classList.add('active');
-      desktopPanels.forEach(p => p.classList.remove('active'));
-    } else {
-      if (placeholder) placeholder.classList.remove('active');
-      desktopPanels.forEach(p => {
-        if (parseInt(p.getAttribute('data-project'), 10) === selectedId) {
-          p.classList.add('active');
-        } else {
-          p.classList.remove('active');
-        }
-      });
-    }
+  if (!isMobile && selectedId) {
+    desktopPanels.forEach(p => {
+      if (parseInt(p.getAttribute('data-project'), 10) === selectedId) {
+        p.classList.add('active');
+      } else {
+        p.classList.remove('active');
+      }
+    });
   }
 }
 
 function initInteractiveProjects() {
+  const isMobile = window.innerWidth <= 992;
+  updateProjectUI(activeProjectId, isMobile);
+
   window.addEventListener('resize', () => {
     if (activeProjectId !== null) {
       const isMobile = window.innerWidth <= 992;
@@ -2153,20 +2140,18 @@ function initScrollAnimations() {
     });
   });
 
+  document.body.classList.add('js-ready');
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('is-revealed');
-      } else {
-        // REVERSIBLE VIEWPORT SCROLLING:
-        // Automatically removes is-revealed when element scrolls out of view in either direction,
-        // allowing it to smoothly re-animate on both downward AND upward scrolling!
-        entry.target.classList.remove('is-revealed');
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -30px 0px'
+    threshold: 0.08,
+    rootMargin: '0px 0px 40px 0px'
   });
 
   elementsToAnimate.forEach(el => {
@@ -2573,7 +2558,8 @@ function initProtocolOscilloscope() {
 }
 
 /* ==========================================================================
-   15. THREE.JS 3D DEPTH WIREFRAME SCENE & CAMERA SCROLL FLIGHT (JEEVAN REFERENCE)
+   15. 3D TOPOGRAPHIC SIGNAL WAVE & QUANTUM TERRAIN LATTICE ENGINE
+       (Exclusive Software & ECE Mathematical Waveform Background)
    ========================================================================== */
 function initThreeDepthScene() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.THREE) return;
@@ -2582,97 +2568,164 @@ function initThreeDepthScene() {
   if (!canvas) return;
 
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 250);
-  const DEPTH = 140;
+  // Soft atmospheric perspective fog in luxury off-white
+  scene.fog = new THREE.FogExp2(0xf8fafc, 0.012);
 
-  // Refined palette: Champagne Gold, Electric Blue, Violet, Emerald
-  const colors = [
-    new THREE.Color('#C6A15B'),
-    new THREE.Color('#0284c7'),
-    new THREE.Color('#7c3aed'),
-    new THREE.Color('#059669')
-  ];
+  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 200);
+  camera.position.set(0, 15, 26);
+  camera.rotation.x = -0.48;
 
-  const geometries = [
-    new THREE.IcosahedronGeometry(1.1, 0),
-    new THREE.TorusGeometry(1, 0.28, 8, 24),
-    new THREE.BoxGeometry(1.4, 1.4, 1.4),
-    new THREE.OctahedronGeometry(1.2, 0)
-  ];
+  // 1. Undulating Topographic Terrain Geometry
+  const GRID_W = 85;
+  const GRID_D = 70;
+  const SEG_X = 64;
+  const SEG_Y = 48;
+  const planeGeo = new THREE.PlaneGeometry(GRID_W, GRID_D, SEG_X, SEG_Y);
+  planeGeo.rotateX(-Math.PI / 2);
 
-  const objects = [];
-  for (let i = 0; i < 36; i++) {
-    const mat = new THREE.MeshBasicMaterial({
-      color: colors[i % colors.length],
-      wireframe: true,
-      transparent: true,
-      opacity: 0.4
-    });
-    const mesh = new THREE.Mesh(geometries[i % geometries.length], mat);
-    mesh.position.set(
-      (i % 2 ? 1 : -1) * (3.8 + Math.random() * 8.5),
-      (Math.random() - 0.5) * 11,
-      -8 - i * (DEPTH / 36)
-    );
-    mesh.scale.setScalar(0.65 + Math.random() * 1.35);
-    mesh.userData.rotSpeed = [
-      0.002 + Math.random() * 0.006,
-      0.002 + Math.random() * 0.006
-    ];
-    scene.add(mesh);
-    objects.push(mesh);
+  const posAttr = planeGeo.attributes.position;
+  const vertexCount = posAttr.count;
+  const originalCoords = new Float32Array(vertexCount * 2);
+
+  for (let i = 0; i < vertexCount; i++) {
+    originalCoords[i * 2] = posAttr.getX(i);
+    originalCoords[i * 2 + 1] = posAttr.getZ(i);
   }
 
-  // Floating starfield background points
-  const pointsArray = [];
-  for (let i = 0; i < 450; i++) {
-    pointsArray.push(
-      (Math.random() - 0.5) * 45,
-      (Math.random() - 0.5) * 28,
-      -Math.random() * DEPTH
-    );
-  }
-  const pointsGeo = new THREE.BufferGeometry();
-  pointsGeo.setAttribute('position', new THREE.Float32BufferAttribute(pointsArray, 3));
-  const pointsMat = new THREE.PointsMaterial({
-    color: colors[0],
-    size: 0.08,
+  // Champagne Gold Wireframe Terrain Material
+  const terrainWireMat = new THREE.MeshBasicMaterial({
+    color: 0xC6A15B,
+    wireframe: true,
     transparent: true,
-    opacity: 0.65
+    opacity: 0.38
   });
-  scene.add(new THREE.Points(pointsGeo, pointsMat));
+  const terrainMesh = new THREE.Mesh(planeGeo, terrainWireMat);
+  terrainMesh.position.set(0, -3.5, -6);
+  scene.add(terrainMesh);
 
+  // Sparkling Data Nodes at Lattice Vertices
+  const nodePointsMat = new THREE.PointsMaterial({
+    color: 0xB58934,
+    size: 0.16,
+    transparent: true,
+    opacity: 0.72
+  });
+  const nodePoints = new THREE.Points(planeGeo, nodePointsMat);
+  nodePoints.position.set(0, -3.5, -6);
+  scene.add(nodePoints);
+
+  // 2. Harmonic Signal Carrier Wave Ribbons (Flowing Transverse Waves)
+  const ribbonCount = 3;
+  const ribbons = [];
+  const ribbonColors = [0xC6A15B, 0x2563EB, 0xD4AF37];
+
+  for (let r = 0; r < ribbonCount; r++) {
+    const ribbonPoints = [];
+    const pts = 90;
+    for (let p = 0; p < pts; p++) {
+      ribbonPoints.push(new THREE.Vector3((p / pts - 0.5) * 80, 0, (r - 1) * 12 - 4));
+    }
+    const ribbonGeo = new THREE.BufferGeometry().setFromPoints(ribbonPoints);
+    const ribbonMat = new THREE.LineBasicMaterial({
+      color: ribbonColors[r],
+      transparent: true,
+      opacity: 0.65,
+      linewidth: 2
+    });
+    const line = new THREE.Line(ribbonGeo, ribbonMat);
+    scene.add(line);
+    ribbons.push({ line, geo: ribbonGeo, pts: ribbonPoints, offset: r * 1.5 });
+  }
+
+  // 3. Ambient Atmospheric Constellation Particles
+  const starCount = 380;
+  const starArray = new Float32Array(starCount * 3);
+  for (let s = 0; s < starCount; s++) {
+    starArray[s * 3] = (Math.random() - 0.5) * 75;
+    starArray[s * 3 + 1] = 2 + Math.random() * 22;
+    starArray[s * 3 + 2] = (Math.random() - 0.5) * 70 - 10;
+  }
+  const starGeo = new THREE.BufferGeometry();
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starArray, 3));
+  const starMat = new THREE.PointsMaterial({
+    color: 0xC6A15B,
+    size: 0.14,
+    transparent: true,
+    opacity: 0.6
+  });
+  const starfield = new THREE.Points(starGeo, starMat);
+  scene.add(starfield);
+
+  // Handle Resize
   const handleResize = () => {
     renderer.setSize(window.innerWidth, window.innerHeight, false);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
   };
   handleResize();
-  window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', handleResize, { passive: true });
 
+  // Mouse Parallax Track
   let mouseX = 0, mouseY = 0;
   window.addEventListener('pointermove', (e) => {
     mouseX = (e.clientX / window.innerWidth) - 0.5;
     mouseY = (e.clientY / window.innerHeight) - 0.5;
   }, { passive: true });
 
+  let time = 0;
+
   function animate() {
     if (!document.hidden) {
+      time += 0.015;
+
       const scrollMax = Math.max(1, document.body.scrollHeight - window.innerHeight);
       const scrollProgress = window.scrollY / scrollMax;
 
-      camera.position.z += (-scrollProgress * (DEPTH - 25) - camera.position.z) * 0.06;
-      camera.position.x += (mouseX * 3.5 - camera.position.x) * 0.04;
-      camera.position.y += (-mouseY * 2.5 - camera.position.y) * 0.04;
-      camera.rotation.z = mouseX * 0.04;
+      // Scroll physics: smoothly adjust camera perspective and glide along the terrain
+      const targetCamZ = 26 - scrollProgress * 18;
+      const targetCamY = 15 - scrollProgress * 6;
+      const targetRotX = -0.48 + scrollProgress * 0.15;
 
-      objects.forEach(obj => {
-        obj.rotation.x += obj.userData.rotSpeed[0];
-        obj.rotation.y += obj.userData.rotSpeed[1];
+      camera.position.z += (targetCamZ - camera.position.z) * 0.06;
+      camera.position.y += (targetCamY - camera.position.y) * 0.06;
+      camera.position.x += (mouseX * 7.5 - camera.position.x) * 0.05;
+      camera.rotation.x += (targetRotX - camera.rotation.x) * 0.05;
+      camera.rotation.y += (mouseX * 0.08 - camera.rotation.y) * 0.05;
+
+      // Dynamic Mathematical Undulation of the Terrain Lattice
+      const waveSpeed = 1.2 + scrollProgress * 0.8;
+      const amplitude = 2.4 + scrollProgress * 0.6;
+
+      for (let i = 0; i < vertexCount; i++) {
+        const x = originalCoords[i * 2];
+        const z = originalCoords[i * 2 + 1];
+
+        // Multi-frequency harmonic wave formula
+        const y = Math.sin(x * 0.14 + time * waveSpeed) * Math.cos(z * 0.12 + time * 0.8) * amplitude
+                + Math.sin((x + z) * 0.07 + time * 0.6) * 1.1;
+
+        posAttr.setY(i, y);
+      }
+      posAttr.needsUpdate = true;
+
+      // Animate Harmonic Signal Carrier Ribbons
+      ribbons.forEach((ribbon) => {
+        const pos = ribbon.geo.attributes.position;
+        const count = ribbon.pts.length;
+        for (let p = 0; p < count; p++) {
+          const pt = ribbon.pts[p];
+          const ry = Math.sin(pt.x * 0.16 + time * 2.2 + ribbon.offset) * 2.0
+                   + Math.cos(pt.x * 0.08 + time * 1.1) * 1.2;
+          pos.setY(p, ry - 1.5);
+        }
+        pos.needsUpdate = true;
       });
+
+      // Subtle ambient stars rotation
+      starfield.rotation.y += 0.0004;
 
       renderer.render(scene, camera);
     }

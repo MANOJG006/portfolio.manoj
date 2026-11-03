@@ -19,16 +19,22 @@
   --text-dim: #777777;
   --text-light: #999999;
 
-  /* Premium Champagne Gold Palette (Consistent for all Headings & Subheadings) */
-  --gold-primary: #C6A15B;    /* Champagne Gold */
-  --gold-heading: #9E7728;    /* Accessible champagne gold for headings (contrast compliant) */
-  --gold-hover: #8B6520;
-  --gold-light: rgba(198, 161, 91, 0.10);
-  --gold-border: rgba(198, 161, 91, 0.35);
+  /* 1. Master Brand Signature Gold (MANOJ .G & MG: Lightly Dark Burnished Bronze-Gold) */
+  --gold-brand-dark: #593C07;
+  --gold-brand-main: #7E5813;
+  --gold-brand-light: #A47820;
+  --gold-brand-gradient: linear-gradient(135deg, #A47820 0%, #7E5813 50%, #593C07 100%);
+
+  /* 2. Other Gold Colors (Radiant Champagne Gold for Section Titles, Badges & Accents) */
+  --gold-primary: #C6A15B;    /* Luminous Champagne Gold */
+  --gold-heading: #B58934;    /* Accessible Radiant Gold for Section Headings */
+  --gold-hover: #9E7728;
+  --gold-light: rgba(198, 161, 91, 0.12);
+  --gold-border: rgba(198, 161, 91, 0.38);
   --gold-border-thin: rgba(198, 161, 91, 0.28);
-  --gold-glow: rgba(198, 161, 91, 0.22);
-  --gold-gradient: linear-gradient(135deg, #C6A15B 0%, #D4AF37 50%, #9E7728 100%);
-  --gold-gradient-subtle: linear-gradient(135deg, rgba(198, 161, 91, 0.12) 0%, rgba(212, 175, 55, 0.04) 100%);
+  --gold-glow: rgba(198, 161, 91, 0.25);
+  --gold-gradient: linear-gradient(135deg, #E5C378 0%, #C6A15B 50%, #A67D28 100%);
+  --gold-gradient-subtle: linear-gradient(135deg, rgba(229, 195, 120, 0.15) 0%, rgba(198, 161, 91, 0.05) 100%);
 
   /* Supporting Colours - Exact User Specifications */
   --blue-primary: #3978D6;    /* Links & Interactive Elements: Electric Blue */
@@ -249,11 +255,14 @@ button:active,
   padding: 0 1.5rem;
 }
 
-/* Typography Helpers */
+/* Typography Helpers: Radiant Champagne Gold for Section Titles and Highlights */
 .gradient-text,
-.gold-gradient-text {
-  background: linear-gradient(135deg, #C6A15B 0%, #D4AF37 50%, #9B782E 100%);
+.gold-gradient-text,
+.heading-gold {
+  color: var(--gold-heading);
+  background: var(--gold-gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -292,19 +301,41 @@ button:active,
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .logo-chip {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.1), rgba(5, 150, 105, 0.1));
-  border: 1px solid rgba(2, 132, 199, 0.3);
+  background: rgba(198, 161, 91, 0.12);
+  border: 1.5px solid rgba(164, 120, 32, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--blue-primary);
-  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(164, 120, 32, 0.12);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.brand-logo:hover .logo-chip {
+  border-color: var(--gold-brand-main);
+  background: rgba(198, 161, 91, 0.22);
+  transform: translateY(-1px);
+}
+
+.chip-monogram {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: var(--gold-brand-main);
+  background: var(--gold-brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  line-height: 1;
 }
 
 .logo-text {
@@ -312,12 +343,37 @@ button:active,
   flex-direction: column;
 }
 
-.logo-title {
+/* Exclusive Master Brand Signature Gold: MANOJ .G / MG (Distinctive Lightly Dark Burnished Antique Gold) */
+.gold-name,
+.logo-title,
+.hero-title,
+.footer-brand {
   font-weight: 800;
-  font-size: 1.15rem;
   letter-spacing: 0.04em;
-  color: var(--text-main);
-  line-height: 1.1;
+  color: var(--gold-brand-main);
+  background: var(--gold-brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.gold-name span,
+.logo-title span,
+.hero-title span,
+.footer-brand span {
+  color: inherit;
+  background: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-title {
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
 }
 
 .logo-sub {
@@ -325,6 +381,7 @@ button:active,
   font-size: 0.65rem;
   color: var(--text-dim);
   letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .nav-menu {
@@ -513,55 +570,76 @@ button:active,
 }
 
 /* ==========================================================================
-   ALTERNATING SECTION BACKGROUNDS (#FFFFFF & #F7F8FA)
+   ALTERNATING TRANSLUCENT GLASS SECTION BACKGROUNDS (3D SCROLL DEPTH VISIBLE)
    ========================================================================== */
 .hero-section {
-  background-color: var(--bg-page);
+  background: transparent !important;
+  position: relative;
+  z-index: 2;
 }
 
 .about-section {
-  background-color: var(--bg-secondary);
+  background-color: rgba(247, 248, 250, 0.76) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
 }
 
 .skills-section {
-  background-color: var(--bg-page);
+  background-color: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
 }
 
 .projects-section {
-  background-color: var(--bg-secondary);
+  background-color: rgba(247, 248, 250, 0.76) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-}
-
-.ece-lab-section {
-  background-color: var(--bg-page);
-}
-
-.mern-section {
-  background-color: var(--bg-secondary);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
 }
 
 .experience-section {
-  background-color: var(--bg-page);
+  background-color: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
 }
 
 .education-section {
-  background-color: var(--bg-secondary);
+  background-color: rgba(247, 248, 250, 0.76) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
 }
 
-.qr-section {
-  background-color: var(--bg-page);
+.qr-section,
+.qr-hub-section {
+  background-color: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
 }
 
 .contact-section {
-  background-color: var(--bg-secondary);
+  background-color: rgba(247, 248, 250, 0.76) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
 }
 
 .section-header {
@@ -599,15 +677,12 @@ button:active,
   font-size: 1.05rem;
 }
 
-/* Consistent Champagne Gold Section and Subsection Headings Across the Portfolio */
-.hero-title,
+/* Consistent Radiant Champagne Gold Section and Subsection Headings */
 .hero-professional-title h2,
 .about-icon-header h3,
 .about-details-card h3,
 .category-header h3,
 .expanded-card-title,
-.silicon-header h3,
-.pipeline-header-badge,
 .talent-card h4,
 .role-title,
 .edu-degree,
@@ -672,7 +747,12 @@ button:active,
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 0.75rem;
-  color: var(--text-main);
+  color: #A87E2B;
+  background: linear-gradient(135deg, #C6A15B 0%, #A87E2B 45%, #8B651B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .typing-container {
@@ -1631,17 +1711,22 @@ button:active,
   gap: 0.35rem;
 }
 
-/* Reversible Bidirectional Viewport Scroll Animations */
+/* Viewport Entrance Animations (Guaranteed text visibility) */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(26px) scale(0.985);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
+body.js-ready .reveal-on-scroll:not(.is-revealed) {
+  opacity: 0.18;
+  transform: translateY(16px);
+}
+
 .reveal-on-scroll.is-revealed {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
 }
 
 .reveal-delay-1 { transition-delay: 0.06s; }
@@ -3285,8 +3370,6 @@ button:active,
 
 .footer-brand {
   font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--text-main);
   letter-spacing: 0.05em;
   margin-bottom: 0.35rem;
 }
@@ -3459,15 +3542,20 @@ button:active,
    SCROLL REVEAL & SMOOTH ENTRANCE ANIMATIONS
    ========================================================================== */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
+body.js-ready .reveal-on-scroll:not(.is-revealed) {
+  opacity: 0.18;
+  transform: translateY(16px);
+}
+
 .reveal-on-scroll.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
 }
 
 /* Stagger Delays for Grid Children */
@@ -5135,7 +5223,7 @@ button:active,
   height: 100vh;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.75;
+  opacity: 0.42;
 }
 
 #glow {

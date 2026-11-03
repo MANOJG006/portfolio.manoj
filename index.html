@@ -36,18 +36,15 @@
   <!-- Interactive Ambient Cursor Glow Follower -->
   <div id="glow" aria-hidden="true"></div>
 
-  <!-- Subtle 2D Engineering Circuit Background Canvas -->
-  <canvas id="bg-tech-canvas" class="bg-tech-canvas" aria-hidden="true"></canvas>
-
   <!-- Main Header & Navigation -->
   <header class="main-header" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="brand-logo" aria-label="Manoj G Home">
-        <div class="logo-chip">
-          <i class="fa-solid fa-code"></i>
+        <div class="logo-chip logo-mg-chip" title="Manoj G Monogram">
+          <span class="chip-monogram">MG</span>
         </div>
         <div class="logo-text">
-          <span class="logo-title">MANOJ<span class="accent-text">.G</span></span>
+          <span class="logo-title gold-name">MANOJ .G</span>
           <span class="logo-sub">SOFTWARE &bull; FULL-STACK &bull; ECE</span>
         </div>
       </a>
@@ -87,11 +84,11 @@
         <div class="hero-content">
           <div class="status-badge">
             <span class="ping-circle"></span>
-            <span>ECE Student &bull; Embedded Systems &amp; IoT Enthusiast</span>
+            <span>SOFTWARE &bull; FULL-STACK &bull; ECE</span>
           </div>
 
-          <h1 class="hero-title">
-            MANOJ <span class="gradient-text">G.</span>
+          <h1 class="hero-title gold-name">
+            MANOJ .G
           </h1>
 
           <div class="hero-professional-title">
@@ -127,13 +124,16 @@
             <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn Profile - Manoj G" aria-label="LinkedIn Profile">
               <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub Profile - MANOJG006" aria-label="GitHub Profile">
-              <i class="fa-brands fa-github"></i>
-            </a>
             <a href="https://leetcode.com/u/MANOJGNANASEKARAN/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LeetCode Profile - MANOJGNANASEKARAN" aria-label="LeetCode Profile">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true" style="vertical-align: -2px;">
                 <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
               </svg>
+            </a>
+            <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub Profile - MANOJG006" aria-label="GitHub Profile">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.duolingo.com/profile/ManojGnana" target="_blank" rel="noopener noreferrer" class="social-icon" title="Duolingo Profile - ManojGnana" aria-label="Duolingo Profile">
+              <i class="fa-solid fa-feather-pointed"></i>
             </a>
             <a href="mailto:manojkovarthini@gmail.com" class="social-icon" title="Email: manojkovarthini@gmail.com" aria-label="Email">
               <i class="fa-solid fa-envelope"></i>
@@ -150,14 +150,10 @@
           </div>
         </div>
 
-        <!-- Hero Right: 3D Interactive Microprocessor Showcase -->
+        <!-- Hero Right: 3D Interactive Microprocessor Showcase (Pure Animation, Text Removed) -->
         <div class="hero-right-col">
           <div class="hero-3d-stage glass-panel" id="hero-3d-stage">
-            <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-label="3D Interactive ESP32 Microprocessor Model"></canvas>
-            <div class="stage-status-bar">
-              <span class="stage-chip-title"><i class="fa-solid fa-microchip"></i> ESP32-S3 Microprocessor</span>
-              <span class="stage-interaction-hint"><i class="fa-solid fa-arrows-up-down-left-right"></i> Drag to rotate in 3D</span>
-            </div>
+            <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-label="3D Interactive Microprocessor Model"></canvas>
           </div>
         </div>
       </div>
@@ -226,15 +222,19 @@
                 <i class="fa-brands fa-linkedin"></i> LinkedIn (1500+ Connections)
               </a>
               <span class="strip-bullet">&bull;</span>
-              <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="strip-link">
-                <i class="fa-brands fa-github"></i> GitHub (@MANOJG006)
-              </a>
-              <span class="strip-bullet">&bull;</span>
               <a href="https://leetcode.com/u/MANOJGNANASEKARAN/" target="_blank" rel="noopener noreferrer" class="strip-link">
                 <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" style="vertical-align: -2px; margin-right: 4px;">
                   <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
                 </svg>
                 LeetCode Profile
+              </a>
+              <span class="strip-bullet">&bull;</span>
+              <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="strip-link">
+                <i class="fa-brands fa-github"></i> GitHub (@MANOJG006)
+              </a>
+              <span class="strip-bullet">&bull;</span>
+              <a href="https://www.duolingo.com/profile/ManojGnana" target="_blank" rel="noopener noreferrer" class="strip-link">
+                <i class="fa-solid fa-feather-pointed"></i> Duolingo (@ManojGnana)
               </a>
               <span class="strip-bullet">&bull;</span>
               <a href="mailto:manojkovarthini@gmail.com" class="strip-link">
@@ -254,36 +254,9 @@
     <section class="section about-section" id="about">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fa-solid fa-microchip"></i> Engineering Profile</span>
+          <span class="section-tag"><i class="fa-solid fa-user-check"></i> Engineering Profile</span>
           <h2 class="section-title">About <span class="gradient-text">Manoj G</span></h2>
-          <p class="section-subtitle">Bridging embedded hardware, IoT systems, full-stack MERN engineering, and algorithmic problem solving</p>
-        </div>
-
-        <!-- Real Verified Profile Header Badge from LinkedIn -->
-        <div class="verified-profile-banner glass-panel">
-          <div class="v-badge-col">
-            <div class="v-avatar-monogram" title="Manoj G - Engineering Profile">
-              <span class="v-monogram-text">MG</span>
-            </div>
-            <span class="v-open-work-pill" title="Open to Software Development, Embedded Systems & Full-Stack Roles"><i class="fa-solid fa-briefcase"></i> #OPENTOWORK</span>
-          </div>
-          <div class="v-profile-info">
-            <div class="v-name-row">
-              <h3>MANOJ G</h3>
-              <span class="v-verified-badge" title="Verified Engineering Profile"><i class="fa-solid fa-circle-check"></i></span>
-              <span class="v-pronouns">He/Him</span>
-            </div>
-            <p class="v-headline">
-              <strong>Pre-Final Year ECE Student @ SKCET</strong> passionate about <strong>Full-Stack Development</strong>, <strong>Embedded Systems</strong>, and <strong>IoT</strong>, continuously learning and building impactful solutions.
-            </p>
-            <div class="v-meta-row">
-              <span><i class="fa-solid fa-building-columns"></i> Sri Krishna College of Engg & Tech</span>
-              <span><i class="fa-solid fa-location-dot"></i> Edappadi, Salem &bull; Coimbatore, Tamil Nadu</span>
-              <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="v-linkedin-link" title="Connect with Manoj G on LinkedIn">
-                <i class="fa-brands fa-linkedin"></i> 1500+ Connections &bull; View LinkedIn <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </div>
+          <p class="section-subtitle">Aspiring Software Developer &amp; Full-Stack Engineer with ECE &amp; Embedded Systems foundation</p>
         </div>
 
         <div class="about-grid">
@@ -293,32 +266,18 @@
               <h3>Professional Summary</h3>
             </div>
             <p>
-              I am a pre-final-year Electronics and Communication Engineering student at <strong>Sri Krishna College of Engineering and Technology, Coimbatore</strong>, with a strong interest in software development and practical engineering.
+              Pre-final-year ECE student at <strong>Sri Krishna College of Engineering and Technology, Coimbatore</strong>, passionate about <strong>Software Development</strong> and <strong>Full-Stack Web Engineering</strong>.
             </p>
             <p>
-              My learning journey includes full-stack web development using the <strong>MERN stack</strong>, programming in <strong>Java, C++, and Python</strong>, and hands-on embedded systems projects using <strong>ESP32 and Arduino</strong>.
+              Hands-on experience building full-stack web applications with the <strong>MERN stack</strong>, algorithmic problem-solving in <strong>Java and C++</strong>, and developing IoT prototypes with <strong>ESP32 microcontrollers</strong>.
             </p>
-            <p>
-              I enjoy developing practical solutions, exploring new technologies, and understanding how software and hardware work together.
-            </p>
-            <p>
-              I am currently strengthening my problem-solving abilities, Java programming, Data Structures and Algorithms, and full-stack development skills as I prepare for software engineering opportunities.
-            </p>
-
-            <div class="skills-callout">
-              <div class="callout-icon"><i class="fa-solid fa-code"></i></div>
-              <div class="callout-content">
-                <h4>Primary Direction: Software &amp; Full-Stack</h4>
-                <p>Equipped with solid algorithmic fundamentals and hands-on full-stack development, complemented by an engineer's understanding of embedded systems and IoT devices.</p>
-              </div>
-            </div>
           </div>
 
           <div class="about-details-card glass-panel">
             <h3><i class="fa-solid fa-brain"></i> Core Engineering Strengths</h3>
             <div class="strengths-grid">
               <div class="strength-item">
-                <i class="fa-solid fa-code"></i>
+                <i class="fa-solid fa-laptop-code"></i>
                 <div>
                   <strong>Algorithmic Thinking</strong>
                   <span>Problem-solving in Java, C++ &amp; clean data structures</span>
@@ -334,8 +293,8 @@
               <div class="strength-item">
                 <i class="fa-solid fa-microchip"></i>
                 <div>
-                  <strong>Hardware &amp; IoT Grounding</strong>
-                  <span>Understanding of physical circuits, communication buses &amp; edge devices</span>
+                  <strong>Embedded Systems &amp; IoT</strong>
+                  <span>Firmware logic, sensor interfaces &amp; connected microcontrollers</span>
                 </div>
               </div>
               <div class="strength-item">
@@ -344,27 +303,6 @@
                   <strong>Teamwork &amp; Adaptability</strong>
                   <span>Collaborative mindset, clear documentation &amp; continuous learning</span>
                 </div>
-              </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="languages-row">
-              <div class="lang-pill">
-                <i class="fa-solid fa-language"></i> <strong>Languages:</strong> English (Professional) &bull; Tamil (Native)
-              </div>
-              <div class="lang-pill">
-                <i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> Salem &bull; Coimbatore, Tamil Nadu
-              </div>
-            </div>
-          </div>
-
-            <div class="languages-row">
-              <div class="lang-pill">
-                <i class="fa-solid fa-language"></i> <strong>Languages:</strong> English (Professional) &bull; Tamil (Native)
-              </div>
-              <div class="lang-pill">
-                <i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> Salem &bull; Coimbatore, Tamil Nadu
               </div>
             </div>
           </div>
@@ -376,42 +314,15 @@
     <section class="section skills-section" id="skills">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag"><i class="fa-solid fa-microchip"></i> 3D Engineering Dashboard</span>
-          <h2 class="section-title">Interactive <span class="gradient-text">Skills Matrix</span></h2>
-          <p class="section-subtitle">Real-world technical competencies connected across silicon, web stacks, and firmware</p>
-          <div class="skills-legend" aria-hidden="true">
-            <span class="legend-item"><i class="legend-dot"></i> Applied in featured projects</span>
-            <span class="legend-item"><i class="legend-dot outline"></i> Core coursework &amp; ongoing practice</span>
-          </div>
+          <span class="section-tag"><i class="fa-solid fa-layer-group"></i> Technical Competencies</span>
+          <h2 class="section-title">Interactive <span class="gold-gradient-text">Skills Matrix</span></h2>
+          <p class="section-subtitle">Real-world technical competencies connected across software engineering, web stacks, and embedded systems</p>
         </div>
 
-        <!-- Central 3D Processor Hub & Circuit Bus Canvas -->
         <div class="skills-3d-dashboard">
-          <div class="skills-hub-center">
-            <div class="chip-3d-wrapper" id="skills-chip-wrapper" title="Interactive ESP32 Core Processor">
-              <canvas id="skills-3d-canvas" class="skills-3d-canvas"></canvas>
-              <div class="chip-hologram-label">
-                <span class="chip-core-tag">ESP32 // DUAL-CORE</span>
-                <span class="chip-status-pulse">SYSTEM OPTIMAL</span>
-              </div>
-            </div>
-            <!-- Dynamic SVG Circuit Traces connecting center to the 4 quadrants -->
-            <svg class="skills-circuit-svg" id="skills-circuit-svg" viewBox="0 0 800 400" preserveAspectRatio="none" aria-hidden="true">
-              <path class="circuit-trace trace-tl" id="trace-programming" d="M 400 200 L 320 200 L 220 90 L 80 90" />
-              <path class="circuit-trace trace-tr" id="trace-web" d="M 400 200 L 480 200 L 580 90 L 720 90" />
-              <path class="circuit-trace trace-bl" id="trace-embedded" d="M 400 200 L 320 200 L 220 310 L 80 310" />
-              <path class="circuit-trace trace-br" id="trace-tools" d="M 400 200 L 480 200 L 580 310 L 720 310" />
-              <!-- Pulsing signal packet circles -->
-              <circle class="circuit-packet packet-tl" r="4"><animateMotion dur="2.4s" repeatCount="indefinite" path="M 400 200 L 320 200 L 220 90 L 80 90" /></circle>
-              <circle class="circuit-packet packet-tr" r="4"><animateMotion dur="2.8s" repeatCount="indefinite" path="M 400 200 L 480 200 L 580 90 L 720 90" /></circle>
-              <circle class="circuit-packet packet-bl" r="4"><animateMotion dur="2.2s" repeatCount="indefinite" path="M 400 200 L 320 200 L 220 310 L 80 310" /></circle>
-              <circle class="circuit-packet packet-br" r="4"><animateMotion dur="3.0s" repeatCount="indefinite" path="M 400 200 L 480 200 L 580 310 L 720 310" /></circle>
-            </svg>
-          </div>
-
           <div class="skills-grid-4col">
             <!-- Quadrant 1: Programming and Computer Science -->
-            <div class="skill-category-card glass-panel" data-tilt="true" data-category="programming" onmouseenter="activateCircuit('programming')" onmouseleave="deactivateCircuit()">
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="programming">
               <div class="category-header">
                 <div class="cat-icon cat-cyan"><i class="fa-solid fa-code"></i></div>
                 <div>
@@ -430,7 +341,7 @@
             </div>
 
             <!-- Quadrant 2: Full-Stack Web Development -->
-            <div class="skill-category-card glass-panel" data-tilt="true" data-category="web" onmouseenter="activateCircuit('web')" onmouseleave="deactivateCircuit()">
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="web">
               <div class="category-header">
                 <div class="cat-icon cat-pink"><i class="fa-brands fa-react"></i></div>
                 <div>
@@ -451,7 +362,7 @@
             </div>
 
             <!-- Quadrant 3: Embedded Systems and IoT -->
-            <div class="skill-category-card glass-panel" data-tilt="true" data-category="embedded" onmouseenter="activateCircuit('embedded')" onmouseleave="deactivateCircuit()">
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="embedded">
               <div class="category-header">
                 <div class="cat-icon cat-emerald"><i class="fa-solid fa-microchip"></i></div>
                 <div>
@@ -472,7 +383,7 @@
             </div>
 
             <!-- Quadrant 4: Development Tools -->
-            <div class="skill-category-card glass-panel" data-tilt="true" data-category="tools" onmouseenter="activateCircuit('tools')" onmouseleave="deactivateCircuit()">
+            <div class="skill-category-card glass-panel" data-tilt="true" data-category="tools">
               <div class="category-header">
                 <div class="cat-icon cat-purple"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                 <div>
@@ -510,7 +421,7 @@
             
             <!-- Project 01 Item -->
             <div class="project-item" id="project-item-1">
-              <button type="button" class="project-title-btn" id="project-btn-1" onclick="toggleProject(1)" aria-expanded="false" aria-controls="project-card-1">
+              <button type="button" class="project-title-btn active" id="project-btn-1" onclick="toggleProject(1)" aria-expanded="true" aria-controls="project-card-1">
                 <span class="proj-num">01</span>
                 <span class="proj-title-text">INTELLIGENT PATH DETECTION CAR</span>
                 <span class="proj-toggle-indicator"><i class="fa-solid fa-chevron-right"></i></span>
@@ -564,21 +475,8 @@
           <!-- Right Column: Desktop Separate Content Area with 3D Perspective Transition -->
           <div class="projects-display-pane" id="projects-display-pane">
             
-            <!-- Default Placeholder (Initially visible before visitor selects a project) -->
-            <div class="project-display-placeholder active" id="project-default-placeholder">
-              <div class="placeholder-compass">
-                <i class="fa-solid fa-compass"></i>
-              </div>
-              <h3 class="placeholder-heading">Select a Project to View Details</h3>
-              <p class="placeholder-sub">Click any of the five project titles on the left to reveal its practical purpose, development overview, and direct external access.</p>
-              <div class="placeholder-meta">
-                <span class="meta-pill"><i class="fa-solid fa-cube"></i> Interactive 3D Reveal</span>
-                <span class="meta-pill"><i class="fa-solid fa-arrow-up-right-from-square"></i> Verified Links</span>
-              </div>
-            </div>
-
             <!-- Project 01 Card -->
-            <div class="project-expanded-panel" id="project-card-1" data-project="1">
+            <div class="project-expanded-panel active" id="project-card-1" data-project="1">
               <div class="expanded-card-header">
                 <span class="card-num-badge">PROJECT 01</span>
                 <span class="card-type-tag"><i class="fa-solid fa-microchip"></i> Embedded Systems &bull; Robotics</span>
@@ -710,196 +608,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- SECTION: ECE SILICON & COMMUNICATIONS PROTOCOL LAB -->
-    <section class="section ece-lab-section" id="ece-protocols">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag"><i class="fa-solid fa-wave-square"></i> ECE Student Core Competency</span>
-          <h2 class="section-title">Hardware Silicon & <span class="gradient-text">Communication Protocols</span></h2>
-          <p class="section-subtitle">Real digital waveforms, bus protocols, and embedded microcontroller architecture</p>
-        </div>
-
-        <div class="ece-lab-grid">
-          <!-- Left: Interactive Digital Protocol Oscilloscope -->
-          <div class="oscilloscope-card glass-panel">
-            <div class="scope-screen-header">
-              <div class="scope-title">
-                <i class="fa-solid fa-tv"></i> DIGITAL LOGIC OSCILLOSCOPE // 100MS/s
-              </div>
-              <div class="scope-protocol-selector">
-                <button type="button" class="scope-btn active" onclick="switchProtocol('uart')">UART (115200)</button>
-                <button type="button" class="scope-btn" onclick="switchProtocol('i2c')">I&sup2;C (400kHz)</button>
-                <button type="button" class="scope-btn" onclick="switchProtocol('spi')">SPI (10MHz)</button>
-                <button type="button" class="scope-btn" onclick="switchProtocol('can')">CAN Bus</button>
-              </div>
-            </div>
-
-            <!-- Canvas for Animated Digital Waveform -->
-            <div class="scope-display-frame">
-              <canvas id="scope-canvas" class="scope-canvas" width="600" height="200" aria-label="Digital Protocol Signal Waveform"></canvas>
-              <div class="scope-hud-telemetry">
-                <span id="scope-protocol-name">PROTOCOL: UART (8-N-1)</span>
-                <span id="scope-baud-rate">RATE: 115,200 Baud</span>
-                <span class="scope-live-badge"><span class="ping-circle"></span> TX SIGNAL ACTIVE</span>
-              </div>
-            </div>
-
-            <div class="scope-timing-breakdown" id="scope-timing-desc">
-              <strong>UART Asynchronous Framing:</strong>
-              <span>Line idles HIGH (3.3V) &bull; Start Bit (0) &bull; 8 Data Bits LSB-first &bull; Stop Bit (1) &bull; No shared clock needed</span>
-            </div>
-          </div>
-
-          <!-- Right: ESP32-S3 Microcontroller Architecture Card -->
-          <div class="esp32-silicon-card glass-panel">
-            <div class="silicon-header">
-              <div class="silicon-icon"><i class="fa-solid fa-microchip"></i></div>
-              <div>
-                <h3>ESP32-S3 Dual-Core Architecture</h3>
-                <span>Xtensa&reg; 32-bit LX7 Microprocessor @ 240 MHz</span>
-              </div>
-            </div>
-
-            <div class="silicon-specs-grid">
-              <div class="spec-tile">
-                <span class="spec-label">CPU ARCHITECTURE</span>
-                <strong>Dual-Core 240MHz</strong>
-                <span>Xtensa LX7 with Vector Instructions</span>
-              </div>
-              <div class="spec-tile">
-                <span class="spec-label">MEMORY PIPELINE</span>
-                <strong>512KB SRAM + 8MB Flash</strong>
-                <span>Direct DMA & PSRAM Support</span>
-              </div>
-              <div class="spec-tile">
-                <span class="spec-label">WIRELESS COMM</span>
-                <strong>Wi-Fi 4 + BLE 5.0</strong>
-                <span>Long-Range & Mesh Networking</span>
-              </div>
-              <div class="spec-tile">
-                <span class="spec-label">PERIPHERAL BUSES</span>
-                <strong>UART, SPI, I&sup2;C, CAN</strong>
-                <span>45 Multiplexed GPIOs + 12-bit ADC</span>
-              </div>
-            </div>
-
-            <div class="protocols-tags-row">
-              <span class="p-pill"><i class="fa-solid fa-code-commit"></i> I&sup2;C (SDA/SCL)</span>
-              <span class="p-pill"><i class="fa-solid fa-network-wired"></i> SPI (MOSI/MISO/SCK/CS)</span>
-              <span class="p-pill"><i class="fa-solid fa-arrow-right-arrow-left"></i> UART (TX/RX)</span>
-              <span class="p-pill"><i class="fa-solid fa-car-battery"></i> CAN 2.0B</span>
-              <span class="p-pill"><i class="fa-solid fa-sliders"></i> PWM & Timers</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: FULL-STACK MERN ARCHITECTURE (SILICON TO CLOUD) -->
-    <section class="section mern-section" id="mern-showcase">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag"><i class="fa-brands fa-react"></i> Full-Stack Web Development</span>
-          <h2 class="section-title">Bridging Silicon with the <span class="gradient-text">MERN Cloud</span></h2>
-          <p class="section-subtitle">How I connect edge embedded microcontrollers to scalable, production-ready MERN web platforms</p>
-        </div>
-
-        <div class="mern-pipeline-banner glass-panel">
-          <div class="pipeline-header-badge">
-            <i class="fa-solid fa-diagram-project"></i> END-TO-END IOT TO FULL-STACK MERN ARCHITECTURE
-          </div>
-
-          <!-- The Complete 5-Tier Silicon to Cloud Flow -->
-          <div class="fullstack-flow-steps">
-            <div class="fs-step">
-              <div class="fs-num">TIER 1</div>
-              <div class="fs-icon icon-silicon"><i class="fa-solid fa-microchip"></i></div>
-              <strong>Edge Silicon</strong>
-              <span>ESP32 / Sensors</span>
-              <p>Analog acquisition via 12-bit ADC, I&sup2;C sensor parsing & JSON formatting in firmware.</p>
-            </div>
-
-            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-
-            <div class="fs-step">
-              <div class="fs-num">TIER 2</div>
-              <div class="fs-icon icon-transport"><i class="fa-solid fa-wifi"></i></div>
-              <strong>Transport Layer</strong>
-              <span>Wi-Fi / REST / MQTT</span>
-              <p>Encrypted telemetry transmitted via HTTP POST payloads and WebSocket event streams.</p>
-            </div>
-
-            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-
-            <div class="fs-step">
-              <div class="fs-num">TIER 3</div>
-              <div class="fs-icon icon-node"><i class="fa-brands fa-node-js"></i></div>
-              <strong>Express & Node.js</strong>
-              <span>RESTful API Gateway</span>
-              <p>JWT auth middleware, rate-limiting, CORS handling, schema validation & business logic.</p>
-            </div>
-
-            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-
-            <div class="fs-step">
-              <div class="fs-num">TIER 4</div>
-              <div class="fs-icon icon-mongo"><i class="fa-solid fa-database"></i></div>
-              <strong>MongoDB Atlas</strong>
-              <span>NoSQL Cloud Storage</span>
-              <p>Mongoose document models, time-series telemetry collections & geospatial 2dsphere indexes.</p>
-            </div>
-
-            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
-
-            <div class="fs-step highlight-fs">
-              <div class="fs-num">TIER 5</div>
-              <div class="fs-icon icon-react"><i class="fa-brands fa-react"></i></div>
-              <strong>React.js Client</strong>
-              <span>Responsive Web UI</span>
-              <p>Dynamic charts, real-time WebSocket state re-renders, component hierarchies & modern glass UI.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- MERN Web Capabilities Showcase Cards -->
-        <div class="mern-talents-grid">
-          <div class="talent-card glass-panel">
-            <div class="talent-icon b-react"><i class="fa-brands fa-react"></i></div>
-            <h4>React.js Frontend Engineering</h4>
-            <p>Expertise in modern React: reusable functional components, custom hooks, Context API state management, responsive CSS architectures, and performant virtual DOM rendering.</p>
-            <ul class="talent-bullets">
-              <li><i class="fa-solid fa-check"></i> Custom hooks for API polling & WebSocket listeners</li>
-              <li><i class="fa-solid fa-check"></i> Mobile-first responsive layouts with pure CSS & Tailwind</li>
-              <li><i class="fa-solid fa-check"></i> Clean component hierarchies and modular file structuring</li>
-            </ul>
-          </div>
-
-          <div class="talent-card glass-panel">
-            <div class="talent-icon b-node"><i class="fa-brands fa-node-js"></i></div>
-            <h4>Node.js & Express.js Backend</h4>
-            <p>Designing secure, production-grade REST APIs: middleware pipelines, JWT authentication, request validation, error-handling architectures, and high-concurrency event loops.</p>
-            <ul class="talent-bullets">
-              <li><i class="fa-solid fa-check"></i> Modular MVC architectural patterns with separation of concerns</li>
-              <li><i class="fa-solid fa-check"></i> Bi-directional real-time communication via WebSockets (Socket.io)</li>
-              <li><i class="fa-solid fa-check"></i> Secure headers (Helmet), CORS configuration & rate limiting</li>
-            </ul>
-          </div>
-
-          <div class="talent-card glass-panel">
-            <div class="talent-icon b-mongo"><i class="fa-solid fa-database"></i></div>
-            <h4>MongoDB & Database Engineering</h4>
-            <p>Database modeling for scalable applications: document schema design with Mongoose, complex aggregation pipelines, relational SQL with joins, and geospatial 2dsphere indexing.</p>
-            <ul class="talent-bullets">
-              <li><i class="fa-solid fa-check"></i> Verified in Database and SQL (Infosys Springboard)</li>
-              <li><i class="fa-solid fa-check"></i> Optimized queries, index caching, and compound keys</li>
-              <li><i class="fa-solid fa-check"></i> Cloud hosting on MongoDB Atlas with automated backups</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
     </section>
 
     <!-- EXPERIENCE & TRAINING -->
@@ -1437,30 +1145,6 @@
                   <span class="method-val">Salem &bull; Coimbatore, Tamil Nadu, India</span>
                 </div>
               </div>
-
-              <div class="contact-method-item">
-                <div class="method-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                <div class="method-details">
-                  <span class="method-label">LinkedIn Profile</span>
-                  <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="method-val">linkedin.com/in/manoj-g-33797a360</a>
-                </div>
-              </div>
-
-              <div class="contact-method-item">
-                <div class="method-icon"><i class="fa-brands fa-github"></i></div>
-                <div class="method-details">
-                  <span class="method-label">GitHub Repositories</span>
-                  <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="method-val">github.com/MANOJG006</a>
-                </div>
-              </div>
-
-              <div class="contact-method-item">
-                <div class="method-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" style="vertical-align: middle;"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg></div>
-                <div class="method-details">
-                  <span class="method-label">LeetCode Profile</span>
-                  <a href="https://leetcode.com/u/MANOJGNANASEKARAN/" target="_blank" rel="noopener noreferrer" class="method-val">leetcode.com/u/MANOJGNANASEKARAN</a>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -1514,7 +1198,7 @@
       </div>
       <div class="modal-body printable-resume">
         <header class="resume-sheet-header">
-          <h2>MANOJ G</h2>
+          <h2 class="gold-name">MANOJ .G</h2>
           <p class="resume-sheet-subtitle">ASPIRING SOFTWARE DEVELOPER | FULL-STACK DEVELOPER &bull; ECE STUDENT | EMBEDDED SYSTEMS &amp; IoT</p>
           <div class="resume-sheet-contact">
             <span><i class="fa-solid fa-location-dot"></i> Salem / Coimbatore, Tamil Nadu</span>
@@ -1643,7 +1327,7 @@
   <footer class="main-footer">
     <div class="container footer-content">
       <div class="footer-left">
-        <div class="footer-brand">MANOJ<span class="accent-text">.G</span></div>
+        <div class="footer-brand gold-name">MANOJ .G</div>
         <p>B.E. Electronics & Communication Engineering &bull; Sri Krishna College of Engineering & Technology</p>
         <p class="copy-text">&copy; 2026 Manoj G. Engineered with semantic HTML5, CSS3 & JavaScript.</p>
       </div>
