@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   init3DCardTilt();
   initBackgroundTechCanvas();
+  initThreeDepthScene();
+  initCursorGlow();
+  initBackToTop();
   initHero3DProcessor();
   initProject3DCar();
   initProject3DVoting();
@@ -2185,20 +2188,20 @@ function initScrollAnimations() {
    ========================================================================== */
 window.handleContactSubmit = function(e) {
   e.preventDefault();
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+
+  const emailSubject = encodeURIComponent(`Portfolio Inquiry from ${name}: ${subject}`);
+  const emailBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\nSent from Manoj G Portfolio`);
+  const mailtoUrl = `mailto:manojkovarthini@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+
   const feedback = document.getElementById('form-feedback');
-  const submitBtn = document.getElementById('form-submit-btn');
-  const name = document.getElementById('contact-name').value;
+  feedback.className = 'form-feedback feedback-success';
+  feedback.innerHTML = `<i class="fa-solid fa-envelope-circle-check"></i> Opening your email application to send to <strong>manojkovarthini@gmail.com</strong>... If your email client did not launch automatically, <a href="${mailtoUrl}" target="_blank" class="gold-link" style="text-decoration: underline; font-weight: 700; color: #8B6D2B;">click here to compose</a>.`;
 
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending message...';
-
-  setTimeout(() => {
-    feedback.className = 'form-feedback feedback-success';
-    feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you, ${name}! Your message has been received. I will get back to you promptly.`;
-    document.getElementById('contact-form').reset();
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
-  }, 800);
+  window.location.href = mailtoUrl;
 };
 
 window.copyToClipboard = function(text, buttonElem) {
@@ -2575,4 +2578,146 @@ function initProtocolOscilloscope() {
   }
 
   render();
+}
+
+/* ==========================================================================
+   15. THREE.JS 3D DEPTH WIREFRAME SCENE & CAMERA SCROLL FLIGHT (JEEVAN REFERENCE)
+   ========================================================================== */
+function initThreeDepthScene() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.THREE) return;
+
+  const canvas = document.getElementById('gl');
+  if (!canvas) return;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 250);
+  const DEPTH = 140;
+
+  // Refined palette: Champagne Gold, Electric Blue, Violet, Emerald
+  const colors = [
+    new THREE.Color('#C6A15B'),
+    new THREE.Color('#0284c7'),
+    new THREE.Color('#7c3aed'),
+    new THREE.Color('#059669')
+  ];
+
+  const geometries = [
+    new THREE.IcosahedronGeometry(1.1, 0),
+    new THREE.TorusGeometry(1, 0.28, 8, 24),
+    new THREE.BoxGeometry(1.4, 1.4, 1.4),
+    new THREE.OctahedronGeometry(1.2, 0)
+  ];
+
+  const objects = [];
+  for (let i = 0; i < 36; i++) {
+    const mat = new THREE.MeshBasicMaterial({
+      color: colors[i % colors.length],
+      wireframe: true,
+      transparent: true,
+      opacity: 0.4
+    });
+    const mesh = new THREE.Mesh(geometries[i % geometries.length], mat);
+    mesh.position.set(
+      (i % 2 ? 1 : -1) * (3.8 + Math.random() * 8.5),
+      (Math.random() - 0.5) * 11,
+      -8 - i * (DEPTH / 36)
+    );
+    mesh.scale.setScalar(0.65 + Math.random() * 1.35);
+    mesh.userData.rotSpeed = [
+      0.002 + Math.random() * 0.006,
+      0.002 + Math.random() * 0.006
+    ];
+    scene.add(mesh);
+    objects.push(mesh);
+  }
+
+  // Floating starfield background points
+  const pointsArray = [];
+  for (let i = 0; i < 450; i++) {
+    pointsArray.push(
+      (Math.random() - 0.5) * 45,
+      (Math.random() - 0.5) * 28,
+      -Math.random() * DEPTH
+    );
+  }
+  const pointsGeo = new THREE.BufferGeometry();
+  pointsGeo.setAttribute('position', new THREE.Float32BufferAttribute(pointsArray, 3));
+  const pointsMat = new THREE.PointsMaterial({
+    color: colors[0],
+    size: 0.08,
+    transparent: true,
+    opacity: 0.65
+  });
+  scene.add(new THREE.Points(pointsGeo, pointsMat));
+
+  const handleResize = () => {
+    renderer.setSize(window.innerWidth, window.innerHeight, false);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  };
+  handleResize();
+  window.addEventListener('resize', handleResize);
+
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('pointermove', (e) => {
+    mouseX = (e.clientX / window.innerWidth) - 0.5;
+    mouseY = (e.clientY / window.innerHeight) - 0.5;
+  }, { passive: true });
+
+  function animate() {
+    if (!document.hidden) {
+      const scrollMax = Math.max(1, document.body.scrollHeight - window.innerHeight);
+      const scrollProgress = window.scrollY / scrollMax;
+
+      camera.position.z += (-scrollProgress * (DEPTH - 25) - camera.position.z) * 0.06;
+      camera.position.x += (mouseX * 3.5 - camera.position.x) * 0.04;
+      camera.position.y += (-mouseY * 2.5 - camera.position.y) * 0.04;
+      camera.rotation.z = mouseX * 0.04;
+
+      objects.forEach(obj => {
+        obj.rotation.x += obj.userData.rotSpeed[0];
+        obj.rotation.y += obj.userData.rotSpeed[1];
+      });
+
+      renderer.render(scene, camera);
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+/* ==========================================================================
+   16. CURSOR GLOW & BACK-TO-TOP BUTTON (JEEVAN REFERENCE)
+   ========================================================================== */
+function initCursorGlow() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const glow = document.getElementById('glow');
+  if (!glow) return;
+
+  window.addEventListener('pointermove', (e) => {
+    glow.style.left = `${e.clientX}px`;
+    glow.style.top = `${e.clientY}px`;
+  }, { passive: true });
+}
+
+function initBackToTop() {
+  const topBtn = document.getElementById('top');
+  if (!topBtn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 450) {
+      topBtn.classList.add('show');
+    } else {
+      topBtn.classList.remove('show');
+    }
+  }, { passive: true });
+
+  topBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }

@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0284c7">
   <meta name="robots" content="index, follow">
-  <title>Manoj G | Embedded & IoT • MERN Stack • Problem Solver (Java, C++, Python, DSA)</title>
-  <meta name="description" content="Portfolio of Manoj G - Pre-Final Year ECE Student at SKCET. Embedded Systems & IoT, Full-Stack MERN Web Development, and Problem Solving in Java, C++, Python & DSA.">
-  <meta name="keywords" content="Manoj G, ECE, Embedded Systems, IoT, MERN Stack, Full Stack Developer, React, Node.js, Express, MongoDB, DSA, Problem Solving, Java, Modern C++, Python, ESP32, Arduino, SKCET, Salem, Coimbatore">
+  <title>Manoj G | Aspiring Software Developer & Full-Stack Developer | ECE Student</title>
+  <meta name="description" content="Portfolio of Manoj G — Aspiring Software Developer and Full-Stack Developer with a background in Electronics & Communication Engineering (SKCET). MERN stack, Java, DSA, and Embedded Systems & IoT.">
+  <meta name="keywords" content="Manoj G, Software Developer, Full-Stack Developer, MERN Stack, React, Node.js, Express, MongoDB, Java, DSA, Modern C++, Python, Embedded Systems, IoT, ESP32, SKCET, Salem, Coimbatore">
   <meta name="author" content="Manoj G">
 
   <!-- Favicon with Microchip SVG -->
@@ -30,7 +30,13 @@
 <body class="light-mode">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Subtle 3D Engineering Background Canvas (Oscilloscope Waves, Blueprint Grid, Pulse Particles) -->
+  <!-- Full-Screen 3D Depth Wireframe & Geometry Flight Canvas (Inspired by Jeevan Portfolio) -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <!-- Interactive Ambient Cursor Glow Follower -->
+  <div id="glow" aria-hidden="true"></div>
+
+  <!-- Subtle 2D Engineering Circuit Background Canvas -->
   <canvas id="bg-tech-canvas" class="bg-tech-canvas" aria-hidden="true"></canvas>
 
   <!-- Main Header & Navigation -->
@@ -42,7 +48,7 @@
         </div>
         <div class="logo-text">
           <span class="logo-title">MANOJ<span class="accent-text">.G</span></span>
-          <span class="logo-sub">EMBEDDED &bull; MERN &bull; DSA</span>
+          <span class="logo-sub">SOFTWARE &bull; FULL-STACK &bull; ECE</span>
         </div>
       </a>
 
@@ -53,22 +59,21 @@
         <span></span>
       </button>
 
-      <!-- Navigation Links -->
+      <!-- Recruiter-First Sticky Navigation Links -->
       <nav class="nav-menu" id="nav-menu">
         <ul class="nav-list">
+          <li><a href="#hero" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
           <li><a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a></li>
           <li><a href="#skills" class="nav-link"><i class="fa-solid fa-layer-group"></i> Skills</a></li>
           <li><a href="#projects" class="nav-link"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
-          <li><a href="#ece-protocols" class="nav-link"><i class="fa-solid fa-wave-square"></i> ECE Lab</a></li>
-          <li><a href="#mern-showcase" class="nav-link"><i class="fa-brands fa-react"></i> MERN Stack</a></li>
           <li><a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
           <li><a href="#education" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
-          <li><a href="#connect-qr" class="nav-link"><i class="fa-solid fa-qrcode"></i> Quick Scan</a></li>
+          <li><a href="#certifications" class="nav-link"><i class="fa-solid fa-award"></i> Certifications</a></li>
           <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
         </ul>
         <div class="nav-actions">
-          <a href="resume.html" target="_blank" class="btn btn-outline btn-sm">
-            <i class="fa-solid fa-file-pdf"></i> Resume PDF
+          <a href="resume.html" target="_blank" class="btn btn-primary btn-sm nav-resume-btn">
+            <i class="fa-solid fa-file-pdf"></i> Download Resume
           </a>
         </div>
       </nav>
@@ -76,70 +81,54 @@
   </header>
 
   <main id="main-content">
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (RECRUITER-FIRST POSITIONING) -->
     <section class="hero-section" id="hero">
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="status-badge">
             <span class="ping-circle"></span>
-            <span>Pre-Final Year ECE Student @ SKCET (CGPA: 8.36/10)</span>
+            <span>ECE Student &bull; Embedded Systems &amp; IoT Enthusiast</span>
           </div>
 
           <h1 class="hero-title">
-            Hi, I'm <span class="gradient-text">Manoj G</span>
+            MANOJ <span class="gradient-text">G.</span>
           </h1>
 
+          <div class="hero-professional-title">
+            <h2>Aspiring Software Developer <span class="title-sep">|</span> Full-Stack Developer</h2>
+          </div>
+
           <div class="typing-container">
-            <span class="prefix">Specialized in: </span>
+            <span class="prefix">Focus Areas: </span>
             <span class="typing-text" id="typing-text"></span>
             <span class="cursor">&block;</span>
           </div>
 
           <p class="hero-description">
-            Pre-final-year Electronics and Communication Engineering student at <strong>Sri Krishna College of Engineering and Technology (SKCET)</strong>. Passionate about <strong>Embedded Systems & IoT</strong>, <strong>Full-Stack MERN Web Development</strong>, and <strong>Algorithmic Problem Solving in Java, Modern C++, and Python</strong>. Building end-to-end solutions that connect hardware silicon with scalable software.
+            Electronics and Communication Engineering student at Sri Krishna College of Engineering and Technology, interested in building practical software applications and engineering solutions. Experienced through academic and personal projects involving MERN stack development, programming, embedded systems, and IoT. Currently strengthening my Java, Data Structures and Algorithms, and software development fundamentals.
           </p>
-
-          <!-- Core stats pill cards -->
-          <div class="hero-stats-row">
-            <div class="stat-card">
-              <span class="stat-number">8.36<span class="stat-suffix">/10</span></span>
-              <span class="stat-label">B.E. ECE CGPA</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number">4+</span>
-              <span class="stat-label">Hardware & Full-Stack Projects</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number">100+</span>
-              <span class="stat-label">DSA Problems Solved</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-number">9</span>
-              <span class="stat-label">Core Tech Certifications</span>
-            </div>
-          </div>
 
           <!-- Hero Action Buttons -->
           <div class="hero-cta-group">
-            <a href="#projects" class="btn btn-primary">
+            <a href="resume.html" target="_blank" class="btn btn-primary">
+              <i class="fa-solid fa-file-pdf"></i> Download Resume
+            </a>
+            <a href="#projects" class="btn btn-secondary">
               <i class="fa-solid fa-code"></i> Explore Projects
             </a>
-            <a href="resume.html" target="_blank" class="btn btn-secondary">
-              <i class="fa-solid fa-file-pdf"></i> View Resume PDF
-            </a>
             <a href="#contact" class="btn btn-ghost">
-              <i class="fa-solid fa-paper-plane"></i> Get In Touch
+              <i class="fa-solid fa-paper-plane"></i> Contact Me
             </a>
           </div>
 
-          <!-- Social Quick Links -->
+          <!-- Professional Links -->
           <div class="hero-social-links">
-            <span class="social-caption">Connect with me:</span>
-            <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub - MANOJG006">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn Profile">
+            <span class="social-caption">Professional Links:</span>
+            <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn Profile - Manoj G">
               <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub Profile - MANOJG006">
+              <i class="fa-brands fa-github"></i>
             </a>
             <a href="mailto:manojkovarthini@gmail.com" class="social-icon" title="Email: manojkovarthini@gmail.com">
               <i class="fa-solid fa-envelope"></i>
@@ -148,11 +137,106 @@
               <i class="fa-solid fa-phone"></i>
             </a>
           </div>
+
+          <!-- Mouse Scroll Indicator -->
+          <div class="scroll-indicator-mouse" aria-hidden="true">
+            <div class="mouse-frame"><div class="mouse-wheel"></div></div>
+            <span>Scroll to Explore</span>
+          </div>
         </div>
 
         <!-- Hero Right: 3D Interactive Microprocessor Showcase -->
         <div class="hero-right-col">
           <div class="hero-3d-stage glass-panel" id="hero-3d-stage">
+            <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-label="3D Interactive ESP32 Microprocessor Model"></canvas>
+            <div class="stage-status-bar">
+              <span class="stage-chip-title"><i class="fa-solid fa-microchip"></i> ESP32-S3 Microprocessor</span>
+              <span class="stage-interaction-hint"><i class="fa-solid fa-arrows-up-down-left-right"></i> Drag to rotate in 3D</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. RECRUITER QUICK INFORMATION STRIP (IMMEDIATELY BELOW HERO) -->
+    <section class="recruiter-quick-strip" id="recruiter-quick-info">
+      <div class="container">
+        <div class="recruiter-strip-card glass-panel">
+          <div class="strip-header">
+            <div class="strip-header-title">
+              <i class="fa-solid fa-id-badge"></i>
+              <span>RECRUITER QUICK SUMMARY</span>
+            </div>
+            <div class="strip-verified-badge">
+              <span class="ping-circle"></span> Verified Academic &amp; Engineering Credentials
+            </div>
+          </div>
+
+          <div class="strip-grid">
+            <!-- Col 1: Degree -->
+            <div class="strip-col">
+              <div class="strip-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <div class="strip-details">
+                <span class="strip-label">DEGREE &amp; INSTITUTION</span>
+                <strong class="strip-main">B.E. Electronics &amp; Communication Engg</strong>
+                <span class="strip-sub">Sri Krishna College of Engg &amp; Technology (2024–2028)</span>
+              </div>
+            </div>
+
+            <!-- Col 2: Academics -->
+            <div class="strip-col">
+              <div class="strip-icon"><i class="fa-solid fa-star"></i></div>
+              <div class="strip-details">
+                <span class="strip-label">ACADEMIC STANDING</span>
+                <strong class="strip-main">CGPA: 8.36 / 10</strong>
+                <span class="strip-sub">HSC (Class XII): 91% &bull; SSLC (Class X): 94%</span>
+              </div>
+            </div>
+
+            <!-- Col 3: Primary Career Focus -->
+            <div class="strip-col strip-highlight">
+              <div class="strip-icon"><i class="fa-solid fa-code"></i></div>
+              <div class="strip-details">
+                <span class="strip-label">PRIMARY CAREER DIRECTION</span>
+                <strong class="strip-main">Software &amp; Full-Stack Development</strong>
+                <span class="strip-sub">MERN Stack, Java, DSA &bull; Scalable Web Applications</span>
+              </div>
+            </div>
+
+            <!-- Col 4: Secondary Focus -->
+            <div class="strip-col">
+              <div class="strip-icon"><i class="fa-solid fa-microchip"></i></div>
+              <div class="strip-details">
+                <span class="strip-label">ENGINEERING STRENGTH</span>
+                <strong class="strip-main">Embedded Systems &amp; IoT</strong>
+                <span class="strip-sub">ESP32, Arduino, Sensor Buses &bull; Silicon Telemetry</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom verified links row -->
+          <div class="strip-footer">
+            <div class="strip-links">
+              <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="strip-link">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn (1500+ Connections)
+              </a>
+              <span class="strip-bullet">&bull;</span>
+              <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="strip-link">
+                <i class="fa-brands fa-github"></i> GitHub (@MANOJG006)
+              </a>
+              <span class="strip-bullet">&bull;</span>
+              <a href="mailto:manojkovarthini@gmail.com" class="strip-link">
+                <i class="fa-solid fa-envelope"></i> manojkovarthini@gmail.com
+              </a>
+              <span class="strip-bullet">&bull;</span>
+              <a href="resume.html" target="_blank" class="strip-link strip-link-gold">
+                <i class="fa-solid fa-file-pdf"></i> View Printable Resume
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
             <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-label="3D Interactive ESP32 Microprocessor Model"></canvas>
             <div class="stage-status-bar">
               <span class="stage-chip-title"><i class="fa-solid fa-microchip"></i> ESP32-S3 Microprocessor</span>
@@ -202,21 +286,27 @@
         <div class="about-grid">
           <div class="about-card glass-panel">
             <div class="about-icon-header">
-              <i class="fa-solid fa-compass-drafting"></i>
-              <h3>Engineering Vision & Focus</h3>
+              <i class="fa-solid fa-user-tie"></i>
+              <h3>Professional Summary</h3>
             </div>
             <p>
-              I am a pre-final year <strong>Electronics and Communication Engineering</strong> student at <strong>Sri Krishna College of Engineering and Technology (SKCET)</strong>, Coimbatore. My primary engineering passions span <strong>Embedded Systems & IoT</strong>, <strong>Full-Stack MERN Web Development</strong>, and <strong>Algorithmic Problem Solving</strong>.
+              I am a pre-final-year Electronics and Communication Engineering student at <strong>Sri Krishna College of Engineering and Technology, Coimbatore</strong>, with a strong interest in software development and practical engineering.
             </p>
             <p>
-              Whether it's building autonomous obstacle-avoidance cars using the <strong>ESP32</strong>, designing fail-safe electronic voting prototypes with OLED displays, architecting responsive web applications using the <strong>MERN Stack (MongoDB, Express, React, Node.js)</strong>, or solving complex algorithmic problems with <strong>Data Structures & Algorithms (DSA)</strong> in <strong>Java, Modern C++, and Python</strong> — I thrive where hardware precision connects with scalable software.
+              My learning journey includes full-stack web development using the <strong>MERN stack</strong>, programming in <strong>Java, C++, and Python</strong>, and hands-on embedded systems projects using <strong>ESP32 and Arduino</strong>.
+            </p>
+            <p>
+              I enjoy developing practical solutions, exploring new technologies, and understanding how software and hardware work together.
+            </p>
+            <p>
+              I am currently strengthening my problem-solving abilities, Java programming, Data Structures and Algorithms, and full-stack development skills as I prepare for software engineering opportunities.
             </p>
 
             <div class="skills-callout">
-              <div class="callout-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="callout-icon"><i class="fa-solid fa-code"></i></div>
               <div class="callout-content">
-                <h4>Dual-Core Advantage: Silicon to Cloud</h4>
-                <p>Versatile engineer capable of delivering end-to-end products: from physical sensor circuits and microcontroller firmware to robust backend APIs, databases, modern UIs, and optimal algorithmic logic.</p>
+                <h4>Primary Direction: Software &amp; Full-Stack</h4>
+                <p>Equipped with solid algorithmic fundamentals and hands-on full-stack development, complemented by an engineer's understanding of embedded systems and IoT devices.</p>
               </div>
             </div>
           </div>
@@ -290,6 +380,10 @@
           <span class="section-tag"><i class="fa-solid fa-microchip"></i> 3D Engineering Dashboard</span>
           <h2 class="section-title">Interactive <span class="gradient-text">Skills Matrix</span></h2>
           <p class="section-subtitle">Real-world technical competencies connected across silicon, web stacks, and firmware</p>
+          <div class="skills-legend" aria-hidden="true">
+            <span class="legend-item"><i class="legend-dot"></i> Applied in featured projects</span>
+            <span class="legend-item"><i class="legend-dot outline"></i> Core coursework &amp; ongoing practice</span>
+          </div>
         </div>
 
         <!-- Central 3D Processor Hub & Circuit Bus Canvas -->
@@ -317,85 +411,83 @@
           </div>
 
           <div class="skills-grid-4col">
-            <!-- Quadrant 1: Programming -->
+            <!-- Quadrant 1: Programming and Computer Science -->
             <div class="skill-category-card glass-panel" data-tilt="true" data-category="programming" onmouseenter="activateCircuit('programming')" onmouseleave="deactivateCircuit()">
               <div class="category-header">
                 <div class="cat-icon cat-cyan"><i class="fa-solid fa-code"></i></div>
                 <div>
-                  <h3>Programming</h3>
-                  <span class="cat-sub">Core Logic & DSA</span>
+                  <h3>Programming and Computer Science</h3>
+                  <span class="cat-sub">Algorithms, Logic &amp; Foundations</span>
                 </div>
               </div>
               <div class="skill-badges">
                 <span class="skill-badge featured" data-skill="c">C</span>
-                <span class="skill-badge featured" data-skill="cpp">C++ (Modern C++ Challenger)</span>
-                <span class="skill-badge featured" data-skill="java">Java (Foundation Certified)</span>
-                <span class="skill-badge featured" data-skill="python">Python (Google Certified)</span>
-                <span class="skill-badge featured" data-skill="sql">SQL (Relational Queries)</span>
-                <span class="skill-badge" data-skill="dsa">Data Structures & Algorithms</span>
-                <span class="skill-badge" data-skill="complexity">Time & Space Complexity O(N)</span>
+                <span class="skill-badge featured" data-skill="cpp">C++</span>
+                <span class="skill-badge featured" data-skill="java">Java</span>
+                <span class="skill-badge featured" data-skill="python">Python</span>
+                <span class="skill-badge featured" data-skill="sql">SQL</span>
+                <span class="skill-badge featured" data-skill="dsa">Data Structures and Algorithms</span>
               </div>
             </div>
 
-            <!-- Quadrant 2: Web Development -->
+            <!-- Quadrant 2: Full-Stack Web Development -->
             <div class="skill-category-card glass-panel" data-tilt="true" data-category="web" onmouseenter="activateCircuit('web')" onmouseleave="deactivateCircuit()">
               <div class="category-header">
                 <div class="cat-icon cat-pink"><i class="fa-brands fa-react"></i></div>
                 <div>
-                  <h3>Web Development</h3>
-                  <span class="cat-sub">Full-Stack MERN Architecture</span>
+                  <h3>Full-Stack Web Development</h3>
+                  <span class="cat-sub">Frontend, Backend &amp; Databases</span>
                 </div>
               </div>
               <div class="skill-badges">
+                <span class="skill-badge" data-skill="html">HTML</span>
+                <span class="skill-badge" data-skill="css">CSS</span>
+                <span class="skill-badge featured" data-skill="js">JavaScript</span>
                 <span class="skill-badge featured" data-skill="react">React.js</span>
                 <span class="skill-badge featured" data-skill="node">Node.js</span>
                 <span class="skill-badge featured" data-skill="express">Express.js</span>
                 <span class="skill-badge featured" data-skill="mongo">MongoDB</span>
-                <span class="skill-badge featured" data-skill="js">JavaScript (ES6+)</span>
-                <span class="skill-badge" data-skill="html">HTML5</span>
-                <span class="skill-badge" data-skill="css">CSS3</span>
-                <span class="skill-badge" data-skill="api">RESTful APIs</span>
+                <span class="skill-badge featured" data-skill="api">REST APIs</span>
               </div>
             </div>
 
-            <!-- Quadrant 3: Embedded Systems -->
+            <!-- Quadrant 3: Embedded Systems and IoT -->
             <div class="skill-category-card glass-panel" data-tilt="true" data-category="embedded" onmouseenter="activateCircuit('embedded')" onmouseleave="deactivateCircuit()">
               <div class="category-header">
                 <div class="cat-icon cat-emerald"><i class="fa-solid fa-microchip"></i></div>
                 <div>
-                  <h3>Embedded Systems</h3>
-                  <span class="cat-sub">Silicon & Communication Buses</span>
+                  <h3>Embedded Systems and IoT</h3>
+                  <span class="cat-sub">Hardware, Sensors &amp; Protocols</span>
                 </div>
               </div>
               <div class="skill-badges">
-                <span class="skill-badge featured" data-skill="esp32">ESP32 (Dual-Core 240MHz)</span>
-                <span class="skill-badge featured" data-skill="arduino">Arduino UNO / IDE</span>
-                <span class="skill-badge featured" data-skill="sensors">Sensors (Ultrasonic, LDR, DHT)</span>
-                <span class="skill-badge featured" data-skill="actuators">Actuators (Servo, L298N DC Motors)</span>
-                <span class="skill-badge featured" data-skill="uart">UART Serial Protocol</span>
-                <span class="skill-badge featured" data-skill="spi">SPI Protocol</span>
-                <span class="skill-badge featured" data-skill="i2c">I²C Bus (SSD1306 OLED)</span>
-                <span class="skill-badge" data-skill="pwm">PWM Motor Speed Control</span>
+                <span class="skill-badge featured" data-skill="esp32">ESP32</span>
+                <span class="skill-badge featured" data-skill="arduino">Arduino UNO</span>
+                <span class="skill-badge featured" data-skill="sensors">Sensors and Actuators</span>
+                <span class="skill-badge featured" data-skill="uart">UART</span>
+                <span class="skill-badge featured" data-skill="spi">SPI</span>
+                <span class="skill-badge featured" data-skill="i2c">I2C</span>
+                <span class="skill-badge featured" data-skill="pwm">PWM</span>
+                <span class="skill-badge" data-skill="arduino-ide">Arduino IDE</span>
               </div>
             </div>
 
-            <!-- Quadrant 4: Tools & Platforms -->
+            <!-- Quadrant 4: Development Tools -->
             <div class="skill-category-card glass-panel" data-tilt="true" data-category="tools" onmouseenter="activateCircuit('tools')" onmouseleave="deactivateCircuit()">
               <div class="category-header">
                 <div class="cat-icon cat-purple"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                 <div>
-                  <h3>Tools & Platforms</h3>
-                  <span class="cat-sub">Simulation & Version Control</span>
+                  <h3>Development Tools</h3>
+                  <span class="cat-sub">Workflows &amp; Simulation</span>
                 </div>
               </div>
               <div class="skill-badges">
                 <span class="skill-badge featured" data-skill="git">Git</span>
                 <span class="skill-badge featured" data-skill="github">GitHub</span>
-                <span class="skill-badge featured" data-skill="arduino-ide">Arduino IDE</span>
+                <span class="skill-badge featured" data-skill="vscode">VS Code</span>
                 <span class="skill-badge featured" data-skill="matlab">MATLAB</span>
-                <span class="skill-badge featured" data-skill="tinkercad">Tinkercad Circuits</span>
+                <span class="skill-badge featured" data-skill="tinkercad">Tinkercad</span>
                 <span class="skill-badge featured" data-skill="powerbi">Power BI</span>
-                <span class="skill-badge" data-skill="vscode">VS Code</span>
               </div>
             </div>
           </div>
@@ -958,9 +1050,9 @@
         </div>
 
         <!-- CERTIFICATIONS SECTION (STRICTLY FULLSTACK, CODING & EMBEDDED SYSTEMS) -->
-        <div class="certs-container">
+        <div class="certs-container" id="certifications">
           <div class="certs-header">
-            <h3><i class="fa-solid fa-award"></i> Core Technical Certifications (9 Verified &bull; Full-Stack, Coding & Embedded)</h3>
+            <h3><i class="fa-solid fa-award"></i> Core Technical Certifications (9 Verified &bull; Full-Stack, Coding &amp; Embedded)</h3>
             <div class="cert-search-box">
               <i class="fa-solid fa-magnifying-glass"></i>
               <input type="text" id="cert-search" placeholder="Filter tech certifications (e.g., Networking, Java, Python, SQL, IoT)..." oninput="filterCertifications()">
@@ -1307,15 +1399,15 @@
         <div class="section-header">
           <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Let's Connect</span>
           <h2 class="section-title">Get In <span class="gradient-text">Touch</span></h2>
-          <p class="section-subtitle">Open for automotive internships, embedded hardware projects, and engineering collaborations</p>
+          <p class="section-subtitle">Interested in discussing software development opportunities, engineering projects, or technical collaborations? Feel free to connect with me.</p>
         </div>
 
         <div class="contact-grid">
           <!-- Left: Contact Details -->
           <div class="contact-info-card glass-panel">
             <h3>Direct Contact Channels</h3>
-            <p>
-              Feel free to reach out directly via email, phone, or connect on LinkedIn and GitHub. I respond promptly!
+            <p class="contact-lead-text">
+              "Interested in discussing software development opportunities, engineering projects, or technical collaborations? Feel free to connect with me."
             </p>
 
             <div class="contact-methods-list">
@@ -1352,7 +1444,7 @@
               <div class="contact-method-item">
                 <div class="method-icon"><i class="fa-brands fa-linkedin-in"></i></div>
                 <div class="method-details">
-                  <span class="method-label">LinkedIn</span>
+                  <span class="method-label">LinkedIn Profile</span>
                   <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="method-val">linkedin.com/in/manoj-g-33797a360</a>
                 </div>
               </div>
@@ -1360,7 +1452,7 @@
               <div class="contact-method-item">
                 <div class="method-icon"><i class="fa-brands fa-github"></i></div>
                 <div class="method-details">
-                  <span class="method-label">GitHub Repository</span>
+                  <span class="method-label">GitHub Repositories</span>
                   <a href="https://github.com/MANOJG006" target="_blank" rel="noopener noreferrer" class="method-val">github.com/MANOJG006</a>
                 </div>
               </div>
@@ -1369,12 +1461,12 @@
 
           <!-- Right: Interactive Message Form -->
           <div class="contact-form-card glass-panel">
-            <h3>Send a Message</h3>
+            <h3>Send an Direct Email Message</h3>
             <form id="contact-form" onsubmit="handleContactSubmit(event)">
               <div class="form-row">
                 <div class="form-group">
                   <label for="contact-name">Your Name</label>
-                  <input type="text" id="contact-name" placeholder="e.g. Engineering Team / Recruiter" required>
+                  <input type="text" id="contact-name" placeholder="e.g. Recruiter / Engineering Manager" required>
                 </div>
                 <div class="form-group">
                   <label for="contact-email">Your Email</label>
@@ -1384,16 +1476,16 @@
 
               <div class="form-group">
                 <label for="contact-subject">Subject</label>
-                <input type="text" id="contact-subject" placeholder="Engineering Opportunity / Full-Stack / Embedded Project" required>
+                <input type="text" id="contact-subject" placeholder="Software Engineering Opportunity / Full-Stack / Project" required>
               </div>
 
               <div class="form-group">
                 <label for="contact-message">Message</label>
-                <textarea id="contact-message" rows="4" placeholder="Hello Manoj, we would like to discuss an opportunity regarding..." required></textarea>
+                <textarea id="contact-message" rows="4" placeholder="Hello Manoj, we reviewed your portfolio and would like to discuss..." required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
-                <i class="fa-solid fa-paper-plane"></i> Send Message
+                <i class="fa-solid fa-paper-plane"></i> Send Direct Email
               </button>
               <div id="form-feedback" class="form-feedback"></div>
             </form>
@@ -1560,6 +1652,9 @@
 
   <!-- QRCode Generation Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Floating Back-to-Top Button (from Jeevan reference) -->
+  <button id="top" aria-label="Back to top" title="Back to top">↑</button>
 
   <!-- Application Logic -->
   <script src="app.js"></script>
