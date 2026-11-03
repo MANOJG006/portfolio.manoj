@@ -1867,20 +1867,7 @@ function initQRCodes() {
     return;
   }
 
-  // 1. GITHUB QR: https://github.com/MANOJG006
-  const ghTarget = document.getElementById('github-qr-canvas');
-  if (ghTarget && !ghTarget.hasChildNodes()) {
-    new QRCode(ghTarget, {
-      text: "https://github.com/MANOJG006",
-      width: 170,
-      height: 170,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    });
-  }
-
-  // 2. LINKEDIN QR: https://linkedin.com/in/manoj-g-33797a360
+  // 1. LINKEDIN QR: https://linkedin.com/in/manoj-g-33797a360
   const liTarget = document.getElementById('linkedin-qr-canvas');
   if (liTarget && !liTarget.hasChildNodes()) {
     new QRCode(liTarget, {
@@ -1893,7 +1880,33 @@ function initQRCodes() {
     });
   }
 
-  // 3. DUOLINGO QR
+  // 2. LEETCODE QR: https://leetcode.com/u/MANOJGNANASEKARAN/
+  const leetTarget = document.getElementById('leetcode-qr-canvas');
+  if (leetTarget && !leetTarget.hasChildNodes()) {
+    new QRCode(leetTarget, {
+      text: "https://leetcode.com/u/MANOJGNANASEKARAN/",
+      width: 170,
+      height: 170,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  }
+
+  // 3. GITHUB QR: https://github.com/MANOJG006
+  const ghTarget = document.getElementById('github-qr-canvas');
+  if (ghTarget && !ghTarget.hasChildNodes()) {
+    new QRCode(ghTarget, {
+      text: "https://github.com/MANOJG006",
+      width: 170,
+      height: 170,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  }
+
+  // 4. DUOLINGO QR: https://www.duolingo.com/profile/ManojGnana
   const duoImg = document.getElementById('duolingo-qr-img');
   const duoCanvas = document.getElementById('duolingo-qr-canvas');
 
@@ -1918,27 +1931,6 @@ function initQRCodes() {
       }
     };
     testImg.src = 'assets/duolingo-qr.png';
-  }
-
-  // 4. MY PORTFOLIO QR
-  if (window.PORTFOLIO_PRODUCTION_URL && window.PORTFOLIO_PRODUCTION_URL.startsWith('https://')) {
-    const portBox = document.getElementById('portfolio-qr-box');
-    if (portBox) {
-      portBox.innerHTML = '<div id="portfolio-qr-canvas" class="qr-generated-target"></div>';
-      new QRCode(document.getElementById('portfolio-qr-canvas'), {
-        text: window.PORTFOLIO_PRODUCTION_URL,
-        width: 170,
-        height: 170,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-      const badge = document.querySelector('.qr-status-badge.pending');
-      if (badge) {
-        badge.className = 'qr-status-badge live';
-        badge.innerHTML = '<i class="fa-solid fa-circle-check"></i> Live Production';
-      }
-    }
   }
 }
 
