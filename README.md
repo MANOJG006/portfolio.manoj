@@ -5,7 +5,7 @@ A high-performance, elegant, and modern personal portfolio website built with pu
 - **Full-Stack MERN Web Development** (MongoDB, Express.js, React.js, Node.js, REST APIs)
 - **Problem Solving & DSA** (Data Structures & Algorithms in Java, Modern C++, Python)
 
-Live GitHub Repository: [https://github.com/MANOJG006/Portfolio.git](https://github.com/MANOJG006/Portfolio.git)
+Live GitHub Repository: [https://github.com/MANOJG006/portfolio.manoj.git](https://github.com/MANOJG006/portfolio.manoj.git)
 
 ---
 
@@ -82,7 +82,7 @@ Or view directly in your browser by opening `index.html`.
 ```bash
 git push -u origin main
 ```
-Import `MANOJG006/Portfolio` into [Vercel](https://vercel.com) for instant automatic deployment with SSL.
+Import `MANOJG006/portfolio.manoj` into [Vercel](https://vercel.com) for instant automatic deployment with SSL.
 
 ---
 
