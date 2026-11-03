@@ -21,10 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initProject3DCampus();
   initProject3DRegen();
   initSkills3DHub();
+  initProtocolOscilloscope();
 });
 
 /* ==========================================================================
-   1. TOUCH & CLICK INTERACTIVE ANIMATION
+   1. TOUCH & CLICK INTERACTIVE ANIMATION (CIRCUIT CROSSHAIR & RIPPLE)
    ========================================================================== */
 function initTouchAnimation() {
   const createTouchPulse = (x, y) => {
@@ -34,6 +35,12 @@ function initTouchAnimation() {
     ripple.style.top = `${y}px`;
     document.body.appendChild(ripple);
 
+    const circuit = document.createElement('div');
+    circuit.className = 'ece-circuit-ripple';
+    circuit.style.left = `${x}px`;
+    circuit.style.top = `${y}px`;
+    document.body.appendChild(circuit);
+
     const sparkle = document.createElement('div');
     sparkle.className = 'touch-sparkle';
     sparkle.style.left = `${x}px`;
@@ -42,6 +49,7 @@ function initTouchAnimation() {
 
     setTimeout(() => {
       ripple.remove();
+      circuit.remove();
       sparkle.remove();
     }, 700);
   };
@@ -2141,3 +2149,367 @@ window.copyToClipboard = function(text, buttonElem) {
     alert(`Copied: ${text}`);
   });
 };
+
+/* ==========================================================================
+   14. ECE PROTOCOL OSCILLOSCOPE (UART, I2C, SPI, CAN)
+   ========================================================================== */
+let currentScopeProtocol = 'uart';
+
+const protocolMeta = {
+  uart: {
+    name: 'PROTOCOL: UART (8-N-1)',
+    baud: 'RATE: 115,200 Baud',
+    desc: '<strong>UART Asynchronous Framing:</strong> Line idles HIGH (3.3V) &bull; Start Bit (0) &bull; 8 Data Bits LSB-first (0x4D = "M" = 01001101) &bull; Stop Bit (1) &bull; No shared clock line needed.'
+  },
+  i2c: {
+    name: 'PROTOCOL: I²C Fast-Mode (400kHz)',
+    baud: 'BUS SPEED: 400 kHz (SCL / SDA)',
+    desc: '<strong>I²C Bus Protocol:</strong> Open-drain bus with pull-up resistors. Trace 1: SCL Clock (9 pulses). Trace 2: SDA Data showing START condition (SDA falls while SCL is HIGH), 7-bit slave address 0x3C (SSD1306 OLED), W=0, and ACK bit.'
+  },
+  spi: {
+    name: 'PROTOCOL: SPI Full-Duplex (Mode 0)',
+    baud: 'BUS SPEED: 10 MHz (SCK / MOSI)',
+    desc: '<strong>SPI Synchronous Bus:</strong> 4-wire high-speed serial bus. Trace 1: CS# active LOW. Trace 2: SCK 10MHz clock burst. Trace 3: MOSI Master-Out bitstream (0x55 alternating clock sync).'
+  },
+  can: {
+    name: 'PROTOCOL: CAN Bus 2.0B (Automotive)',
+    baud: 'RATE: 500 kbps (CAN_H & CAN_L)',
+    desc: '<strong>CAN Differential Signaling:</strong> High noise immunity for automotive electronics. Recessive state: 2.5V (ΔV=0V). Dominant state: CAN_H=3.5V, CAN_L=1.5V (ΔV=2.0V).'
+  }
+};
+
+window.switchProtocol = function(proto) {
+  if (!protocolMeta[proto]) return;
+  currentScopeProtocol = proto;
+
+  // Update button active state
+  document.querySelectorAll('.scope-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.getAttribute('onclick')?.includes(`'${proto}'`)) {
+      btn.classList.add('active');
+    }
+  });
+
+  // Update text meta
+  const meta = protocolMeta[proto];
+  const nameEl = document.getElementById('scope-protocol-name');
+  const baudEl = document.getElementById('scope-baud-rate');
+  const descEl = document.getElementById('scope-timing-desc');
+
+  if (nameEl) nameEl.textContent = meta.name;
+  if (baudEl) baudEl.textContent = meta.baud;
+  if (descEl) descEl.innerHTML = meta.desc;
+};
+
+function initProtocolOscilloscope() {
+  const canvas = document.getElementById('scope-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  function resizeScope() {
+    const rect = canvas.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = (rect.width || 600) * dpr;
+    canvas.height = 200 * dpr;
+    ctx.scale(dpr, dpr);
+  }
+
+  resizeScope();
+  window.addEventListener('resize', resizeScope, { passive: true });
+
+  let scanX = 0;
+
+  function drawGrid(w, h) {
+    ctx.fillStyle = '#050a14';
+    ctx.fillRect(0, 0, w, h);
+
+    // Minor divisions
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.08)';
+    ctx.lineWidth = 1;
+    const cols = 10;
+    const rows = 6;
+    const dx = w / cols;
+    const dy = h / rows;
+
+    for (let c = 0; c <= cols; c++) {
+      ctx.beginPath();
+      ctx.moveTo(c * dx, 0);
+      ctx.lineTo(c * dx, h);
+      ctx.stroke();
+    }
+    for (let r = 0; r <= rows; r++) {
+      ctx.beginPath();
+      ctx.moveTo(0, r * dy);
+      ctx.lineTo(w, r * dy);
+      ctx.stroke();
+    }
+
+    // Center graticule axes
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.22)';
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(0, h / 2);
+    ctx.lineTo(w, h / 2);
+    ctx.moveTo(w / 2, 0);
+    ctx.lineTo(w / 2, h);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  function drawUART(w, h, time) {
+    const bits = [1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1];
+    const labels = ['IDLE', 'IDLE', 'START', 'D0 (1)', 'D1 (0)', 'D2 (1)', 'D3 (1)', 'D4 (0)', 'D5 (0)', 'D6 (1)', 'D7 (0)', 'STOP', 'IDLE'];
+    const highY = 60;
+    const lowY = 145;
+    const bitWidth = (w - 40) / bits.length;
+
+    // Voltage label references
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('3.3V (HIGH)', 10, highY - 8);
+    ctx.fillText('0.0V (LOW)', 10, lowY + 16);
+
+    ctx.strokeStyle = '#00f0ff';
+    ctx.lineWidth = 2.5;
+    ctx.shadowColor = '#00f0ff';
+    ctx.shadowBlur = 9;
+    ctx.beginPath();
+
+    let curX = 35;
+    let prevY = bits[0] ? highY : lowY;
+    ctx.moveTo(curX, prevY);
+
+    for (let i = 0; i < bits.length; i++) {
+      const bitY = bits[i] ? highY : lowY;
+      ctx.lineTo(curX, bitY);
+      ctx.lineTo(curX + bitWidth, bitY);
+
+      // Bit labels
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = bits[i] ? '#38bdf8' : '#94a3b8';
+      ctx.fillText(labels[i], curX + 2, bitY === highY ? highY - 10 : lowY + 18);
+      ctx.shadowBlur = 9;
+
+      curX += bitWidth;
+      prevY = bitY;
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  function drawI2C(w, h, time) {
+    // SCL: 9 clock pulses
+    const sclHigh = 35;
+    const sclLow = 80;
+    const sdaHigh = 115;
+    const sdaLow = 160;
+
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#fbbf24';
+    ctx.fillText('CH1: SCL (Serial Clock 400kHz)', 10, sclHigh - 8);
+    ctx.fillStyle = '#00f0ff';
+    ctx.fillText('CH2: SDA (Data: START + Addr 0x3C + W + ACK)', 10, sdaHigh - 8);
+
+    const step = (w - 40) / 18;
+
+    // Draw SCL
+    ctx.strokeStyle = '#fbbf24';
+    ctx.lineWidth = 2;
+    ctx.shadowColor = '#fbbf24';
+    ctx.shadowBlur = 7;
+    ctx.beginPath();
+    let x = 35;
+    ctx.moveTo(x, sclHigh);
+    for (let i = 0; i < 9; i++) {
+      ctx.lineTo(x + step * 0.5, sclHigh);
+      ctx.lineTo(x + step * 0.5, sclLow);
+      ctx.lineTo(x + step, sclLow);
+      ctx.lineTo(x + step, sclHigh);
+      x += step;
+    }
+    ctx.stroke();
+
+    // Draw SDA (Start condition, 0x3C address 0-1-1-1-1-0-0, W=0, ACK=0)
+    const sdaBits = [1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0];
+    const sdaLabels = ['IDLE', 'START', 'A6(0)', 'A5(1)', 'A4(1)', 'A3(1)', 'A2(1)', 'A1(0)', 'A0(0)', 'W(0)', 'ACK(0)'];
+    const sdaStep = (w - 40) / sdaBits.length;
+
+    ctx.strokeStyle = '#00f0ff';
+    ctx.shadowColor = '#00f0ff';
+    ctx.beginPath();
+    let sx = 35;
+    ctx.moveTo(sx, sdaBits[0] ? sdaHigh : sdaLow);
+    for (let i = 0; i < sdaBits.length; i++) {
+      const targetY = sdaBits[i] ? sdaHigh : sdaLow;
+      ctx.lineTo(sx, targetY);
+      ctx.lineTo(sx + sdaStep, targetY);
+
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = '#38bdf8';
+      ctx.fillText(sdaLabels[i], sx + 2, sdaLow + 16);
+      ctx.shadowBlur = 7;
+
+      sx += sdaStep;
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  function drawSPI(w, h, time) {
+    // 3 Channels: CS#, SCK, MOSI
+    const csHigh = 22;
+    const csLow = 45;
+    const sckHigh = 70;
+    const sckLow = 95;
+    const mosiHigh = 125;
+    const mosiLow = 155;
+
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#c084fc';
+    ctx.fillText('CH1: CS# (Active Low)', 10, csHigh - 4);
+    ctx.fillStyle = '#10b981';
+    ctx.fillText('CH2: SCK (10MHz Burst)', 10, sckHigh - 6);
+    ctx.fillStyle = '#00f0ff';
+    ctx.fillText('CH3: MOSI (Master-Out: 0x55)', 10, mosiHigh - 6);
+
+    // CS
+    ctx.strokeStyle = '#c084fc';
+    ctx.lineWidth = 2;
+    ctx.shadowColor = '#c084fc';
+    ctx.shadowBlur = 6;
+    ctx.beginPath();
+    ctx.moveTo(25, csHigh);
+    ctx.lineTo(70, csHigh);
+    ctx.lineTo(70, csLow);
+    ctx.lineTo(w - 70, csLow);
+    ctx.lineTo(w - 70, csHigh);
+    ctx.lineTo(w - 20, csHigh);
+    ctx.stroke();
+
+    // SCK (burst between 70 and w-70)
+    ctx.strokeStyle = '#10b981';
+    ctx.shadowColor = '#10b981';
+    ctx.beginPath();
+    ctx.moveTo(25, sckLow);
+    ctx.lineTo(70, sckLow);
+    const sckBurstW = w - 140;
+    const sckCycles = 8;
+    const sckStep = sckBurstW / (sckCycles * 2);
+    let kx = 70;
+    for (let i = 0; i < sckCycles; i++) {
+      ctx.lineTo(kx, sckHigh);
+      kx += sckStep;
+      ctx.lineTo(kx, sckHigh);
+      ctx.lineTo(kx, sckLow);
+      kx += sckStep;
+      ctx.lineTo(kx, sckLow);
+    }
+    ctx.lineTo(w - 20, sckLow);
+    ctx.stroke();
+
+    // MOSI: alternating 0x55 (01010101)
+    const mosiBits = [0, 0, 1, 0, 1, 0, 1, 0, 1, 0];
+    const mosiStep = (w - 60) / mosiBits.length;
+    ctx.strokeStyle = '#00f0ff';
+    ctx.shadowColor = '#00f0ff';
+    ctx.beginPath();
+    let mx = 30;
+    ctx.moveTo(mx, mosiBits[0] ? mosiHigh : mosiLow);
+    for (let i = 0; i < mosiBits.length; i++) {
+      const my = mosiBits[i] ? mosiHigh : mosiLow;
+      ctx.lineTo(mx, my);
+      ctx.lineTo(mx + mosiStep, my);
+      mx += mosiStep;
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  function drawCAN(w, h, time) {
+    const v35 = 60;   // CAN_H Dominant
+    const v25 = 100;  // Recessive baseline
+    const v15 = 140;  // CAN_L Dominant
+
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('3.5V [Dominant CAN_H]', 10, v35 - 8);
+    ctx.fillText('2.5V [Recessive State]', 10, v25 - 6);
+    ctx.fillText('1.5V [Dominant CAN_L]', 10, v15 + 16);
+
+    const states = ['R', 'D', 'D', 'R', 'D', 'R', 'D', 'D', 'R'];
+    const step = (w - 40) / states.length;
+
+    // CAN_H
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 2.2;
+    ctx.shadowColor = '#38bdf8';
+    ctx.shadowBlur = 7;
+    ctx.beginPath();
+    let x = 35;
+    ctx.moveTo(x, states[0] === 'D' ? v35 : v25);
+    for (let i = 0; i < states.length; i++) {
+      const y = states[i] === 'D' ? v35 : v25;
+      ctx.lineTo(x, y);
+      ctx.lineTo(x + step, y);
+      x += step;
+    }
+    ctx.stroke();
+
+    // CAN_L
+    ctx.strokeStyle = '#fb923c';
+    ctx.shadowColor = '#fb923c';
+    ctx.beginPath();
+    let lx = 35;
+    ctx.moveTo(lx, states[0] === 'D' ? v15 : v25);
+    for (let i = 0; i < states.length; i++) {
+      const ly = states[i] === 'D' ? v15 : v25;
+      ctx.lineTo(lx, ly);
+      ctx.lineTo(lx + step, ly);
+      lx += step;
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Diff label
+    ctx.fillStyle = '#10b981';
+    ctx.fillText('ΔV = 2.0V (Dominant Bit "0")  |  ΔV = 0.0V (Recessive Bit "1")', w / 2 - 140, h - 12);
+  }
+
+  function render() {
+    requestAnimationFrame(render);
+    const rect = canvas.getBoundingClientRect();
+    const w = rect.width || 600;
+    const h = 200;
+
+    drawGrid(w, h);
+
+    const now = performance.now() * 0.003;
+    scanX = (scanX + 2.5) % w;
+
+    if (currentScopeProtocol === 'uart') {
+      drawUART(w, h, now);
+    } else if (currentScopeProtocol === 'i2c') {
+      drawI2C(w, h, now);
+    } else if (currentScopeProtocol === 'spi') {
+      drawSPI(w, h, now);
+    } else if (currentScopeProtocol === 'can') {
+      drawCAN(w, h, now);
+    }
+
+    // Scanning vertical trigger beam line
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.45)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(scanX, 0);
+    ctx.lineTo(scanX, h);
+    ctx.stroke();
+
+    // Trigger cursor tag
+    ctx.fillStyle = '#00f0ff';
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillText('TRIG ⮟', scanX - 14, 14);
+  }
+
+  render();
+}

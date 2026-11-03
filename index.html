@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="robots" content="index, follow">
   <title>Manoj G | Embedded & IoT • MERN Stack • Problem Solver (Java, C++, Python, DSA)</title>
   <meta name="description" content="Portfolio of Manoj G - Pre-Final Year ECE Student at SKCET. Embedded Systems & IoT, Full-Stack MERN Web Development, and Problem Solving in Java, C++, Python & DSA.">
   <meta name="keywords" content="Manoj G, ECE, Embedded Systems, IoT, MERN Stack, Full Stack Developer, React, Node.js, Express, MongoDB, DSA, Problem Solving, Java, Modern C++, Python, ESP32, Arduino, SKCET, Salem, Coimbatore">
@@ -26,6 +28,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="light-mode">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Subtle 3D Engineering Background Canvas (Oscilloscope Waves, Blueprint Grid, Pulse Particles) -->
   <canvas id="bg-tech-canvas" class="bg-tech-canvas" aria-hidden="true"></canvas>
@@ -56,6 +59,8 @@
           <li><a href="#about" class="nav-link"><i class="fa-solid fa-user"></i> About</a></li>
           <li><a href="#skills" class="nav-link"><i class="fa-solid fa-layer-group"></i> Skills</a></li>
           <li><a href="#projects" class="nav-link"><i class="fa-solid fa-folder-open"></i> Projects</a></li>
+          <li><a href="#ece-protocols" class="nav-link"><i class="fa-solid fa-wave-square"></i> ECE Lab</a></li>
+          <li><a href="#mern-showcase" class="nav-link"><i class="fa-brands fa-react"></i> MERN Stack</a></li>
           <li><a href="#experience" class="nav-link"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
           <li><a href="#education" class="nav-link"><i class="fa-solid fa-graduation-cap"></i> Education</a></li>
           <li><a href="#connect-qr" class="nav-link"><i class="fa-solid fa-qrcode"></i> Quick Scan</a></li>
@@ -70,7 +75,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <!-- HERO SECTION -->
     <section class="hero-section" id="hero">
       <div class="container hero-grid">
@@ -109,8 +114,8 @@
               <span class="stat-label">DSA Problems Solved</span>
             </div>
             <div class="stat-card">
-              <span class="stat-number">13</span>
-              <span class="stat-label">Verified Certifications</span>
+              <span class="stat-number">9</span>
+              <span class="stat-label">Core Tech Certifications</span>
             </div>
           </div>
 
@@ -165,6 +170,31 @@
           <span class="section-tag"><i class="fa-solid fa-microchip"></i> Engineering Profile</span>
           <h2 class="section-title">About <span class="gradient-text">Manoj G</span></h2>
           <p class="section-subtitle">Bridging embedded hardware, IoT systems, full-stack MERN engineering, and algorithmic problem solving</p>
+        </div>
+
+        <!-- Real Verified Profile Header Badge from LinkedIn -->
+        <div class="verified-profile-banner glass-panel">
+          <div class="v-avatar-wrapper">
+            <img src="assets/manoj-avatar.png" alt="Manoj G - ECE & Full-Stack Engineer" class="v-avatar-img">
+            <span class="v-open-work-pill" title="Open to Software Development, Embedded Systems & Full-Stack Roles"><i class="fa-solid fa-briefcase"></i> #OPENTOWORK</span>
+          </div>
+          <div class="v-profile-info">
+            <div class="v-name-row">
+              <h3>MANOJ G</h3>
+              <span class="v-verified-badge" title="Verified Engineering Profile"><i class="fa-solid fa-circle-check"></i></span>
+              <span class="v-pronouns">He/Him</span>
+            </div>
+            <p class="v-headline">
+              <strong>Pre-Final Year ECE Student @ SKCET</strong> passionate about <strong>Full-Stack Development</strong>, <strong>Embedded Systems</strong>, and <strong>IoT</strong>, continuously learning and building impactful solutions.
+            </p>
+            <div class="v-meta-row">
+              <span><i class="fa-solid fa-building-columns"></i> Sri Krishna College of Engg & Tech</span>
+              <span><i class="fa-solid fa-location-dot"></i> Edappadi, Salem &bull; Coimbatore, Tamil Nadu</span>
+              <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank" rel="noopener noreferrer" class="v-linkedin-link">
+                <i class="fa-brands fa-linkedin"></i> 500+ Connections &bull; View LinkedIn
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="about-grid">
@@ -393,216 +423,314 @@
           <!-- Project 1: Intelligent Path Detection Car -->
           <article class="project-card glass-panel" data-category="embedded automotive" data-tilt="true">
             <div class="project-header">
-              <div class="project-badge badge-cyan"><i class="fa-solid fa-car"></i> Embedded / Automotive</div>
-              <span class="project-date">Hardware Prototype</span>
+              <div class="project-badge badge-cyan"><i class="fa-solid fa-car"></i> Embedded Systems &bull; Robotics</div>
+              <span class="project-date">Hardware Prototype &bull; ESP32</span>
             </div>
-
-            <!-- 3D Robotic Vehicle & Ultrasonic Radar Stage -->
-            <div class="project-3d-stage" id="stage-path-car" title="Interactive 3D Robotic Car: Click canvas to position obstacle">
-              <canvas id="canvas-path-car" class="project-3d-canvas"></canvas>
-              <div class="stage-overlay-hud">
-                <div class="hud-item"><span class="hud-label">DISTANCE:</span> <strong id="car-hud-distance">38.4 cm</strong></div>
-                <div class="hud-item"><span class="hud-label">SERVO SWEEP:</span> <strong id="car-hud-angle">90&deg;</strong></div>
-                <div class="hud-item status-ok" id="car-hud-status"><i class="fa-solid fa-circle-check"></i> PATH CLEAR</div>
-              </div>
-              <div class="stage-quick-actions">
-                <button type="button" class="stage-mini-btn" onclick="spawnCarObstacle()" title="Spawn Obstacle Ahead">
-                  <i class="fa-solid fa-cube"></i> Add Obstacle
-                </button>
-                <button type="button" class="stage-mini-btn" onclick="toggleServoSpeed()" title="Adjust Servo Sweep Speed">
-                  <i class="fa-solid fa-gauge-high"></i> Speed
-                </button>
-                <button type="button" class="stage-mini-btn" onclick="resetCarPath()" title="Reset Road & Car">
-                  <i class="fa-solid fa-rotate-left"></i> Reset
-                </button>
-              </div>
-              <!-- Floating 3D Hardware Callout Markers -->
-              <div class="hw-callout-tags" aria-hidden="true">
-                <span class="hw-tag" style="top: 22%; left: 45%;"><i class="fa-solid fa-microchip"></i> ESP32</span>
-                <span class="hw-tag" style="top: 14%; left: 74%;"><i class="fa-solid fa-satellite-dish"></i> HC-SR04</span>
-                <span class="hw-tag" style="top: 42%; left: 78%;"><i class="fa-solid fa-gear"></i> SG90</span>
-                <span class="hw-tag" style="top: 72%; left: 28%;"><i class="fa-solid fa-bolt"></i> L298N</span>
-              </div>
-            </div>
-
             <h3 class="project-title">Intelligent Path Detection Car</h3>
             <p class="project-desc">
-              Developed an autonomous <strong>ESP32-based car prototype</strong> capable of real-time obstacle detection and dynamic collision avoidance. Integrated an ultrasonic sensor mounted on a servo motor to perform forward sweeps, providing distance telemetry to an <strong>L298N dual H-bridge motor driver</strong>.
+              Designed and built an autonomous robotic vehicle powered by an <strong>ESP32 microcontroller</strong>, engineered for real-time obstacle detection and dynamic evasive steering. Integrated an ultrasonic sensor (HC-SR04) with an SG90 servo sweep mechanism to continuously scan perimeter distances and modulate dual <strong>L298N H-bridge</strong> motor speeds via hardware PWM.
             </p>
             <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Servo-driven ultrasonic sweep for 180&deg; situational awareness</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Dynamic speed control and reverse-turn avoidance algorithms</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Microcontroller GPIO PWM configuration & motor driver control</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>ECE State Machine:</strong> Dynamic obstacle detection with multi-directional arbitration and recovery routines</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Real-time Telemetry:</strong> Microsecond echo timing using hardware timer interrupts and dual PWM speed scaling</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Power Rail Protection:</strong> LM2596 buck regulator isolating 3.3V logic from 11.1V high-current motor inductive transients</div>
             </div>
             <div class="tech-stack-row">
               <span class="chip">ESP32</span>
-              <span class="chip">HC-SR04</span>
-              <span class="chip">SG90 Servo</span>
-              <span class="chip">L298N Driver</span>
               <span class="chip">Embedded C++</span>
-              <span class="chip">PWM</span>
+              <span class="chip">HC-SR04 Ultrasonic</span>
+              <span class="chip">SG90 Servo</span>
+              <span class="chip">L298N Dual H-Bridge</span>
+              <span class="chip">Hardware PWM</span>
+              <span class="chip">Interrupt Timers</span>
             </div>
             <div class="project-card-footer">
-              <span class="badge-tag"><i class="fa-solid fa-microchip"></i> Hardware Prototype</span>
+              <span class="badge-tag"><i class="fa-solid fa-microchip"></i> Hardware Build</span>
               <span class="hardware-indicator"><i class="fa-solid fa-code"></i> ESP-IDF / C++</span>
             </div>
           </article>
 
-          <!-- Project 2: Smart Voting System -->
+          <!-- Project 2: Smart Electronic Voting Machine -->
           <article class="project-card glass-panel" data-category="embedded" data-tilt="true">
             <div class="project-header">
-              <div class="project-badge badge-emerald"><i class="fa-solid fa-check-to-slot"></i> Microcontroller / Peripheral</div>
-              <span class="project-date">Hardware Prototype</span>
+              <div class="project-badge badge-emerald"><i class="fa-solid fa-check-to-slot"></i> Embedded Systems &bull; Hardware</div>
+              <span class="project-date">Physical Build &bull; Real Device</span>
             </div>
-
-            <!-- 3D Voting Terminal & OLED Display Stage -->
-            <div class="project-3d-stage" id="stage-voting-system" title="Interactive 3D Voting Machine: Click buttons to simulate vote">
-              <canvas id="canvas-voting-system" class="project-3d-canvas"></canvas>
-              <div class="stage-overlay-hud">
-                <div class="oled-mini-screen">
-                  <div class="oled-sim-title">SSD1306 128x64 OLED</div>
-                  <div class="oled-sim-msg" id="oled-sim-text">READY: PRESS 1-4</div>
-                </div>
-                <div class="voting-tally-pill">
-                  <span>TOTAL VOTES:</span> <strong id="live-vote-count">142</strong>
-                </div>
-              </div>
-              <div class="stage-quick-actions">
-                <button type="button" class="stage-mini-btn" onclick="castSimulatedVote(1)">
-                  <i class="fa-solid fa-fingerprint"></i> Key 1
-                </button>
-                <button type="button" class="stage-mini-btn" onclick="castSimulatedVote(2)">
-                  <i class="fa-solid fa-fingerprint"></i> Key 2
-                </button>
-                <button type="button" class="stage-mini-btn" onclick="castSimulatedVote(3)">
-                  <i class="fa-solid fa-fingerprint"></i> Key 3
-                </button>
-                <button type="button" class="stage-mini-btn" onclick="resetVoteCounter()">
-                  <i class="fa-solid fa-rotate-left"></i> Reset
-                </button>
-              </div>
-            </div>
-
-            <h3 class="project-title">Smart Electronic Voting System</h3>
+            <h3 class="project-title">Smart Electronic Voting Machine</h3>
             <p class="project-desc">
-              Engineered an <strong>ESP32-powered electronic voting prototype</strong> with comprehensive peripheral interfacing. Features a 0.96-inch I²C OLED display (SSD1306) for real-time prompt feedback, a tactile matrix keypad for casting votes, RGB LED status indicators, and an audio buzzer for validation.
+              Engineered a tamper-resistant, authenticated <strong>electronic voting machine prototype</strong> to model real-world electoral integrity. Integrated an embedded microcontroller with a 0.96-inch <strong>I&sup2;C SSD1306 OLED</strong> display, a 4&times;4 tactile matrix keypad, capacitive touch actuation, multi-color LED visual feedback, and non-volatile EEPROM encrypted ballot tallying.
             </p>
             <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> I²C communication protocol implementation for SSD1306 OLED</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Vote debounce validation, fraud prevention, and tally storage</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Multi-state RGB indicator (Ready, Processing, Vote Recorded)</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>5-Stage Authentication:</strong> ID verification, system authorization, touch actuation, ballot cast, and secure record</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Tamper-Resistant Firmware:</strong> Switch debounce validation, duplicate vote protection, and encrypted EEPROM tallying</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Peripheral Bus Interfacing:</strong> Two-wire I&sup2;C protocol implementation driving a 128&times;64 OLED user interface</div>
             </div>
             <div class="tech-stack-row">
-              <span class="chip">ESP32</span>
-              <span class="chip">0.96" OLED (I²C)</span>
-              <span class="chip">Matrix Keypad</span>
-              <span class="chip">RGB LEDs</span>
-              <span class="chip">Buzzer</span>
-              <span class="chip">C++</span>
+              <span class="chip">ESP32 / Arduino</span>
+              <span class="chip">SSD1306 OLED (I&sup2;C)</span>
+              <span class="chip">4x4 Matrix Keypad</span>
+              <span class="chip">TTP223 Capacitive Touch</span>
+              <span class="chip">EEPROM Storage</span>
+              <span class="chip">RGB Feedback</span>
+              <span class="chip">Embedded C++</span>
             </div>
             <div class="project-card-footer">
-              <span class="badge-tag"><i class="fa-solid fa-microchip"></i> Hardware Prototype</span>
-              <span class="hardware-indicator"><i class="fa-solid fa-check-to-slot"></i> Peripheral Interfacing</span>
+              <span class="badge-tag"><i class="fa-solid fa-shield-halved"></i> Tamper-Resistant</span>
+              <span class="hardware-indicator"><i class="fa-solid fa-microchip"></i> I&sup2;C Bus Protocol</span>
             </div>
           </article>
 
-          <!-- Project 3: CampusGo Application -->
+          <!-- Project 3: CampusGo — Full-Stack Campus Platform -->
           <article class="project-card glass-panel" data-category="software" data-tilt="true">
             <div class="project-header">
-              <div class="project-badge badge-purple"><i class="fa-brands fa-react"></i> Web Application</div>
-              <span class="project-date">React.js Web App</span>
+              <div class="project-badge badge-purple"><i class="fa-brands fa-react"></i> Full-Stack MERN Platform</div>
+              <span class="project-date">Web Application &bull; Production</span>
             </div>
-
-            <!-- 3D Isometric Campus Map & Smartphone App Stage -->
-            <div class="project-3d-stage" id="stage-campusgo" title="Interactive 3D Campus: Select destinations">
-              <canvas id="canvas-campusgo" class="project-3d-canvas"></canvas>
-              <div class="stage-overlay-hud">
-                <div class="campus-hud-pill" id="campus-status-pill">
-                  <i class="fa-solid fa-location-crosshairs"></i> Central Library &bull; Route Active
-                </div>
-              </div>
-              <div class="stage-quick-actions">
-                <button type="button" class="stage-mini-btn active" id="btn-dest-lib" onclick="setCampusTarget('library')">
-                  <i class="fa-solid fa-book"></i> Library
-                </button>
-                <button type="button" class="stage-mini-btn" id="btn-dest-acad" onclick="setCampusTarget('academic')">
-                  <i class="fa-solid fa-graduation-cap"></i> Academics
-                </button>
-                <button type="button" class="stage-mini-btn" id="btn-dest-trans" onclick="setCampusTarget('transit')">
-                  <i class="fa-solid fa-bus"></i> Transit
-                </button>
-              </div>
-            </div>
-
-            <h3 class="project-title">CampusGo &mdash; Campus Application</h3>
+            <h3 class="project-title">CampusGo &mdash; Full-Stack Campus Platform</h3>
             <p class="project-desc">
-              Developed a modern, campus-focused web application utilizing <strong>React.js</strong>. Built using a modular component-based architecture to deliver an intuitive user interface for students, facilitating campus navigation, schedule tracking, and student service access.
+              Architected and built <strong>CampusGo</strong>, an end-to-end full-stack <strong>MERN platform</strong> for college campus navigation, student resource discovery, and real-time transit shuttle tracking. Features a decoupled REST API backend, geospatial coordinate indexing, and an intuitive, mobile-responsive user interface built in React.
             </p>
             <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Modular React components with reusable UI design system</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Responsive layouts optimized for both mobile and desktop screens</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> State management for campus navigation & resources</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Geospatial Indexing:</strong> MongoDB 2dsphere indexing for instant shortest-path campus routing and facility geofencing</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Secure API Architecture:</strong> Node.js & Express RESTful API with JWT authentication, RBAC, and input validation</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Live Telemetry:</strong> Real-time WebSocket connection for synchronized transit shuttle tracking and status updates</div>
             </div>
             <div class="tech-stack-row">
+              <span class="chip">MongoDB Atlas</span>
+              <span class="chip">Express.js</span>
               <span class="chip">React.js</span>
-              <span class="chip">JavaScript (ES6+)</span>
-              <span class="chip">CSS3</span>
-              <span class="chip">Git / GitHub</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">WebSockets</span>
+              <span class="chip">JWT Auth</span>
             </div>
             <div class="project-card-footer">
               <a href="https://github.com/MANOJG006/campusgo" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
                 <i class="fa-brands fa-github"></i> View GitHub Repo
               </a>
-              <span class="hardware-indicator"><i class="fa-solid fa-globe"></i> Open Source</span>
+              <span class="hardware-indicator"><i class="fa-solid fa-globe"></i> Full-Stack MERN</span>
             </div>
           </article>
 
-          <!-- Project 4: Regen Textile Waste Recycling -->
+          <!-- Project 4: Regen — Textile Waste Recycling Platform -->
           <article class="project-card glass-panel" data-category="software" data-tilt="true">
             <div class="project-header">
-              <div class="project-badge badge-amber"><i class="fa-solid fa-recycle"></i> Sustainability Concept</div>
-              <span class="project-date">Systems Workflow Design</span>
+              <div class="project-badge badge-amber"><i class="fa-solid fa-recycle"></i> Circular Economy &bull; Web Architecture</div>
+              <span class="project-date">Systems Workflow &bull; Concept</span>
             </div>
-
-            <!-- 3D Textile Recycling Loop Stage -->
-            <div class="project-3d-stage" id="stage-regen" title="Interactive 3D Textile Recycling Loop">
-              <canvas id="canvas-regen" class="project-3d-canvas"></canvas>
-              <div class="stage-overlay-hud">
-                <div class="regen-hud-pill">
-                  <i class="fa-solid fa-recycle"></i> Closed-Loop Efficiency: <strong>92.8%</strong>
-                </div>
-              </div>
-              <div class="stage-pipeline-steps">
-                <span class="pipe-node active" id="node-collect"><i class="fa-solid fa-truck-ramp-box"></i> 1. Scrap Telemetry</span>
-                <span class="pipe-arrow">&rarr;</span>
-                <span class="pipe-node active" id="node-process"><i class="fa-solid fa-arrows-spin"></i> 2. Fiber Refining</span>
-                <span class="pipe-arrow">&rarr;</span>
-                <span class="pipe-node active" id="node-weave"><i class="fa-solid fa-scroll"></i> 3. Artisan Weaving</span>
-              </div>
-            </div>
-
-            <h3 class="project-title">Regen &mdash; Textile Waste Collection & Recycling</h3>
+            <h3 class="project-title">Regen &mdash; Textile Waste Collection & Recycling Platform</h3>
             <p class="project-desc">
-              Designed a comprehensive web-based concept and workflow to modernize <strong>textile-waste collection and circular recycling</strong>. Designed a pipeline connecting commercial waste collection with sustainable manufacturing workflows to empower local weavers and artisans.
+              Formulated a digital supply chain architecture and web platform to modernize <strong>textile waste recovery and industrial upcycling</strong>. Created an end-to-end telemetry workflow connecting commercial garment scrap collection with mechanized fiber refineries and artisan weaver clusters across Tamil Nadu.
             </p>
             <div class="project-highlights">
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> End-to-end supply chain mapping from scrap collection to spinning</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Web interface mockups connecting textile hubs with weaver clusters</div>
-              <div class="highlight-item"><i class="fa-solid fa-check"></i> Focus on sustainable socio-economic impact in Tamil Nadu textile belts</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>3-Tier Closed-Loop Model:</strong> Scrap batch telemetry, mechanical fiber refining, and yarn distribution</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Platform Architecture:</strong> Scalable React and REST API design with inventory logging and scheduling workflows</div>
+              <div class="highlight-item"><i class="fa-solid fa-check"></i> <strong>Socio-Economic Impact:</strong> Tailored for textile manufacturing belts in Tiruppur and Coimbatore</div>
             </div>
             <div class="tech-stack-row">
-              <span class="chip">System Design</span>
-              <span class="chip">Web Architecture</span>
-              <span class="chip">Sustainability</span>
-              <span class="chip">Workflow Automation</span>
+              <span class="chip">React.js Architecture</span>
+              <span class="chip">Node.js</span>
+              <span class="chip">Circular Supply Chain</span>
+              <span class="chip">RESTful APIs</span>
+              <span class="chip">Data Modeling</span>
             </div>
             <div class="project-card-footer">
-              <span class="badge-tag"><i class="fa-solid fa-leaf"></i> Eco-Tech Initiative</span>
-              <span class="hardware-indicator"><i class="fa-solid fa-lightbulb"></i> Concept Design</span>
+              <span class="badge-tag"><i class="fa-solid fa-leaf"></i> Sustainable Tech</span>
+              <span class="hardware-indicator"><i class="fa-solid fa-diagram-project"></i> Systems Architecture</span>
             </div>
           </article>
         </div>
       </div>
+    </section>
+
+    <!-- SECTION: ECE SILICON & COMMUNICATIONS PROTOCOL LAB -->
+    <section class="section ece-lab-section" id="ece-protocols">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-wave-square"></i> ECE Student Core Competency</span>
+          <h2 class="section-title">Hardware Silicon & <span class="gradient-text">Communication Protocols</span></h2>
+          <p class="section-subtitle">Real digital waveforms, bus protocols, and embedded microcontroller architecture</p>
+        </div>
+
+        <div class="ece-lab-grid">
+          <!-- Left: Interactive Digital Protocol Oscilloscope -->
+          <div class="oscilloscope-card glass-panel">
+            <div class="scope-screen-header">
+              <div class="scope-title">
+                <i class="fa-solid fa-tv"></i> DIGITAL LOGIC OSCILLOSCOPE // 100MS/s
+              </div>
+              <div class="scope-protocol-selector">
+                <button type="button" class="scope-btn active" onclick="switchProtocol('uart')">UART (115200)</button>
+                <button type="button" class="scope-btn" onclick="switchProtocol('i2c')">I&sup2;C (400kHz)</button>
+                <button type="button" class="scope-btn" onclick="switchProtocol('spi')">SPI (10MHz)</button>
+                <button type="button" class="scope-btn" onclick="switchProtocol('can')">CAN Bus</button>
+              </div>
+            </div>
+
+            <!-- Canvas for Animated Digital Waveform -->
+            <div class="scope-display-frame">
+              <canvas id="scope-canvas" class="scope-canvas" width="600" height="200" aria-label="Digital Protocol Signal Waveform"></canvas>
+              <div class="scope-hud-telemetry">
+                <span id="scope-protocol-name">PROTOCOL: UART (8-N-1)</span>
+                <span id="scope-baud-rate">RATE: 115,200 Baud</span>
+                <span class="scope-live-badge"><span class="ping-circle"></span> TX SIGNAL ACTIVE</span>
+              </div>
+            </div>
+
+            <div class="scope-timing-breakdown" id="scope-timing-desc">
+              <strong>UART Asynchronous Framing:</strong>
+              <span>Line idles HIGH (3.3V) &bull; Start Bit (0) &bull; 8 Data Bits LSB-first &bull; Stop Bit (1) &bull; No shared clock needed</span>
+            </div>
+          </div>
+
+          <!-- Right: ESP32-S3 Microcontroller Architecture Card -->
+          <div class="esp32-silicon-card glass-panel">
+            <div class="silicon-header">
+              <div class="silicon-icon"><i class="fa-solid fa-microchip"></i></div>
+              <div>
+                <h3>ESP32-S3 Dual-Core Architecture</h3>
+                <span>Xtensa&reg; 32-bit LX7 Microprocessor @ 240 MHz</span>
+              </div>
+            </div>
+
+            <div class="silicon-specs-grid">
+              <div class="spec-tile">
+                <span class="spec-label">CPU ARCHITECTURE</span>
+                <strong>Dual-Core 240MHz</strong>
+                <span>Xtensa LX7 with Vector Instructions</span>
+              </div>
+              <div class="spec-tile">
+                <span class="spec-label">MEMORY PIPELINE</span>
+                <strong>512KB SRAM + 8MB Flash</strong>
+                <span>Direct DMA & PSRAM Support</span>
+              </div>
+              <div class="spec-tile">
+                <span class="spec-label">WIRELESS COMM</span>
+                <strong>Wi-Fi 4 + BLE 5.0</strong>
+                <span>Long-Range & Mesh Networking</span>
+              </div>
+              <div class="spec-tile">
+                <span class="spec-label">PERIPHERAL BUSES</span>
+                <strong>UART, SPI, I&sup2;C, CAN</strong>
+                <span>45 Multiplexed GPIOs + 12-bit ADC</span>
+              </div>
+            </div>
+
+            <div class="protocols-tags-row">
+              <span class="p-pill"><i class="fa-solid fa-code-commit"></i> I&sup2;C (SDA/SCL)</span>
+              <span class="p-pill"><i class="fa-solid fa-network-wired"></i> SPI (MOSI/MISO/SCK/CS)</span>
+              <span class="p-pill"><i class="fa-solid fa-arrow-right-arrow-left"></i> UART (TX/RX)</span>
+              <span class="p-pill"><i class="fa-solid fa-car-battery"></i> CAN 2.0B</span>
+              <span class="p-pill"><i class="fa-solid fa-sliders"></i> PWM & Timers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: FULL-STACK MERN ARCHITECTURE (SILICON TO CLOUD) -->
+    <section class="section mern-section" id="mern-showcase">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-brands fa-react"></i> Full-Stack Web Development</span>
+          <h2 class="section-title">Bridging Silicon with the <span class="gradient-text">MERN Cloud</span></h2>
+          <p class="section-subtitle">How I connect edge embedded microcontrollers to scalable, production-ready MERN web platforms</p>
+        </div>
+
+        <div class="mern-pipeline-banner glass-panel">
+          <div class="pipeline-header-badge">
+            <i class="fa-solid fa-diagram-project"></i> END-TO-END IOT TO FULL-STACK MERN ARCHITECTURE
+          </div>
+
+          <!-- The Complete 5-Tier Silicon to Cloud Flow -->
+          <div class="fullstack-flow-steps">
+            <div class="fs-step">
+              <div class="fs-num">TIER 1</div>
+              <div class="fs-icon icon-silicon"><i class="fa-solid fa-microchip"></i></div>
+              <strong>Edge Silicon</strong>
+              <span>ESP32 / Sensors</span>
+              <p>Analog acquisition via 12-bit ADC, I&sup2;C sensor parsing & JSON formatting in firmware.</p>
+            </div>
+
+            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+
+            <div class="fs-step">
+              <div class="fs-num">TIER 2</div>
+              <div class="fs-icon icon-transport"><i class="fa-solid fa-wifi"></i></div>
+              <strong>Transport Layer</strong>
+              <span>Wi-Fi / REST / MQTT</span>
+              <p>Encrypted telemetry transmitted via HTTP POST payloads and WebSocket event streams.</p>
+            </div>
+
+            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+
+            <div class="fs-step">
+              <div class="fs-num">TIER 3</div>
+              <div class="fs-icon icon-node"><i class="fa-brands fa-node-js"></i></div>
+              <strong>Express & Node.js</strong>
+              <span>RESTful API Gateway</span>
+              <p>JWT auth middleware, rate-limiting, CORS handling, schema validation & business logic.</p>
+            </div>
+
+            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+
+            <div class="fs-step">
+              <div class="fs-num">TIER 4</div>
+              <div class="fs-icon icon-mongo"><i class="fa-solid fa-database"></i></div>
+              <strong>MongoDB Atlas</strong>
+              <span>NoSQL Cloud Storage</span>
+              <p>Mongoose document models, time-series telemetry collections & geospatial 2dsphere indexes.</p>
+            </div>
+
+            <div class="fs-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+
+            <div class="fs-step highlight-fs">
+              <div class="fs-num">TIER 5</div>
+              <div class="fs-icon icon-react"><i class="fa-brands fa-react"></i></div>
+              <strong>React.js Client</strong>
+              <span>Responsive Web UI</span>
+              <p>Dynamic charts, real-time WebSocket state re-renders, component hierarchies & modern glass UI.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- MERN Web Capabilities Showcase Cards -->
+        <div class="mern-talents-grid">
+          <div class="talent-card glass-panel">
+            <div class="talent-icon b-react"><i class="fa-brands fa-react"></i></div>
+            <h4>React.js Frontend Engineering</h4>
+            <p>Expertise in modern React: reusable functional components, custom hooks, Context API state management, responsive CSS architectures, and performant virtual DOM rendering.</p>
+            <ul class="talent-bullets">
+              <li><i class="fa-solid fa-check"></i> Custom hooks for API polling & WebSocket listeners</li>
+              <li><i class="fa-solid fa-check"></i> Mobile-first responsive layouts with pure CSS & Tailwind</li>
+              <li><i class="fa-solid fa-check"></i> Clean component hierarchies and modular file structuring</li>
+            </ul>
+          </div>
+
+          <div class="talent-card glass-panel">
+            <div class="talent-icon b-node"><i class="fa-brands fa-node-js"></i></div>
+            <h4>Node.js & Express.js Backend</h4>
+            <p>Designing secure, production-grade REST APIs: middleware pipelines, JWT authentication, request validation, error-handling architectures, and high-concurrency event loops.</p>
+            <ul class="talent-bullets">
+              <li><i class="fa-solid fa-check"></i> Modular MVC architectural patterns with separation of concerns</li>
+              <li><i class="fa-solid fa-check"></i> Bi-directional real-time communication via WebSockets (Socket.io)</li>
+              <li><i class="fa-solid fa-check"></i> Secure headers (Helmet), CORS configuration & rate limiting</li>
+            </ul>
+          </div>
+
+          <div class="talent-card glass-panel">
+            <div class="talent-icon b-mongo"><i class="fa-solid fa-database"></i></div>
+            <h4>MongoDB & Database Engineering</h4>
+            <p>Database modeling for scalable applications: document schema design with Mongoose, complex aggregation pipelines, relational SQL with joins, and geospatial 2dsphere indexing.</p>
+            <ul class="talent-bullets">
+              <li><i class="fa-solid fa-check"></i> Verified in Database and SQL (Infosys Springboard)</li>
+              <li><i class="fa-solid fa-check"></i> Optimized queries, index caching, and compound keys</li>
+              <li><i class="fa-solid fa-check"></i> Cloud hosting on MongoDB Atlas with automated backups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
     </section>
 
     <!-- EXPERIENCE & TRAINING -->
@@ -751,19 +879,19 @@
           </div>
         </div>
 
-        <!-- CERTIFICATIONS SECTION -->
+        <!-- CERTIFICATIONS SECTION (STRICTLY FULLSTACK, CODING & EMBEDDED SYSTEMS) -->
         <div class="certs-container">
           <div class="certs-header">
-            <h3><i class="fa-solid fa-award"></i> Professional Certifications (13 Verified)</h3>
+            <h3><i class="fa-solid fa-award"></i> Core Technical Certifications (9 Verified &bull; Full-Stack, Coding & Embedded)</h3>
             <div class="cert-search-box">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" id="cert-search" placeholder="Filter certifications (e.g., Networking, Java, Python, SQL, IoT)..." oninput="filterCertifications()">
+              <input type="text" id="cert-search" placeholder="Filter tech certifications (e.g., Networking, Java, Python, SQL, IoT)..." oninput="filterCertifications()">
             </div>
           </div>
 
           <div class="certs-grid" id="certs-grid">
             <!-- Cert 1: NVIDIA Networking -->
-            <div class="cert-card glass-panel" data-cert="nvidia networking coursera protocols ip routing">
+            <div class="cert-card glass-panel" data-cert="nvidia networking coursera protocols ip routing embedded communications">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-nvidia"><i class="fa-solid fa-network-wired"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> July 22, 2025</span>
@@ -771,7 +899,7 @@
               <div class="cert-info">
                 <span class="cert-org">NVIDIA &bull; Coursera</span>
                 <h4 class="cert-title">Introduction to Networking</h4>
-                <p class="cert-summary">Authorized by NVIDIA. Network architectures, switching, IP addressing, routing & network protocols.</p>
+                <p class="cert-summary">Authorized by NVIDIA. Network architectures, switching, IP addressing, routing & network communication protocols.</p>
                 <div class="cert-footer-row">
                   <span class="cert-badge">Networking & Protocols</span>
                   <a href="https://coursera.org/verify/YHPIZALRAE3Z" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">
@@ -782,7 +910,7 @@
             </div>
 
             <!-- Cert 2: Java Foundation -->
-            <div class="cert-card glass-panel" data-cert="java foundation infosys springboard programming oop">
+            <div class="cert-card glass-panel" data-cert="java foundation infosys springboard programming oop coding backend">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-java"><i class="fa-brands fa-java"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> April 14, 2025</span>
@@ -801,7 +929,7 @@
             </div>
 
             <!-- Cert 3: Data Structures (iamneo) -->
-            <div class="cert-card glass-panel" data-cert="data structures dsa iamneo niit skcet ece algorithms">
+            <div class="cert-card glass-panel" data-cert="data structures dsa iamneo niit skcet ece algorithms coding problem solving">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-neo"><i class="fa-solid fa-brain"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> January 30, 2026</span>
@@ -818,7 +946,7 @@
             </div>
 
             <!-- Cert 4: Google Python -->
-            <div class="cert-card glass-panel" data-cert="python google coursera programming automation scripting">
+            <div class="cert-card glass-panel" data-cert="python google coursera programming automation scripting coding">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-google"><i class="fa-brands fa-python"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> February 7, 2025</span>
@@ -837,7 +965,7 @@
             </div>
 
             <!-- Cert 5: Database and SQL -->
-            <div class="cert-card glass-panel" data-cert="database sql infosys springboard rdbms queries">
+            <div class="cert-card glass-panel" data-cert="database sql infosys springboard rdbms queries fullstack mern backend">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-sql"><i class="fa-solid fa-database"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> March 28, 2025</span>
@@ -847,7 +975,7 @@
                 <h4 class="cert-title">Database and SQL</h4>
                 <p class="cert-summary">Course Completion Certificate in relational database design, SQL querying, DDL/DML, joins & indexing.</p>
                 <div class="cert-footer-row">
-                  <span class="cert-badge">SQL & Databases</span>
+                  <span class="cert-badge">Full-Stack Database & SQL</span>
                   <a href="https://verify.onwingspan.com" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">
                     Verify Portal <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
@@ -855,25 +983,8 @@
               </div>
             </div>
 
-            <!-- Cert 6: TCS iON -->
-            <div class="cert-card glass-panel" data-cert="tcs ion career edge professional ai business soft skills">
-              <div class="cert-card-top">
-                <div class="cert-issuer-icon brand-tcs"><i class="fa-solid fa-briefcase"></i></div>
-                <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> June 2–16, 2025</span>
-              </div>
-              <div class="cert-info">
-                <span class="cert-org">Tata Consultancy Services &bull; TCS iON</span>
-                <h4 class="cert-title">Career Edge &mdash; Young Professional</h4>
-                <p class="cert-summary">ID: 240640-18443213-5016. Soft skills, Overview of AI, Business Etiquette, IT Foundational Skills, Accounting & Interview Readiness.</p>
-                <div class="cert-footer-row">
-                  <span class="cert-badge">Corporate Readiness & AI</span>
-                  <span class="cert-verified-tag"><i class="fa-solid fa-certificate"></i> ID: 240640-18443213-5016</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cert 7: Modern C++ -->
-            <div class="cert-card glass-panel" data-cert="c++ programming infosys springboard modern stl">
+            <!-- Cert 6: Modern C++ -->
+            <div class="cert-card glass-panel" data-cert="c++ programming infosys springboard modern stl coding embedded">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-cpp"><i class="fa-solid fa-code"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> Infosys Springboard</span>
@@ -883,7 +994,7 @@
                 <h4 class="cert-title">Modern C++ Challenger</h4>
                 <p class="cert-summary">Advanced C++ language fundamentals, STL containers, dynamic memory management and modern algorithmic paradigms.</p>
                 <div class="cert-footer-row">
-                  <span class="cert-badge">Modern C++</span>
+                  <span class="cert-badge">Modern C++ & STL</span>
                   <a href="https://verify.onwingspan.com" target="_blank" rel="noopener noreferrer" class="cert-verify-btn">
                     Verify Portal <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
@@ -891,8 +1002,8 @@
               </div>
             </div>
 
-            <!-- Cert 8: IoT NPTEL -->
-            <div class="cert-card glass-panel" data-cert="iot nptel iit kharagpur embedded sensor network">
+            <!-- Cert 7: IoT NPTEL -->
+            <div class="cert-card glass-panel" data-cert="iot nptel iit kharagpur embedded sensor network esp32 telemetry">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-iot"><i class="fa-solid fa-wifi"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> NPTEL</span>
@@ -902,82 +1013,14 @@
                 <h4 class="cert-title">Introduction to IoT</h4>
                 <p class="cert-summary">Sensors and actuators, wireless sensor networks, IoT architecture, edge processing & cloud telemetry.</p>
                 <div class="cert-footer-row">
-                  <span class="cert-badge">IoT & Sensors</span>
+                  <span class="cert-badge">Embedded Systems & IoT</span>
                   <span class="cert-verified-tag"><i class="fa-solid fa-building-columns"></i> IIT Kharagpur</span>
                 </div>
               </div>
             </div>
 
-            <!-- Cert 9: Google Data Analytics -->
-            <div class="cert-card glass-panel" data-cert="data analytics google coursera power bi sql spreadsheets">
-              <div class="cert-card-top">
-                <div class="cert-issuer-icon brand-google"><i class="fa-solid fa-chart-pie"></i></div>
-                <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> Coursera</span>
-              </div>
-              <div class="cert-info">
-                <span class="cert-org">Coursera &bull; Google</span>
-                <h4 class="cert-title">Google Data Analytics</h4>
-                <p class="cert-summary">Data cleaning, relational SQL queries, data ethics, statistical modeling, visualizations and Power BI dashboards.</p>
-                <div class="cert-footer-row">
-                  <span class="cert-badge">Analytics & SQL</span>
-                  <span class="cert-verified-tag"><i class="fa-brands fa-google"></i> Google Certified</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cert 10: Google AI Studio -->
-            <div class="cert-card glass-panel" data-cert="ai speech google ai studio multilingual generative llm">
-              <div class="cert-card-top">
-                <div class="cert-issuer-icon brand-ai"><i class="fa-solid fa-robot"></i></div>
-                <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> Google</span>
-              </div>
-              <div class="cert-info">
-                <span class="cert-org">Google &bull; AI Studio</span>
-                <h4 class="cert-title">Build & Deploy AI Apps with Google AI Studio</h4>
-                <p class="cert-summary">Multilingual speech app development, Gemini API integration, prompt engineering and cloud generative AI deployment.</p>
-                <div class="cert-footer-row">
-                  <span class="cert-badge">Generative AI</span>
-                  <span class="cert-verified-tag"><i class="fa-brands fa-google"></i> Google Studio</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cert 11: Design Thinking -->
-            <div class="cert-card glass-panel" data-cert="design thinking nptel iit madras prototyping empathy">
-              <div class="cert-card-top">
-                <div class="cert-issuer-icon brand-design"><i class="fa-solid fa-lightbulb"></i></div>
-                <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> NPTEL</span>
-              </div>
-              <div class="cert-info">
-                <span class="cert-org">NPTEL &bull; IIT Madras</span>
-                <h4 class="cert-title">Design Thinking &mdash; A Primer</h4>
-                <p class="cert-summary">Human-centered design process, empathy mapping, ideation, iterative prototyping and engineering solution testing.</p>
-                <div class="cert-footer-row">
-                  <span class="cert-badge">Engineering Design</span>
-                  <span class="cert-verified-tag"><i class="fa-solid fa-building-columns"></i> IIT Madras</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cert 12: Soft Skills -->
-            <div class="cert-card glass-panel" data-cert="soft skills personality nptel iit kanpur communication leadership">
-              <div class="cert-card-top">
-                <div class="cert-issuer-icon brand-soft"><i class="fa-solid fa-user-tie"></i></div>
-                <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> NPTEL</span>
-              </div>
-              <div class="cert-info">
-                <span class="cert-org">NPTEL &bull; IIT Kanpur</span>
-                <h4 class="cert-title">Developing Soft Skills & Personality</h4>
-                <p class="cert-summary">Interpersonal communication, active listening, conflict management, personality development and team dynamics.</p>
-                <div class="cert-footer-row">
-                  <span class="cert-badge">Professional Growth</span>
-                  <span class="cert-verified-tag"><i class="fa-solid fa-building-columns"></i> IIT Kanpur</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Cert 13: AWS CloudFormation -->
-            <div class="cert-card glass-panel" data-cert="aws cloud cloudformation guvi devops infrastructure iac">
+            <!-- Cert 8: AWS CloudFormation -->
+            <div class="cert-card glass-panel" data-cert="aws cloud cloudformation guvi devops infrastructure iac fullstack backend">
               <div class="cert-card-top">
                 <div class="cert-issuer-icon brand-aws"><i class="fa-brands fa-aws"></i></div>
                 <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> GUVI</span>
@@ -985,10 +1028,27 @@
               <div class="cert-info">
                 <span class="cert-org">GUVI</span>
                 <h4 class="cert-title">AWS CloudFormation</h4>
-                <p class="cert-summary">Infrastructure-as-Code (IaC), provisioning cloud architectures with JSON/YAML templates, stacks & resource management.</p>
+                <p class="cert-summary">Infrastructure-as-Code (IaC), provisioning cloud architectures with JSON/YAML templates, stacks & cloud backend resources.</p>
                 <div class="cert-footer-row">
-                  <span class="cert-badge">Cloud Infra & DevOps</span>
+                  <span class="cert-badge">Cloud Infra & Full-Stack</span>
                   <span class="cert-verified-tag"><i class="fa-brands fa-aws"></i> AWS Tech</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cert 9: Google AI Studio -->
+            <div class="cert-card glass-panel" data-cert="ai speech google ai studio multilingual generative llm fullstack api">
+              <div class="cert-card-top">
+                <div class="cert-issuer-icon brand-ai"><i class="fa-solid fa-robot"></i></div>
+                <span class="cert-date-badge"><i class="fa-regular fa-calendar"></i> Google</span>
+              </div>
+              <div class="cert-info">
+                <span class="cert-org">Google &bull; AI Studio</span>
+                <h4 class="cert-title">Build & Deploy AI Apps with Google AI Studio</h4>
+                <p class="cert-summary">Multilingual speech app development, Gemini API integration, prompt engineering and full-stack cloud AI deployment.</p>
+                <div class="cert-footer-row">
+                  <span class="cert-badge">Full-Stack AI Apps</span>
+                  <span class="cert-verified-tag"><i class="fa-brands fa-google"></i> Google Studio</span>
                 </div>
               </div>
             </div>
@@ -1381,14 +1441,10 @@
             <span>&bull; Data Structures &mdash; iamneo / NIIT Venture (SKCET), January 2026</span>
             <span>&bull; Crash Course on Python &mdash; Google (Coursera), February 2025</span>
             <span>&bull; Database and SQL &mdash; Infosys Springboard, March 2025</span>
-            <span>&bull; TCS iON Career Edge &ndash; Young Professional &mdash; TCS, June 2025</span>
             <span>&bull; Modern C++ Challenger &mdash; Infosys Springboard</span>
             <span>&bull; Introduction to IoT &mdash; NPTEL, IIT Kharagpur</span>
-            <span>&bull; Google Data Analytics &mdash; Google (Coursera)</span>
-            <span>&bull; Build & Deploy AI Apps with Google AI Studio &mdash; Google</span>
-            <span>&bull; Design Thinking &ndash; A Primer &mdash; NPTEL, IIT Madras</span>
-            <span>&bull; Developing Soft Skills & Personality &mdash; NPTEL, IIT Kanpur</span>
             <span>&bull; AWS CloudFormation &mdash; GUVI</span>
+            <span>&bull; Build & Deploy AI Apps with Google AI Studio &mdash; Google</span>
           </div>
         </section>
 

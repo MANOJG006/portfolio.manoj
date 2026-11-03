@@ -1,7 +1,6 @@
 /**
- * MANOJ G — PORTFOLIO LOCAL NODE.JS SERVER
- * Pure Node.js / MERN Stack HTTP Server
- * Serving on http://localhost:3000
+ * Manoj G portfolio local server.
+ * Provides a lightweight, secure file server for the portfolio app.
  */
 
 const http = require('http');
@@ -10,6 +9,13 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const ROOT_DIR = __dirname;
+
+const SECURITY_HEADERS = {
+  'X-Content-Type-Options': 'nosniff',
+  'X-Frame-Options': 'SAMEORIGIN',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'geolocation=(), microphone=(), camera=()'
+};
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -25,68 +31,115 @@ const MIME_TYPES = {
   '.txt': 'text/plain; charset=utf-8'
 };
 
-const server = http.createServer((req, res) => {
-  // Parse URL & normalize path
-  let reqPath = decodeURI(req.url.split('?')[0]);
-  if (reqPath === '/' || reqPath === '') {
-    reqPath = '/index.html';
-  } else if (reqPath === '/resume') {
-    reqPath = '/resume.html';
+function normalizeRequestPath(rawUrl) {
+  const requestUrl = rawUrl || '/';
+  const pathname = new URL(requestUrl, 'http://localhost').pathname;
+
+  if (pathname === '/' || pathname === '') {
+    return '/index.html';
   }
 
-  // Prevent directory traversal attacks
-  const safePath = path.normalize(path.join(ROOT_DIR, reqPath));
-  if (!safePath.startsWith(ROOT_DIR)) {
-    res.writeHead(403, { 'Content-Type': 'text/plain' });
-    res.end('403 Forbidden');
+  if (pathname === '/resume') {
+    return '/resume.html';
+  }
+
+  return pathname;
+}
+
+function resolveSafePath(requestPath) {
+  const normalizedPath = requestPath.startsWith('/') ? requestPath.slice(1) : requestPath;
+  const candidatePath = path.resolve(ROOT_DIR, normalizedPath);
+
+  if (!candidatePath.startsWith(ROOT_DIR)) {
+    throw new Error('Forbidden');
+  }
+
+  return candidatePath;
+}
+
+function sendHtml(res, statusCode, title, bodyText) {
+  const html = `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>${title}</title>
+        <style>
+          body { font-family: Arial, sans-serif; text-align: center; padding: 4rem 1.5rem; background: #f8fafc; color: #0f172a; }
+          .card { max-width: 560px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06); }
+          a { color: #0284c7; text-decoration: none; }
+          a:hover { text-decoration: underline; }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <h1>${statusCode}</h1>
+          <p>${bodyText}</p>
+          <p><a href="/">Return to portfolio</a></p>
+        </div>
+      </body>
+    </html>`;
+
+  res.writeHead(statusCode, { 'Content-Type': 'text/html; charset=utf-8', ...SECURITY_HEADERS });
+  res.end(html);
+}
+
+async function serveFile(res, requestPath, method) {
+  let resolvedPath;
+
+  try {
+    resolvedPath = resolveSafePath(requestPath);
+  } catch (error) {
+    sendHtml(res, 403, 'Forbidden', 'Access denied to the requested resource.');
     return;
   }
 
-  fs.stat(safePath, (err, stats) => {
-    if (err) {
-      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-      res.end(`
-        <!DOCTYPE html>
-        <html>
-        <head><title>404 Not Found</title></head>
-        <body style="font-family: sans-serif; text-align: center; padding: 4rem;">
-          <h2>404 - File Not Found</h2>
-          <p><a href="/" style="color: #0284c7;">Return to Portfolio Home</a></p>
-        </body>
-        </html>
-      `);
+  let filePathToRead = resolvedPath;
+
+  try {
+    const stats = await fs.promises.stat(resolvedPath);
+    if (stats.isDirectory()) {
+      filePathToRead = path.join(resolvedPath, 'index.html');
+    }
+  } catch (error) {
+    sendHtml(res, 404, 'Not Found', 'The page you requested could not be found.');
+    return;
+  }
+
+  const ext = path.extname(filePathToRead).toLowerCase();
+  const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+  try {
+    const content = await fs.promises.readFile(filePathToRead);
+    const headers = {
+      'Content-Type': contentType,
+      'Cache-Control': 'no-cache, must-revalidate',
+      ...SECURITY_HEADERS
+    };
+
+    if (method && method.toUpperCase() === 'HEAD') {
+      res.writeHead(200, headers);
+      res.end();
       return;
     }
 
-    let filePathToRead = safePath;
-    if (stats.isDirectory()) {
-      filePathToRead = path.join(safePath, 'index.html');
-    }
+    res.writeHead(200, headers);
+    res.end(content);
+  } catch (error) {
+    sendHtml(res, 500, 'Server Error', 'The file could not be loaded.');
+  }
+}
 
-    const ext = path.extname(filePathToRead).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
-    fs.readFile(filePathToRead, (readErr, content) => {
-      if (readErr) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('500 Internal Server Error');
-        return;
-      }
-
-      res.writeHead(200, {
-        'Content-Type': contentType,
-        'Cache-Control': 'no-cache, must-revalidate'
-      });
-      res.end(content);
-    });
-  });
+const server = http.createServer(async (req, res) => {
+  const requestPath = normalizeRequestPath(req.url);
+  await serveFile(res, requestPath, req.method);
 });
 
 server.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`🚀 Manoj G Portfolio — Local Node.js / MERN Server`);
+  console.log('=======================================================');
+  console.log('🚀 Manoj G Portfolio — Local Node.js Server');
   console.log(`📡 Status: Operational`);
-  console.log(`🌐 Local URL:   http://localhost:${PORT}`);
-  console.log(`📄 Resume URL:  http://localhost:${PORT}/resume.html`);
-  console.log(`=======================================================`);
+  console.log(`🌐 Local URL: http://localhost:${PORT}`);
+  console.log(`📄 Resume URL: http://localhost:${PORT}/resume.html`);
+  console.log('=======================================================');
 });
