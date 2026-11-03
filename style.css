@@ -13,32 +13,37 @@
   --bg-elevated: #f7f8fa;
   --bg-glass: rgba(255, 255, 255, 0.92);
 
-  /* Typography Colors - Deep Charcoal & Muted Tones */
-  --text-main: #171717;      /* Deep Charcoal */
-  --text-muted: #383838;
-  --text-dim: #64748b;
-  --text-light: #94a3b8;
+  /* Typography Colors - Exact User Specifications */
+  --text-main: #242424;       /* Primary Body Text: Charcoal */
+  --text-muted: #666666;      /* Descriptions & Supporting Info: Medium Grey */
+  --text-dim: #777777;
+  --text-light: #999999;
 
-  /* Premium Champagne Gold Palette */
-  --gold-primary: #C6A15B;   /* Champagne Gold */
-  --gold-hover: #b38e46;
+  /* Premium Champagne Gold Palette (Consistent for all Headings & Subheadings) */
+  --gold-primary: #C6A15B;    /* Champagne Gold */
+  --gold-heading: #9E7728;    /* Accessible champagne gold for headings (contrast compliant) */
+  --gold-hover: #8B6520;
   --gold-light: rgba(198, 161, 91, 0.10);
   --gold-border: rgba(198, 161, 91, 0.35);
   --gold-border-thin: rgba(198, 161, 91, 0.28);
   --gold-glow: rgba(198, 161, 91, 0.22);
-  --gold-gradient: linear-gradient(135deg, #C6A15B 0%, #D4AF37 50%, #9B782E 100%);
+  --gold-gradient: linear-gradient(135deg, #C6A15B 0%, #D4AF37 50%, #9E7728 100%);
   --gold-gradient-subtle: linear-gradient(135deg, rgba(198, 161, 91, 0.12) 0%, rgba(212, 175, 55, 0.04) 100%);
 
-  /* Supporting Colours (Refined, Non-Crowded Accents) */
-  --blue-primary: #0284c7;   /* Electric Blue */
-  --blue-hover: #0369a1;
-  --blue-light: rgba(2, 132, 199, 0.08);
-  --violet: #7c3aed;         /* Violet */
-  --violet-light: rgba(124, 58, 237, 0.08);
-  --teal: #0d9488;           /* Teal */
-  --teal-light: rgba(13, 148, 136, 0.08);
-  --orange: #ea580c;         /* Subtle Orange */
-  --orange-light: rgba(234, 88, 12, 0.08);
+  /* Supporting Colours - Exact User Specifications */
+  --blue-primary: #3978D6;    /* Links & Interactive Elements: Electric Blue */
+  --blue-hover: #265cb8;
+  --blue-light: rgba(57, 120, 214, 0.08);
+
+  --teal: #168C83;            /* Selected Technical Highlights: Teal */
+  --teal-light: rgba(22, 140, 131, 0.08);
+
+  --violet: #8064B5;          /* Secondary Accent: Muted Violet */
+  --violet-light: rgba(128, 100, 181, 0.08);
+
+  --orange: #C77A36;          /* Secondary Accent: Warm Orange */
+  --orange-light: rgba(199, 122, 54, 0.08);
+
   --emerald: #059669;
   --emerald-light: rgba(5, 150, 105, 0.08);
   --red: #dc2626;
@@ -507,6 +512,58 @@ button:active,
   position: relative;
 }
 
+/* ==========================================================================
+   ALTERNATING SECTION BACKGROUNDS (#FFFFFF & #F7F8FA)
+   ========================================================================== */
+.hero-section {
+  background-color: var(--bg-page);
+}
+
+.about-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skills-section {
+  background-color: var(--bg-page);
+}
+
+.projects-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ece-lab-section {
+  background-color: var(--bg-page);
+}
+
+.mern-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.experience-section {
+  background-color: var(--bg-page);
+}
+
+.education-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.qr-section {
+  background-color: var(--bg-page);
+}
+
+.contact-section {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
 .section-header {
   text-align: center;
   max-width: 750px;
@@ -534,12 +591,33 @@ button:active,
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
-  color: var(--text-main);
+  color: var(--gold-heading);
 }
 
 .section-subtitle {
   color: var(--text-muted);
   font-size: 1.05rem;
+}
+
+/* Consistent Champagne Gold Section and Subsection Headings Across the Portfolio */
+.hero-title,
+.hero-professional-title h2,
+.about-icon-header h3,
+.about-details-card h3,
+.category-header h3,
+.expanded-card-title,
+.silicon-header h3,
+.pipeline-header-badge,
+.talent-card h4,
+.role-title,
+.edu-degree,
+.cert-title,
+.certs-header h3,
+.qr-card-title,
+.contact-info-card h3,
+.contact-form-card h3,
+.modal-header h3 {
+  color: var(--gold-heading);
 }
 
 /* ==========================================================================
@@ -715,7 +793,13 @@ button:active,
   border-color: var(--blue-primary);
   color: var(--blue-primary);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+  box-shadow: 0 4px 12px rgba(57, 120, 214, 0.15);
+}
+
+.social-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
 }
 
 /* ==========================================================================
