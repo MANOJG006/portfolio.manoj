@@ -3447,19 +3447,23 @@ body.js-ready .reveal-on-scroll:not(.is-revealed) {
   }
 
   .project-mobile-drawer.active {
-    max-height: 1400px;
+    max-height: 2500px;
     opacity: 1;
     margin-top: 0.85rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    background: #ffffff;
+    border: 1px solid var(--border-gold-thin);
+    border-radius: var(--radius-md);
+    padding: 1.35rem 1.15rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
   }
 
   .project-mobile-drawer .project-expanded-panel {
     display: flex;
-    background: #ffffff;
-    border: 1px solid var(--border-gold-thin);
-    border-radius: var(--radius-md);
-    padding: 1.35rem;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
   }
 }
 
@@ -4972,19 +4976,23 @@ body.js-ready .reveal-on-scroll:not(.is-revealed) {
   }
 
   .project-mobile-drawer.active {
-    max-height: 1400px;
+    max-height: 2500px;
     opacity: 1;
     margin-top: 0.85rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    background: #ffffff;
+    border: 1px solid var(--border-gold-thin);
+    border-radius: var(--radius-md);
+    padding: 1.35rem 1.15rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
   }
 
   .project-mobile-drawer .project-expanded-panel {
     display: flex;
-    background: #ffffff;
-    border: 1px solid var(--border-gold-thin);
-    border-radius: var(--radius-md);
-    padding: 1.35rem;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
   }
 }
 
@@ -5389,13 +5397,27 @@ body.js-ready .reveal-on-scroll:not(.is-revealed) {
 @media (max-width: 640px) {
   .strip-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
   .recruiter-strip-card {
-    padding: 1.25rem;
+    padding: 1.15rem 1rem;
   }
   .strip-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .strip-footer .strip-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.85rem;
+    align-items: center;
+  }
+  .strip-bullet {
+    display: none;
+  }
+  .strip-link {
+    font-size: 0.8rem;
   }
 }
 

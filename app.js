@@ -2013,6 +2013,20 @@ window.openProjectLink = function(url) {
 
 window.toggleProject = function(projectId) {
   const isMobile = window.innerWidth <= 992;
+  if (isMobile && activeProjectId === projectId) {
+    const drawer = document.getElementById(`mobile-drawer-${projectId}`);
+    const btn = document.getElementById(`project-btn-${projectId}`);
+    if (drawer && drawer.classList.contains('active')) {
+      drawer.classList.remove('active');
+      drawer.innerHTML = '';
+      if (btn) {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      activeProjectId = null;
+      return;
+    }
+  }
   activeProjectId = projectId;
   updateProjectUI(projectId, isMobile);
 };
