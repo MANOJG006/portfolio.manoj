@@ -10,13 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initInteractiveProjects();
   initResumeModal();
-  initTouchAnimation();
   initQRCodes();
   initScrollAnimations();
   init3DCardTilt();
   initBackgroundTechCanvas();
   initThreeDepthScene();
-  initCursorGlow();
   initBackToTop();
   initHero3DProcessor();
   initProject3DCar();
@@ -28,40 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. TOUCH & CLICK INTERACTIVE ANIMATION (CIRCUIT CROSSHAIR & RIPPLE)
+   1. TOUCH & CLICK INTERACTIVE ANIMATION (DISABLED PER USER REQUEST)
    ========================================================================== */
 function initTouchAnimation() {
-  const createTouchPulse = (x, y) => {
-    const ripple = document.createElement('div');
-    ripple.className = 'touch-ripple';
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-    document.body.appendChild(ripple);
-
-    const circuit = document.createElement('div');
-    circuit.className = 'ece-circuit-ripple';
-    circuit.style.left = `${x}px`;
-    circuit.style.top = `${y}px`;
-    document.body.appendChild(circuit);
-
-    const sparkle = document.createElement('div');
-    sparkle.className = 'touch-sparkle';
-    sparkle.style.left = `${x}px`;
-    sparkle.style.top = `${y}px`;
-    document.body.appendChild(sparkle);
-
-    setTimeout(() => {
-      ripple.remove();
-      circuit.remove();
-      sparkle.remove();
-    }, 700);
-  };
-
-  window.addEventListener('pointerdown', (e) => {
-    // Avoid double ripples on form inputs
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    createTouchPulse(e.clientX, e.clientY);
-  }, { passive: true });
+  // Touch ripple and sparkle animations removed per user request
 }
 
 /* ==========================================================================
