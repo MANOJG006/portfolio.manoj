@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manoj G - Resume (PDF Ready)</title>
+  <title>Manoj G - Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,42 +16,59 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #0f172a;
-      color: #1e293b;
-      line-height: 1.45;
-      padding: 2rem 1rem;
+      color: #111827;
+      line-height: 1.32;
+      padding: 1.5rem 1rem;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Web Toolbar (Hidden when printing to PDF) */
     .toolbar {
-      max-width: 820px;
-      margin: 0 auto 1.5rem auto;
+      max-width: 800px;
+      margin: 0 auto 1.25rem auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #1e293b;
-      padding: 0.75rem 1.5rem;
+      padding: 0.65rem 1.25rem;
       border-radius: 8px;
       color: #f8fafc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
     .toolbar-title {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toolbar-title .badge-one-page {
+      background: #0284c7;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     .toolbar-actions {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.5rem 1rem;
+      gap: 0.35rem;
+      padding: 0.45rem 0.85rem;
       border-radius: 6px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
@@ -77,163 +94,246 @@
       background: #475569;
     }
 
-    /* Standard A4 Sheet */
+    /* Standard One-Page A4 Sheet Canvas */
     .resume-page {
-      max-width: 820px;
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
       margin: 0 auto;
       background: #ffffff;
-      padding: 2.2rem 2.5rem;
-      border-radius: 4px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      padding: 8mm 12mm;
+      border-radius: 2px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     /* Header */
     .header {
-      border-bottom: 2px solid #0f172a;
-      padding-bottom: 0.75rem;
-      margin-bottom: 1rem;
+      text-align: left;
+      border-bottom: 1.5px solid #111827;
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.45rem;
     }
 
     .name {
-      font-size: 1.9rem;
+      font-size: 1.65rem;
       font-weight: 800;
-      letter-spacing: 0.05em;
-      color: #0f172a;
+      letter-spacing: 0.03em;
+      color: #000000;
+      line-height: 1.1;
+      text-transform: uppercase;
     }
 
     .headline {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: #0369a1;
-      letter-spacing: 0.05em;
-      margin-top: 0.15rem;
-      margin-bottom: 0.4rem;
+      color: #111827;
+      letter-spacing: 0.02em;
+      margin-top: 0.2rem;
+      margin-bottom: 0.25rem;
     }
 
     .contact-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.25rem;
-      font-size: 0.76rem;
-      color: #475569;
+      font-size: 0.69rem;
+      color: #374151;
+      line-height: 1.35;
     }
 
     .contact-row a {
-      color: #475569;
+      color: #111827;
       text-decoration: none;
     }
 
-    .contact-row i {
-      color: #0284c7;
-      margin-right: 0.25rem;
+    .contact-row a:hover {
+      text-decoration: underline;
     }
 
-    /* Sections */
+    .sep {
+      color: #6b7280;
+      margin: 0 0.3rem;
+    }
+
+    /* Section Headings */
     .section {
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.42rem;
     }
 
     .section-title {
-      font-size: 0.85rem;
+      font-size: 0.74rem;
       font-weight: 800;
-      color: #0f172a;
-      border-bottom: 1.5px solid #cbd5e1;
-      padding-bottom: 0.15rem;
-      margin-bottom: 0.45rem;
-      letter-spacing: 0.05em;
+      color: #000000;
+      border-bottom: 1px solid #111827;
+      padding-bottom: 0.1rem;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    p {
-      font-size: 0.78rem;
-      color: #334155;
-      line-height: 1.45;
+    p, .desc {
+      font-size: 0.68rem;
+      color: #1f2937;
+      line-height: 1.32;
     }
 
     /* Education & Entries */
     .entry {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.28rem;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
     }
 
     .entry-header {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
+      align-items: baseline;
+      font-size: 0.71rem;
     }
 
     .entry-title {
       font-weight: 700;
-      color: #0f172a;
+      color: #000000;
     }
 
     .entry-date {
       font-weight: 600;
-      color: #64748b;
-      font-size: 0.75rem;
+      color: #374151;
+      font-size: 0.68rem;
+      white-space: nowrap;
     }
 
     .entry-sub {
-      font-size: 0.76rem;
-      color: #475569;
-      margin-top: 0.1rem;
+      font-size: 0.68rem;
+      color: #374151;
+      margin-top: 0.02rem;
     }
 
-    /* Skills */
-    .skills-block p {
+    /* Technical Skills */
+    .skills-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.16rem;
+    }
+
+    .skill-line {
+      font-size: 0.68rem;
+      color: #1f2937;
+      line-height: 1.3;
+    }
+
+    .skill-line strong {
+      color: #000000;
+      font-weight: 700;
+    }
+
+    /* Projects */
+    .project-entry {
       margin-bottom: 0.25rem;
-      font-size: 0.77rem;
     }
 
-    .skills-block strong {
-      color: #0f172a;
+    .project-entry:last-child {
+      margin-bottom: 0;
     }
 
-    /* Projects list */
+    .project-title {
+      font-size: 0.71rem;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .project-cat {
+      font-weight: 600;
+      color: #374151;
+    }
+
     .bullet-list {
-      list-style-type: disc;
-      padding-left: 1.15rem;
-      margin-top: 0.15rem;
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 0.05rem;
     }
 
     .bullet-list li {
-      font-size: 0.77rem;
-      color: #334155;
-      margin-bottom: 0.15rem;
-      line-height: 1.4;
+      font-size: 0.68rem;
+      color: #1f2937;
+      line-height: 1.3;
+      position: relative;
+      padding-left: 0.65rem;
+      margin-bottom: 0.05rem;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      color: #000000;
+      font-weight: bold;
     }
 
     /* Certifications Grid */
     .certs-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.25rem 1rem;
-      font-size: 0.76rem;
-      color: #334155;
+      gap: 0.12rem 0.65rem;
+      font-size: 0.67rem;
+      color: #1f2937;
+      line-height: 1.28;
     }
 
-    .areas-text {
-      font-size: 0.76rem;
-      color: #334155;
-      font-weight: 500;
+    .cert-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
     }
 
-    /* Print Optimization */
+    .cert-item::before {
+      content: "▪";
+      color: #000000;
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    /* Languages */
+    .languages-text {
+      font-size: 0.68rem;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    /* Strict A4 Print Styles (Strictly 1 Page) */
     @media print {
-      body {
-        background: #ffffff;
-        padding: 0;
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
       }
+
       .toolbar {
         display: none !important;
       }
+
       .resume-page {
-        box-shadow: none;
-        padding: 1.5rem 2rem;
-        max-width: 100%;
-        margin: 0;
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        box-shadow: none !important;
+        padding: 8mm 12mm !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
       }
+
       @page {
-        margin: 12mm 15mm;
         size: A4 portrait;
+        margin: 0;
       }
     }
   </style>
@@ -243,11 +343,15 @@
   <!-- Web Toolbar (Hidden when printing to PDF) -->
   <div class="toolbar">
     <div class="toolbar-title">
-      <i class="fa-solid fa-file-pdf"></i> Manoj G &mdash; Resume Preview
+      <i class="fa-solid fa-file-pdf"></i> Manoj G &mdash; Professional Resume
+      <span class="badge-one-page">Exact 1-Page Format</span>
     </div>
     <div class="toolbar-actions">
-      <button class="btn btn-primary" onclick="window.print()">
-        <i class="fa-solid fa-print"></i> Print / Save as PDF
+      <a href="Manoj_G_Resume.pdf" download="Manoj_G_Resume.pdf" class="btn btn-primary">
+        <i class="fa-solid fa-download"></i> Download PDF
+      </a>
+      <button class="btn btn-secondary" onclick="window.print()">
+        <i class="fa-solid fa-print"></i> Print
       </button>
       <a href="index.html" class="btn btn-secondary">
         <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
@@ -255,18 +359,24 @@
     </div>
   </div>
 
-  <!-- A4 Printable Resume Sheet -->
+  <!-- A4 Printable Resume Sheet (Strictly 1 Page) -->
   <div class="resume-page">
     <header class="header">
-      <h1 class="name">MANOJ .G</h1>
-      <div class="headline">ASPIRING SOFTWARE DEVELOPER | FULL-STACK DEVELOPER &bull; ECE STUDENT | EMBEDDED SYSTEMS &amp; IoT</div>
+      <h1 class="name">MANOJ G</h1>
+      <div class="headline">Aspiring Software Developer | Problem Solver | ECE Student | Embedded Systems &amp; IoT</div>
       <div class="contact-row">
-        <span><i class="fa-solid fa-location-dot"></i> Salem / Coimbatore, Tamil Nadu</span>
-        <span><i class="fa-solid fa-phone"></i> +91 8438817326</span>
-        <span><i class="fa-solid fa-envelope"></i> <a href="mailto:manojkovarthini@gmail.com">manojkovarthini@gmail.com</a></span>
-        <span><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank">linkedin.com/in/manoj-g-33797a360</a></span>
-        <span><i class="fa-brands fa-github"></i> <a href="https://github.com/MANOJG006" target="_blank">github.com/MANOJG006</a></span>
-        <span><svg viewBox="0 0 24 24" width="13" height="13" fill="#0284c7" aria-hidden="true" style="vertical-align: -2px; margin-right: 3px;"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg> <a href="https://leetcode.com/u/MANOJGNANASEKARAN/" target="_blank">leetcode.com/u/MANOJGNANASEKARAN</a></span>
+        <span>Salem &bull; Coimbatore, Tamil Nadu</span>
+        <span class="sep">&bull;</span>
+        <span>+91 8438817326</span>
+        <span class="sep">&bull;</span>
+        <a href="mailto:manojkovarthini@gmail.com">manojkovarthini@gmail.com</a>
+      </div>
+      <div class="contact-row" style="margin-top: 0.12rem;">
+        <a href="https://linkedin.com/in/manoj-g-33797a360" target="_blank">linkedin.com/in/manoj-g-33797a360</a>
+        <span class="sep">&bull;</span>
+        <a href="https://github.com/MANOJG006" target="_blank">github.com/MANOJG006</a>
+        <span class="sep">&bull;</span>
+        <a href="https://leetcode.com/u/MANOJGNANASEKARAN" target="_blank">leetcode.com/u/MANOJGNANASEKARAN</a>
       </div>
     </header>
 
@@ -274,7 +384,7 @@
     <section class="section">
       <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
       <p>
-        Pre-final-year Electronics and Communication Engineering student at Sri Krishna College of Engineering and Technology (SKCET), Coimbatore, with a strong focus on software development and practical engineering. Experienced in full-stack web development using the MERN stack (MongoDB, Express, React, Node.js), programming in Java, Modern C++, and Python, alongside hands-on embedded systems and IoT implementations using ESP32 and Arduino. Actively strengthening Data Structures &amp; Algorithms and core software fundamentals for software engineering roles.
+        Pre-final-year ECE student at <strong>Sri Krishna College of Engineering and Technology (SKCET)</strong>, Coimbatore, with hands-on experience in full-stack web development with the <strong>MERN stack</strong>, problem solving in <strong>Java and Modern C++</strong>, and IoT prototypes on <strong>ESP32 and Arduino</strong>. Seeking software and full-stack development opportunities.
       </p>
     </section>
 
@@ -286,125 +396,120 @@
           <span class="entry-title">Sri Krishna College of Engineering and Technology (SKCET), Coimbatore</span>
           <span class="entry-date">2024 &ndash; 2028</span>
         </div>
-        <div class="entry-sub">B.E. Electronics and Communication Engineering &bull; <strong>CGPA: 8.36 / 10</strong></div>
+        <div class="entry-sub">Bachelor of Engineering (B.E.) &mdash; Electronics and Communication Engineering &bull; <strong>CGPA: 8.36 / 10</strong></div>
       </div>
       <div class="entry">
         <div class="entry-header">
-          <span class="entry-title">Government Model School, Konganapuram</span>
-          <span class="entry-date">2021 &ndash; 2024</span>
+          <span class="entry-title">Government Model School, Konganapuram, Salem</span>
+          <span class="entry-date">2023 &ndash; 2024</span>
         </div>
-        <div class="entry-sub">Higher Secondary Certificate (HSC) | 2023&ndash;2024 | <strong>91%</strong></div>
-        <div class="entry-sub">Secondary School Leaving Certificate (SSLC) | 2021&ndash;2022 | <strong>94%</strong></div>
+        <div class="entry-sub">Higher Secondary Certificate (HSC) &bull; <strong>91%</strong></div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Government Model School, Konganapuram, Salem</span>
+          <span class="entry-date">2021 &ndash; 2022</span>
+        </div>
+        <div class="entry-sub">Secondary School Leaving Certificate (SSLC) &bull; <strong>94%</strong></div>
       </div>
     </section>
 
     <!-- Technical Skills -->
-    <section class="section skills-block">
+    <section class="section">
       <h2 class="section-title">TECHNICAL SKILLS</h2>
-      <p><strong>Embedded Systems & IoT:</strong> ESP32, Arduino UNO, NodeMCU, Arduino IDE, microcontrollers, sensor & actuator interfacing, PWM, IoT telemetry</p>
-      <p><strong>Full-Stack MERN:</strong> React.js, Node.js, Express.js, MongoDB, RESTful APIs, HTML5, CSS3, JavaScript (ES6+)</p>
-      <p><strong>Problem Solving & DSA:</strong> Data Structures & Algorithms, Java (Foundation Certified), Modern C++ (Infosys Challenger), Python, SQL, Complexity Analysis</p>
-      <p><strong>Communication Protocols:</strong> UART, SPI, I²C, basic CAN, Optical Fiber Communication (OFC)</p>
-      <p><strong>Hardware & Prototyping:</strong> Ultrasonic sensors, servo motors, L298N motor driver, OLED displays, keypads, RGB LEDs, buzzers</p>
-      <p><strong>Software & Tools:</strong> Git, GitHub, MATLAB, Tinkercad, Power BI, VS Code, MS Office</p>
+      <div class="skills-block">
+        <div class="skill-line"><strong>Programming &amp; Problem Solving:</strong> Java, Modern C++, C &amp; Embedded C (AI-Assisted), Python, SQL, Data Structures &amp; Algorithms (DSA)</div>
+        <div class="skill-line"><strong>Full-Stack Web Development:</strong> MERN Stack (AI-Assisted), React.js, Node.js, Express.js, MongoDB, RESTful APIs, HTML5, CSS3, JavaScript (ES6+), Antigravity</div>
+        <div class="skill-line"><strong>Embedded Systems &amp; IoT:</strong> ESP32, Arduino UNO, sensor &amp; actuator interfacing, IoT telemetry, Arduino IDE</div>
+        <div class="skill-line"><strong>Developer Tools &amp; Hardware:</strong> Git, GitHub, VS Code, Postman, MATLAB, Tinkercad</div>
+      </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Featured Engineering Projects -->
     <section class="section">
-      <h2 class="section-title">PROJECTS</h2>
-      <div class="entry">
-        <div class="entry-title">1. Intelligent Path Detection Car</div>
+      <h2 class="section-title">FEATURED ENGINEERING PROJECTS</h2>
+      
+      <div class="project-entry">
+        <div class="project-title">1. Intelligent Path Detection Car <span class="project-cat">| IoT</span></div>
         <ul class="bullet-list">
-          <li>Developed an ESP32-based car prototype for obstacle detection and autonomous avoidance.</li>
-          <li>Integrated an ultrasonic sensor (HC-SR04), servo motor, and L298N motor driver for sensing and motor control.</li>
-          <li>Implemented obstacle-based path selection algorithms demonstrating embedded programming and hardware integration.</li>
+          <li>Developed an IoT-based autonomous car that detects obstacles in real time and steers clear of them automatically.</li>
+          <li>Applied in automated vehicle navigation, where the car scans its surroundings and selects a safe path on its own.</li>
         </ul>
       </div>
 
-      <div class="entry">
-        <div class="entry-title">2. Smart Voting System</div>
+      <div class="project-entry">
+        <div class="project-title">2. Smart Voting System <span class="project-cat">| Embedded System</span></div>
         <ul class="bullet-list">
-          <li>Developed an ESP32-based electronic voting prototype using a 0.96" I²C OLED display, keypad, RGB LEDs, and buzzer.</li>
-          <li>Implemented vote validation, user visual feedback, buzzer confirmation, and secure vote counting.</li>
-          <li>Practised low-level microcontroller programming and peripheral interfacing.</li>
+          <li>Built an embedded electronic voting machine that records votes by keypad, validates each vote, prevents tampering, and tabulates results live.</li>
+          <li>Applied in secure digital voting, giving voters instant visual and audible confirmation of every vote cast.</li>
         </ul>
       </div>
 
-      <div class="entry">
-        <div class="entry-title">3. CampusGo &mdash; Campus Application (Full-Stack Web)</div>
+      <div class="project-entry">
+        <div class="project-title">3. CampusGo &mdash; Full-Stack Campus Platform <span class="project-cat">| MERN Stack</span></div>
         <ul class="bullet-list">
-          <li>Developed a campus-focused web application using React.js and a modular component-based architecture.</li>
-          <li>Engineered intuitive user interfaces for student resources and transport navigation.</li>
-          <li>GitHub: https://github.com/MANOJG006/campusgo</li>
+          <li>Developed a responsive MERN stack web application for campus navigation and resource management.</li>
+          <li>Applied in day-to-day campus use, giving students one place to find locations and access campus resources.</li>
         </ul>
       </div>
 
-      <div class="entry">
-        <div class="entry-title">4. Regen &mdash; Textile Waste Collection and Recycling Workflow</div>
+      <div class="project-entry">
+        <div class="project-title">4. Regen &mdash; Sustainable Textile Waste Recycling Workflow <span class="project-cat">| MERN Stack</span></div>
         <ul class="bullet-list">
-          <li>Designed a web-based concept and workflow to support textile-waste collection and circular recycling.</li>
-          <li>Focused on connecting waste collection with recycling workflows and supporting sustainable opportunities for weavers.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">5. LinkedIn-Inspired Multilingual AI Speech Application</div>
-        <ul class="bullet-list">
-          <li>Explored Google AI Studio to develop a beginner-level web application integrating multilingual AI speech concepts.</li>
-          <li>Gained practical introductory exposure to building AI-assisted web interfaces and prompt engineering workflows.</li>
+          <li>Developed a MERN stack web application that connects textile scrap suppliers with weavers and recyclers for waste collection and reuse.</li>
         </ul>
       </div>
     </section>
 
-    <!-- Internships & Training -->
+    <!-- Internships & Industrial Training -->
     <section class="section">
-      <h2 class="section-title">INTERNSHIPS & TRAINING</h2>
+      <h2 class="section-title">INTERNSHIPS &amp; INDUSTRIAL TRAINING</h2>
+      
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Southern Railway, Coimbatore &mdash; <em>Industrial Internship</em></span>
+          <span class="entry-date">November 2026</span>
+        </div>
+        <div class="desc">Trained in coach maintenance, inspection and safety: IOH shed, pitline, fire detection, bio-labs and Vande Bharat upkeep.</div>
+      </div>
+
       <div class="entry">
         <div class="entry-header">
           <span class="entry-title">Caliber Virtual Technologies, Salem &mdash; <em>Embedded Systems Training</em></span>
-          <span class="entry-date">2026</span>
+          <span class="entry-date">April &ndash; May 2026</span>
         </div>
-        <p>Received training exposure to embedded systems concepts, microcontrollers, programming, and hardware-oriented workflows.</p>
+        <div class="desc">Live practical training on ESP32, ESP8266 and Arduino UNO: sensors, drivers and AI-assisted firmware coding.</div>
       </div>
 
       <div class="entry">
         <div class="entry-header">
-          <span class="entry-title">BSNL, Salem &mdash; <em>In-plant Training</em></span>
+          <span class="entry-title">BSNL (Bharat Sanchar Nigam Limited), Salem &mdash; <em>In-Plant Telecom Training</em></span>
           <span class="entry-date">January 2026</span>
         </div>
-        <p>Gained exposure to optical-fiber communication, multiplexers, BSC/server concepts, and telecommunications infrastructure.</p>
-      </div>
-
-      <div class="entry">
-        <div class="entry-header">
-          <span class="entry-title">Workshop: Intelligent Water & Nutrient Automation Infrastructure for a 1-Acre Farm</span>
-        </div>
-        <p>Participated in a workshop focused on water and nutrient automation concepts for agricultural applications.</p>
+        <div class="desc">Gained practical knowledge in Optical Fiber Communication (OFC), multiplexers, BSC switching nodes, and network routing hubs.</div>
       </div>
     </section>
 
-    <!-- Certifications -->
+    <!-- Key Certifications & Credentials -->
     <section class="section">
-      <h2 class="section-title">CERTIFICATIONS</h2>
+      <h2 class="section-title">KEY CERTIFICATIONS &amp; CREDENTIALS</h2>
       <div class="certs-grid">
-        <div>&bull; Introduction to Networking &mdash; NVIDIA (Coursera), July 2025</div>
-        <div>&bull; Java Foundation Certification &mdash; Infosys Springboard, April 2025</div>
-        <div>&bull; Data Structures &mdash; iamneo / NIIT Venture (SKCET), January 2026</div>
-        <div>&bull; Crash Course on Python &mdash; Google (Coursera), February 2025</div>
-        <div>&bull; Database and SQL &mdash; Infosys Springboard, March 2025</div>
-        <div>&bull; Modern C++ Challenger &mdash; Infosys Springboard</div>
-        <div>&bull; Introduction to IoT &mdash; NPTEL, IIT Kharagpur</div>
-        <div>&bull; AWS CloudFormation &mdash; GUVI</div>
-        <div>&bull; Build & Deploy AI Apps with Google AI Studio &mdash; Google</div>
+        <div class="cert-item">Java Foundation Certification &mdash; Infosys Springboard (2025)</div>
+        <div class="cert-item">Modern C++ Challenger &mdash; Infosys Springboard (2025)</div>
+        <div class="cert-item">Data Structures &mdash; iamneo / NIIT Venture @ SKCET (2026)</div>
+        <div class="cert-item">Database &amp; SQL Certification &mdash; Infosys Springboard (2025)</div>
+        <div class="cert-item">Introduction to Networking &mdash; NVIDIA / Coursera (2025)</div>
+        <div class="cert-item">Crash Course on Python &mdash; Google / Coursera (2025)</div>
+        <div class="cert-item">Introduction to IoT &mdash; NPTEL / IIT Kharagpur (2026)</div>
+        <div class="cert-item">Build &amp; Deploy AI Apps &mdash; Google AI Studio (2025)</div>
+        <div class="cert-item">Responsible &amp; Safe AI Systems &mdash; NPTEL / IIIT Hyderabad (2026)</div>
       </div>
     </section>
 
-    <!-- Areas of Interest -->
-    <section class="section">
-      <h2 class="section-title">AREAS OF INTEREST</h2>
-      <div class="areas-text">
-        Embedded Systems | IoT Systems | Full-Stack Web Development (MERN) | Data Structures & Algorithms (DSA) | Problem Solving (Java, C++, Python) | Microcontrollers
-      </div>
+    <!-- Languages -->
+    <section class="section" style="margin-bottom: 0;">
+      <h2 class="section-title">LANGUAGES</h2>
+      <div class="languages-text">Tamil &bull; English</div>
     </section>
   </div>
 

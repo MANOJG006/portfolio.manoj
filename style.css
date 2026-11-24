@@ -5140,8 +5140,16 @@ body.js-ready .reveal-on-scroll:not(.is-revealed) {
 }
 
 .strip-col.strip-highlight .strip-icon {
-  background: rgba(2, 132, 199, 0.12);
-  color: var(--blue-primary);
+  background: rgba(234, 179, 8, 0.12);
+  color: #B45309;
+}
+
+.sde-bulb-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  display: block;
 }
 
 .strip-details {
@@ -5388,6 +5396,418 @@ body.js-ready .reveal-on-scroll:not(.is-revealed) {
   .strip-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ==========================================================================
+   PROJECT 06: ELECTRO-PNEUMATIC PRESSURISED FLUSHING SYSTEM (EPPFS)
+   Southern Railway, Coimbatore Technical Study
+   ========================================================================== */
+.project-org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(198, 161, 91, 0.12);
+  border: 1px solid rgba(164, 120, 32, 0.35);
+  color: #8B6D2B;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.project-meta-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-meta-strip .meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.meta-tag.org-tag {
+  background: rgba(198, 161, 91, 0.12);
+  color: #8B6D2B;
+  border: 1px solid rgba(164, 120, 32, 0.3);
+}
+
+.meta-tag.field-tag {
+  background: rgba(2, 132, 199, 0.1);
+  color: var(--blue-primary);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+
+.meta-tag.study-tag {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.eppfs-desc-panel {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-left: 4px solid var(--gold-primary);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.eppfs-desc-panel p {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.68;
+  margin-bottom: 0.75rem;
+}
+
+.eppfs-desc-panel p:last-child {
+  margin-bottom: 0;
+}
+
+/* Technical Illustration / Schematic Box */
+.eppfs-schematic-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.schematic-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.schematic-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 0.02em;
+}
+
+.schematic-legend {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-pill {
+  width: 14px;
+  height: 5px;
+  border-radius: 2.5px;
+}
+
+.legend-pill.electric { background: #f59e0b; }
+.legend-pill.pneumatic { background: #0284c7; }
+.legend-pill.water { background: #10b981; }
+
+.schematic-svg-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  background: #0b132b;
+  padding: 1.25rem;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.schematic-svg-container svg {
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+  display: block;
+}
+
+@keyframes eppfsDash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.flow-anim-electric {
+  stroke-dasharray: 6 4;
+  animation: eppfsDash 1.8s linear infinite;
+}
+
+.flow-anim-air {
+  stroke-dasharray: 6 4;
+  animation: eppfsDash 1.4s linear infinite;
+}
+
+.flow-anim-water {
+  stroke-dasharray: 6 4;
+  animation: eppfsDash 1.2s linear infinite;
+}
+
+/* Technical Specifications Grid */
+.eppfs-specs-container {
+  margin-bottom: 1.75rem;
+}
+
+.eppfs-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.85rem;
+}
+
+.specs-grid-8 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+}
+
+.spec-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.spec-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold-border);
+  box-shadow: 0 4px 12px rgba(198, 161, 91, 0.08);
+}
+
+.spec-card .spec-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.spec-card .spec-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.spec-card .spec-note {
+  font-size: 0.68rem;
+  color: var(--text-light);
+}
+
+/* Components Studied Grid */
+.components-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.comp-item-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comp-item-card:hover {
+  border-color: var(--gold-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.comp-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(2, 132, 199, 0.08);
+  color: var(--blue-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.comp-icon.electric {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.comp-icon.water {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.comp-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.comp-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.comp-role {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* Working Principle Steps */
+.working-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+.step-box {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-top: 3px solid var(--gold-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.95rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.step-num-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gold-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.step-box h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.step-box p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Learning Outcomes */
+.eppfs-outcomes-box {
+  background: rgba(198, 161, 91, 0.06);
+  border: 1px solid rgba(198, 161, 91, 0.3);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.outcomes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.outcomes-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+.outcomes-list li i {
+  color: #10b981;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+/* Classification Disclaimer */
+.study-classification-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+.study-classification-notice i {
+  color: #0284c7;
+  font-size: 1.1rem;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+  .specs-grid-8 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .components-grid-3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .working-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .specs-grid-8 {
+    grid-template-columns: 1fr;
+  }
+  .components-grid-3col {
+    grid-template-columns: 1fr;
+  }
+  .working-steps-grid {
+    grid-template-columns: 1fr;
   }
 }
 

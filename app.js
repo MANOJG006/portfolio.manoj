@@ -73,9 +73,10 @@ function initTypingEffect() {
 
   const roles = [
     'Software Developer',
+    'Problem Solver',
+    'Software Development Engineer (SDE)',
     'Full-Stack Developer',
-    'Electronics & Communication Engineering Student',
-    'Embedded Systems and IoT Enthusiast'
+    'Embedded Systems and IoT'
   ];
 
   let roleIndex = 0;
@@ -2017,7 +2018,9 @@ window.toggleProject = function(projectId) {
 };
 
 function updateProjectUI(selectedId, isMobile) {
-  for (let i = 1; i <= 5; i++) {
+  const projectItems = document.querySelectorAll('.project-item');
+  const count = Math.max(projectItems.length, 6);
+  for (let i = 1; i <= count; i++) {
     const btn = document.getElementById(`project-btn-${i}`);
     const card = document.getElementById(`project-card-${i}`);
     const drawer = document.getElementById(`mobile-drawer-${i}`);

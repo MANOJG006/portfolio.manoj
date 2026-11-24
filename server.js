@@ -50,7 +50,8 @@ function resolveSafePath(requestPath) {
   const normalizedPath = requestPath.startsWith('/') ? requestPath.slice(1) : requestPath;
   const candidatePath = path.resolve(ROOT_DIR, normalizedPath);
 
-  if (!candidatePath.startsWith(ROOT_DIR)) {
+  // Robust case-insensitive path check for Windows
+  if (!candidatePath.toLowerCase().startsWith(ROOT_DIR.toLowerCase())) {
     throw new Error('Forbidden');
   }
 
